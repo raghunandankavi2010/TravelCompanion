@@ -3,9 +3,9 @@ package com.nammaauto.ai.presentation
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Calculate
-import androidx.compose.material.icons.filled.CameraAlt
+import androidx.compose.material.icons.filled.HealthAndSafety
 import androidx.compose.material.icons.filled.RecordVoiceOver
-import androidx.compose.material.icons.filled.Security
+import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -25,25 +25,24 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.nammaauto.ai.core.theme.AutoYellow
 import com.nammaauto.ai.core.theme.Slate400
-import com.nammaauto.ai.core.theme.Slate700
 import com.nammaauto.ai.core.theme.Slate800
 import com.nammaauto.ai.core.theme.Slate900
 import com.nammaauto.ai.presentation.calculator.FareEstimatorScreen
 import com.nammaauto.ai.presentation.calculator.FareEstimatorViewModel
+import com.nammaauto.ai.presentation.lifeline.LifelineScreen
+import com.nammaauto.ai.presentation.lifeline.LifelineViewModel
 import com.nammaauto.ai.presentation.meter.MeterCamScreen
 import com.nammaauto.ai.presentation.meter.MeterViewModel
 import com.nammaauto.ai.presentation.phrasebook.KannadaSathiScreen
 import com.nammaauto.ai.presentation.phrasebook.KannadaSathiViewModel
-import com.nammaauto.ai.presentation.safety.NightGuardianScreen
-import com.nammaauto.ai.presentation.safety.NightGuardianViewModel
 import com.nammaauto.ai.presentation.store.ProStoreScreen
 import com.nammaauto.ai.presentation.store.ProStoreViewModel
 
 sealed class AppDestination(val route: String, val label: String, val icon: ImageVector) {
-    data object MeterCam : AppDestination("meter_cam", "Meter Cam", Icons.Default.CameraAlt)
-    data object FairFare : AppDestination("fair_fare", "Fair Fare", Icons.Default.Calculate)
-    data object KannadaSathi : AppDestination("kannada", "Kannada", Icons.Default.RecordVoiceOver)
-    data object NightRadar : AppDestination("night_radar", "Night Radar", Icons.Default.Security)
+    data object MeterCam : AppDestination("meter_cam", "Meter", Icons.Default.Speed)
+    data object FairFare : AppDestination("fair_fare", "Ride Radar", Icons.Default.Calculate)
+    data object KannadaSathi : AppDestination("kannada", "Kannada Voice", Icons.Default.RecordVoiceOver)
+    data object Lifeline : AppDestination("lifeline", "Lifeline SOS", Icons.Default.HealthAndSafety)
     data object ProStore : AppDestination("pro_store", "Pro Pass", Icons.Default.Star)
 }
 
@@ -57,7 +56,7 @@ fun NammaAutoNavHost() {
         AppDestination.MeterCam,
         AppDestination.FairFare,
         AppDestination.KannadaSathi,
-        AppDestination.NightRadar,
+        AppDestination.Lifeline,
         AppDestination.ProStore
     )
 
@@ -130,9 +129,9 @@ fun NammaAutoNavHost() {
                     }
                 )
             }
-            composable(AppDestination.NightRadar.route) {
-                val vm: NightGuardianViewModel = viewModel()
-                NightGuardianScreen(viewModel = vm)
+            composable(AppDestination.Lifeline.route) {
+                val vm: LifelineViewModel = viewModel()
+                LifelineScreen(viewModel = vm)
             }
             composable(AppDestination.ProStore.route) {
                 val vm: ProStoreViewModel = viewModel()
