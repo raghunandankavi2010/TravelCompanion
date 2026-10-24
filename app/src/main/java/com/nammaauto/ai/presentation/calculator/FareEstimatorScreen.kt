@@ -15,24 +15,25 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.OpenInNew
 import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Navigation
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.Thunderstorm
-import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -76,6 +77,8 @@ fun FareEstimatorScreen(
     val traffic by viewModel.trafficMultiplier.collectAsState()
     val isRaining by viewModel.isRaining.collectAsState()
     val report by viewModel.radarReport.collectAsState()
+    val isFetchingLive by viewModel.isFetchingLiveApi.collectAsState()
+    val isLiveVerified by viewModel.isLiveApiVerified.collectAsState()
 
     var showFromMenu by remember { mutableStateOf(false) }
     var showToMenu by remember { mutableStateOf(false) }
@@ -106,11 +109,24 @@ fun FareEstimatorScreen(
                     fontSize = 12.sp
                 )
             }
-            BangaloreBadge(
-                text = "${report.distanceKm} KM TRIP",
-                badgeColor = AutoYellow,
-                textColor = Slate900
-            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                BangaloreBadge(
+                    text = if (isLiveVerified) "🟢 LIVE API SYNC" else "⚡ REAL-TIME RADAR",
+                    badgeColor = if (isLiveVerified) FairMeterGreen else AutoYellow,
+                    textColor = Slate900
+                )
+                Spacer(modifier = Modifier.width(6.dp))
+                IconButton(
+                    onClick = { viewModel.syncWithLiveRideApis() },
+                    modifier = Modifier.size(32.dp)
+                ) {
+                    if (isFetchingLive) {
+                        CircularProgressIndicator(color = AutoYellow, strokeWidth = 2.dp, modifier = Modifier.size(16.dp))
+                    } else {
+                        Icon(imageVector = Icons.Default.Refresh, contentDescription = "Refresh", tint = Slate400)
+                    }
+                }
+            }
         }
 
         Spacer(modifier = Modifier.height(14.dp))
@@ -264,7 +280,7 @@ fun FareEstimatorScreen(
 
         Spacer(modifier = Modifier.height(14.dp))
 
-        // HERO CARD: AI BEST RECOMMENDATION (PREVENTS 15 MINS OF REJECTIONS)
+        // HERO CARD: AI BEST RECOMMENDATION
         val best = report.bestAppRecommendation
         Surface(
             modifier = Modifier.fillMaxWidth(),
@@ -383,6 +399,30 @@ fun FareEstimatorScreen(
                 onLaunch = { viewModel.launchRideApp(context, option) }
             )
             Spacer(modifier = Modifier.height(8.dp))
+        }
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // TRANSPARENCY & API ARCHITECTURE NOTE
+        Surface(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(10.dp),
+            color = Slate800.copy(alpha = 0.6f),
+            border = BorderStroke(1.dp, Slate700)
+        ) {
+            Row(
+                modifier = Modifier.padding(10.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(imageVector = Icons.Default.Info, contentDescription = null, tint = MonsoonBlue, modifier = Modifier.size(18.dp))
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "Live Sync Architecture: Integrates official Uber Rides API + ONDC Open Mobility Gateway for Namma Yatri + Bengaluru reverse-engineered surge algorithms.",
+                    color = Slate400,
+                    fontSize = 11.sp,
+                    lineHeight = 15.sp
+                )
+            }
         }
 
         Spacer(modifier = Modifier.height(14.dp))
