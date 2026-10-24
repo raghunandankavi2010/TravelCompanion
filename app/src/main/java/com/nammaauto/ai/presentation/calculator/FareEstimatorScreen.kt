@@ -1,5 +1,6 @@
 package com.nammaauto.ai.presentation.calculator
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -11,15 +12,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.OpenInNew
 import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.AttachMoney
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Navigation
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.Thunderstorm
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
@@ -38,6 +44,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -45,6 +52,7 @@ import com.nammaauto.ai.core.theme.AutoGreen
 import com.nammaauto.ai.core.theme.AutoYellow
 import com.nammaauto.ai.core.theme.FairMeterGreen
 import com.nammaauto.ai.core.theme.FastMeterAlert
+import com.nammaauto.ai.core.theme.GoldPro
 import com.nammaauto.ai.core.theme.MetroPurple
 import com.nammaauto.ai.core.theme.MonsoonBlue
 import com.nammaauto.ai.core.theme.Slate200
@@ -52,9 +60,9 @@ import com.nammaauto.ai.core.theme.Slate400
 import com.nammaauto.ai.core.theme.Slate700
 import com.nammaauto.ai.core.theme.Slate800
 import com.nammaauto.ai.core.theme.Slate900
-import com.nammaauto.ai.core.util.BangaloreHub
+import com.nammaauto.ai.domain.model.AcceptanceChance
+import com.nammaauto.ai.domain.model.RideAppOption
 import com.nammaauto.ai.presentation.components.BangaloreBadge
-import com.nammaauto.ai.presentation.components.FareMetricCard
 import com.nammaauto.ai.presentation.components.GlassCard
 
 @Composable
@@ -62,11 +70,12 @@ fun FareEstimatorScreen(
     viewModel: FareEstimatorViewModel,
     onOpenKannadaNegotiator: () -> Unit
 ) {
+    val context = LocalContext.current
     val fromHub by viewModel.fromHub.collectAsState()
     val toHub by viewModel.toHub.collectAsState()
     val traffic by viewModel.trafficMultiplier.collectAsState()
     val isRaining by viewModel.isRaining.collectAsState()
-    val comparison by viewModel.comparison.collectAsState()
+    val report by viewModel.radarReport.collectAsState()
 
     var showFromMenu by remember { mutableStateOf(false) }
     var showToMenu by remember { mutableStateOf(false) }
@@ -78,7 +87,7 @@ fun FareEstimatorScreen(
             .verticalScroll(rememberScrollState())
             .padding(16.dp)
     ) {
-        // Header
+        // Top Header
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -86,27 +95,27 @@ fun FareEstimatorScreen(
         ) {
             Column {
                 Text(
-                    text = "Fair-Fare AI Arbiter",
+                    text = "Bengaluru Ride Radar",
                     color = Slate200,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Black
                 )
                 Text(
-                    text = "Lawful Meter vs Fair Haggling vs Cab Surge",
+                    text = "Multi-App Price & Acceptance Odds AI",
                     color = Slate400,
                     fontSize = 12.sp
                 )
             }
             BangaloreBadge(
-                text = "BTP RATE 2026",
+                text = "${report.distanceKm} KM TRIP",
                 badgeColor = AutoYellow,
                 textColor = Slate900
             )
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(14.dp))
 
-        // Origin Selector
+        // Pickup / Drop Pickers Card
         GlassCard(modifier = Modifier.fillMaxWidth()) {
             Column {
                 Text(text = "FROM (PICKUP)", color = Slate400, fontSize = 11.sp, fontWeight = FontWeight.Bold)
@@ -127,7 +136,7 @@ fun FareEstimatorScreen(
                                 Text(text = fromHub.name, color = Slate200, fontWeight = FontWeight.Bold)
                                 Text(text = fromHub.landmark, color = Slate400, fontSize = 11.sp)
                             }
-                            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = "Dropdown", tint = AutoYellow)
+                            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null, tint = AutoYellow)
                         }
                     }
                     DropdownMenu(
@@ -147,9 +156,8 @@ fun FareEstimatorScreen(
                     }
                 }
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(10.dp))
 
-                // Destination Selector
                 Text(text = "TO (DESTINATION)", color = Slate400, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                 Spacer(modifier = Modifier.height(4.dp))
                 Box {
@@ -168,7 +176,7 @@ fun FareEstimatorScreen(
                                 Text(text = toHub.name, color = Slate200, fontWeight = FontWeight.Bold)
                                 Text(text = toHub.landmark, color = Slate400, fontSize = 11.sp)
                             }
-                            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = "Dropdown", tint = AutoYellow)
+                            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null, tint = AutoYellow)
                         }
                     }
                     DropdownMenu(
@@ -190,11 +198,9 @@ fun FareEstimatorScreen(
             }
         }
 
-        Spacer(modifier = Modifier.height(14.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
-        // Traffic & Monsoon Condition Modifiers
-        Text(text = "CURRENT BENGALURU CONDITIONS", color = Slate400, fontSize = 11.sp, fontWeight = FontWeight.Bold)
-        Spacer(modifier = Modifier.height(6.dp))
+        // Traffic & Weather Condition Modifiers
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -212,7 +218,7 @@ fun FareEstimatorScreen(
             FilterChip(
                 selected = traffic == 1.25,
                 onClick = { viewModel.setTrafficMultiplier(1.25) },
-                label = { Text("ORR Heavy", fontSize = 11.sp) },
+                label = { Text("ORR Peak", fontSize = 11.sp) },
                 colors = FilterChipDefaults.filterChipColors(
                     selectedContainerColor = AutoYellow,
                     selectedLabelColor = Slate900
@@ -239,13 +245,13 @@ fun FareEstimatorScreen(
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Thunderstorm,
-                    contentDescription = "Monsoon",
+                    contentDescription = null,
                     tint = if (isRaining) MonsoonBlue else Slate400
                 )
             },
             label = {
                 Text(
-                    text = if (isRaining) "Bengaluru Monsoon Rain (+₹30 fair buffer active)" else "Weather: Clear Skies",
+                    text = if (isRaining) "Bengaluru Rain Surge (+₹25–₹40 on apps)" else "Weather: Clear Skies",
                     fontSize = 11.sp
                 )
             },
@@ -256,87 +262,104 @@ fun FareEstimatorScreen(
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(14.dp))
 
-        // The Tri-Fare Comparison Matrix Card
+        // HERO CARD: AI BEST RECOMMENDATION (PREVENTS 15 MINS OF REJECTIONS)
+        val best = report.bestAppRecommendation
         Surface(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(16.dp),
             color = Slate800,
-            border = BorderStroke(1.dp, AutoYellow.copy(alpha = 0.4f))
+            border = BorderStroke(2.dp, GoldPro)
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(
-                        text = "ESTIMATED DISTANCE: ${comparison.distanceKm} KM",
-                        color = AutoYellow,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Black
-                    )
-                    Text(
-                        text = if (comparison.isNight) "10PM-5AM Night Rules" else "Daytime Tariff",
-                        color = Slate400,
-                        fontSize = 11.sp
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            imageVector = Icons.Default.Star,
+                            contentDescription = null,
+                            tint = GoldPro,
+                            modifier = Modifier.size(22.dp)
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(
+                            text = "AI RECOMMENDED APP",
+                            color = GoldPro,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Black,
+                            letterSpacing = 0.5.sp
+                        )
+                    }
+                    BangaloreBadge(
+                        text = "${best.acceptancePercentage}% ACCEPTANCE",
+                        badgeColor = FairMeterGreen,
+                        textColor = Slate900
                     )
                 }
 
-                Spacer(modifier = Modifier.height(14.dp))
+                Spacer(modifier = Modifier.height(10.dp))
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.Bottom
                 ) {
-                    FareMetricCard(
-                        title = "1. BTP Lawful Fare",
-                        amount = "₹${comparison.legalGovtFare.toInt()}",
-                        subtitle = "Exact meter reading",
-                        accentColor = FairMeterGreen,
-                        modifier = Modifier.weight(1f)
-                    )
-                    FareMetricCard(
-                        title = "2. Win-Win Offer",
-                        amount = "₹${comparison.fairNegotiationQuote.toInt()}",
-                        subtitle = "Prevents auto refusal",
-                        accentColor = AutoYellow,
-                        modifier = Modifier.weight(1f)
-                    )
-                    FareMetricCard(
-                        title = "3. Cab Surge",
-                        amount = "₹${comparison.estimatedCabSurgePrice.toInt()}",
-                        subtitle = "Uber / Ola estimate",
-                        accentColor = FastMeterAlert,
-                        modifier = Modifier.weight(1f)
+                    Column {
+                        Text(
+                            text = best.appName,
+                            color = Slate200,
+                            fontSize = 22.sp,
+                            fontWeight = FontWeight.Black
+                        )
+                        Text(
+                            text = "Estimated ETA: ~${best.etaMinutes} mins pickup",
+                            color = Slate400,
+                            fontSize = 12.sp
+                        )
+                    }
+                    Text(
+                        text = "₹${best.fareRupees.toInt()}",
+                        color = AutoYellow,
+                        fontSize = 32.sp,
+                        fontWeight = FontWeight.Black
                     )
                 }
 
-                Spacer(modifier = Modifier.height(14.dp))
+                Spacer(modifier = Modifier.height(8.dp))
 
-                // Potential Savings Callout
-                Surface(
+                Text(
+                    text = "💡 ${best.proCommuteInsight}",
+                    color = Slate200,
+                    fontSize = 12.sp,
+                    lineHeight = 17.sp
+                )
+
+                if (best.recommendedTipRupees > 0) {
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Text(
+                        text = "⚡ Pro tip: Add +₹${best.recommendedTipRupees} tip to get picked up in under 60 seconds during this traffic.",
+                        color = AutoYellow,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                Button(
+                    onClick = { viewModel.launchRideApp(context, best) },
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(10.dp),
-                    color = FairMeterGreen.copy(alpha = 0.15f),
-                    border = BorderStroke(1.dp, FairMeterGreen)
+                    colors = ButtonDefaults.buttonColors(containerColor = AutoYellow),
+                    shape = RoundedCornerShape(10.dp)
                 ) {
-                    Row(
-                        modifier = Modifier.padding(12.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.AttachMoney,
-                            contentDescription = "Savings",
-                            tint = FairMeterGreen
-                        )
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(imageVector = Icons.AutoMirrored.Filled.OpenInNew, contentDescription = null, tint = Slate900)
                         Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = "You save ~₹${comparison.potentialSavings.toInt()} by taking an auto with this fair offer over surging cabs!",
-                            color = Slate200,
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.Bold
-                        )
+                        Text("Open & Book on ${best.appName}", color = Slate900, fontWeight = FontWeight.Black)
                     }
                 }
             }
@@ -344,24 +367,162 @@ fun FareEstimatorScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Direct Action to Kannada Negotiation Assistant
-        Button(
-            onClick = onOpenKannadaNegotiator,
+        // MULTI-APP REAL-TIME COMPARISON LIST
+        Text(
+            text = "MULTI-APP ACCEPTANCE & FARE MATRIX",
+            color = Slate400,
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Bold,
+            letterSpacing = 0.5.sp
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+
+        report.options.forEach { option ->
+            AppOptionRow(
+                option = option,
+                onLaunch = { viewModel.launchRideApp(context, option) }
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+
+        Spacer(modifier = Modifier.height(14.dp))
+
+        // STREET AUTO FAIR CASH ALTERNATIVE
+        Surface(
             modifier = Modifier.fillMaxWidth(),
-            colors = ButtonDefaults.buttonColors(containerColor = MetroPurple),
-            shape = RoundedCornerShape(12.dp)
+            shape = RoundedCornerShape(14.dp),
+            color = Slate800,
+            border = BorderStroke(1.dp, AutoGreen.copy(alpha = 0.5f))
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(imageVector = Icons.Default.Navigation, contentDescription = null, tint = Slate200)
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = "Quote ₹${comparison.fairNegotiationQuote.toInt()} in Fluent Kannada",
-                    color = Slate200,
-                    fontWeight = FontWeight.Bold
-                )
+            Column(modifier = Modifier.padding(14.dp)) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column {
+                        Text(
+                            text = "Direct Street Auto Alternative",
+                            color = AutoGreen,
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            text = "Flag down any passing auto & quote directly in Kannada",
+                            color = Slate400,
+                            fontSize = 11.sp
+                        )
+                    }
+                    Text(
+                        text = "₹${report.streetAutoAlternativeFare.toInt()}",
+                        color = AutoGreen,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Black
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                Button(
+                    onClick = onOpenKannadaNegotiator,
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(containerColor = AutoGreen),
+                    shape = RoundedCornerShape(10.dp)
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(imageVector = Icons.Default.Navigation, contentDescription = null, tint = Slate900)
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = "Quote ₹${report.streetAutoAlternativeFare.toInt()} Cash in Kannada 🔊",
+                            color = Slate900,
+                            fontWeight = FontWeight.Black
+                        )
+                    }
+                }
             }
         }
 
         Spacer(modifier = Modifier.height(24.dp))
+    }
+}
+
+@Composable
+private fun AppOptionRow(
+    option: RideAppOption,
+    onLaunch: () -> Unit
+) {
+    val badgeColor = when (option.acceptanceChance) {
+        AcceptanceChance.VERY_HIGH -> FairMeterGreen
+        AcceptanceChance.HIGH -> AutoGreen
+        AcceptanceChance.MODERATE -> AutoYellow
+        AcceptanceChance.LOW_REJECTION_RISK -> FastMeterAlert
+    }
+
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        color = Slate800,
+        border = BorderStroke(1.dp, if (option.isBestChoiceOverall) GoldPro else Slate700)
+    ) {
+        Column(modifier = Modifier.padding(12.dp)) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = option.appName,
+                        color = Slate200,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    BangaloreBadge(
+                        text = "${option.acceptancePercentage}% Acceptance",
+                        badgeColor = badgeColor,
+                        textColor = if (option.acceptanceChance == AcceptanceChance.LOW_REJECTION_RISK) Slate200 else Slate900
+                    )
+                }
+
+                Text(
+                    text = "₹${option.fareRupees.toInt()}",
+                    color = AutoYellow,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Black
+                )
+            }
+
+            Spacer(modifier = Modifier.height(4.dp))
+
+            Text(
+                text = option.proCommuteInsight,
+                color = Slate400,
+                fontSize = 11.sp,
+                lineHeight = 15.sp
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "ETA: ~${option.etaMinutes} mins",
+                    color = Slate400,
+                    fontSize = 11.sp
+                )
+
+                OutlinedButton(
+                    onClick = onLaunch,
+                    shape = RoundedCornerShape(8.dp),
+                    border = BorderStroke(1.dp, AutoYellow)
+                ) {
+                    Text("Open App", fontSize = 11.sp, color = AutoYellow, fontWeight = FontWeight.Bold)
+                }
+            }
+        }
     }
 }
