@@ -1,7 +1,14 @@
 package com.nammaauto.ai.presentation.phrasebook
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,34 +30,49 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Send
-import androidx.compose.material.icons.filled.VolumeUp
+import androidx.compose.material.icons.automirrored.filled.Send
+import androidx.compose.material.icons.automirrored.filled.VolumeUp
+import androidx.compose.material.icons.filled.Mic
+import androidx.compose.material.icons.filled.MicOff
+import androidx.compose.material.icons.filled.Translate
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.SuggestionChip
+import androidx.compose.material3.SuggestionChipDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import com.nammaauto.ai.core.theme.AutoGreen
 import com.nammaauto.ai.core.theme.AutoYellow
+import com.nammaauto.ai.core.theme.FastMeterAlert
 import com.nammaauto.ai.core.theme.MetroPurple
+import com.nammaauto.ai.core.theme.MonsoonBlue
 import com.nammaauto.ai.core.theme.Slate200
 import com.nammaauto.ai.core.theme.Slate400
 import com.nammaauto.ai.core.theme.Slate700
 import com.nammaauto.ai.core.theme.Slate800
 import com.nammaauto.ai.core.theme.Slate900
+import com.nammaauto.ai.data.translator.TranslationResult
 import com.nammaauto.ai.domain.model.KannadaPhrase
 import com.nammaauto.ai.domain.model.PhraseCategory
 import com.nammaauto.ai.presentation.components.BangaloreBadge
@@ -66,9 +88,39 @@ fun KannadaSathiScreen(
     val subscription by viewModel.subscriptionState.collectAsState()
     val isSpeaking by viewModel.isSpeaking.collectAsState()
     val lastSpokenId by viewModel.lastSpokenPhraseId.collectAsState()
-    val hagglingAsk by viewModel.hagglingAsk.collectAsState()
+
+    val customInput by viewModel.customEnglishInput.collectAsState()
+    val activeTranslation by viewModel.activeTranslation.collectAsState()
+    val isTranslating by viewModel.isTranslating.collectAsState()
+    val isListeningToMic by viewModel.isListeningToMic.collectAsState()
+
+    var hasAudioPermission by remember {
+        mutableStateOf(
+            ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.RECORD_AUDIO
+            ) == PackageManager.PERMISSION_GRANTED
+        )
+    }
+
+    val audioPermissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        hasAudioPermission = granted
+        if (granted) viewModel.startVoiceMicInput()
+    }
 
     val filteredPhrases = viewModel.getFilteredPhrases()
+
+    val quickEnglishPrompts = listOf(
+        "Wait 2 minutes please",
+        "Do you have change for 500?",
+        "Drop me near the main gate",
+        "Please reduce music volume",
+        "Can we take the flyover?",
+        "I will pay via Google Pay",
+        "Please drive slowly"
+    )
 
     Column(
         modifier = Modifier
@@ -84,19 +136,19 @@ fun KannadaSathiScreen(
         ) {
             Column {
                 Text(
-                    text = "NammaBhasha Sathi",
+                    text = "NammaBhasha Voice AI",
                     color = Slate200,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Black
                 )
                 Text(
-                    text = "Bengaluru Auto Negotiation Assistant",
+                    text = "Say anything in English ➔ Speaks in Fluent Kannada",
                     color = Slate400,
                     fontSize = 12.sp
                 )
             }
             BangaloreBadge(
-                text = if (subscription.isProUser) "UNLIMITED AUDIO" else "${subscription.freeDailyPhrasesRemaining} Plays Left",
+                text = if (subscription.isProUser) "UNLIMITED VOICE" else "${subscription.freeDailyPhrasesRemaining} Plays Left",
                 badgeColor = if (subscription.isProUser) AutoYellow else Slate700,
                 textColor = if (subscription.isProUser) Slate900 else AutoYellow
             )
@@ -104,66 +156,227 @@ fun KannadaSathiScreen(
 
         Spacer(modifier = Modifier.height(14.dp))
 
-        // Dynamic Auto-Haggling Bot Card
-        GlassCard(modifier = Modifier.fillMaxWidth()) {
+        // Custom English Voice / Text Translation Copilot
+        GlassCard(
+            modifier = Modifier.fillMaxWidth(),
+            borderColor = if (isListeningToMic) FastMeterAlert else AutoYellow.copy(alpha = 0.6f)
+        ) {
             Column {
-                Text(
-                    text = "SMART COUNTER-OFFER GENERATOR",
-                    color = AutoYellow,
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.Bold,
-                    letterSpacing = 0.5.sp
-                )
-                Text(
-                    text = "Driver quoting arbitrary price? Let AI generate the counter offer:",
-                    color = Slate400,
-                    fontSize = 11.sp
-                )
-                Spacer(modifier = Modifier.height(8.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            imageVector = Icons.Default.Translate,
+                            contentDescription = null,
+                            tint = AutoYellow,
+                            modifier = Modifier.size(18.dp)
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(
+                            text = "CUSTOM PHRASE TRANSLATOR",
+                            color = AutoYellow,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Black,
+                            letterSpacing = 0.5.sp
+                        )
+                    }
+
+                    if (isTranslating) {
+                        CircularProgressIndicator(
+                            color = AutoYellow,
+                            modifier = Modifier.size(16.dp),
+                            strokeWidth = 2.dp
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                // Input Bar with Mic button and Send button
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     OutlinedTextField(
-                        value = hagglingAsk,
-                        onValueChange = { viewModel.setHagglingAsk(it) },
-                        label = { Text("Driver Asked (₹)") },
+                        value = customInput,
+                        onValueChange = { viewModel.setCustomEnglishInput(it) },
+                        placeholder = { Text("Type or speak in English...", color = Slate400, fontSize = 13.sp) },
                         modifier = Modifier.weight(1f),
-                        singleLine = true,
+                        singleLine = false,
+                        maxLines = 2,
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = AutoYellow,
                             unfocusedBorderColor = Slate700,
                             focusedTextColor = Slate200,
-                            unfocusedTextColor = Slate200
+                            unfocusedTextColor = Slate200,
+                            cursorColor = AutoYellow
                         )
                     )
-                    Spacer(modifier = Modifier.width(10.dp))
-                    val askNum = hagglingAsk.toIntOrNull() ?: 150
-                    val fairOffer = kotlin.math.max(30, (askNum * 0.65).toInt())
-                    Button(
+
+                    Spacer(modifier = Modifier.width(8.dp))
+
+                    // Microphone Voice Input Button
+                    IconButton(
                         onClick = {
-                            val success = viewModel.playCustomHagglingPhrase(askNum)
-                            if (!success) {
-                                Toast.makeText(context, "Free daily audio plays used. Upgrade to Pro!", Toast.LENGTH_SHORT).show()
-                                onNavigateToProStore()
+                            if (hasAudioPermission) {
+                                if (isListeningToMic) viewModel.stopVoiceMicInput()
+                                else viewModel.startVoiceMicInput()
+                            } else {
+                                audioPermissionLauncher.launch(Manifest.permission.RECORD_AUDIO)
                             }
                         },
-                        colors = ButtonDefaults.buttonColors(containerColor = AutoGreen),
-                        shape = RoundedCornerShape(10.dp)
+                        modifier = Modifier
+                            .size(46.dp)
+                            .background(
+                                if (isListeningToMic) FastMeterAlert else Slate800,
+                                CircleShape
+                            )
                     ) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(imageVector = Icons.Default.VolumeUp, contentDescription = null, tint = Slate900)
-                            Spacer(modifier = Modifier.width(6.dp))
-                            Text("Offer ₹$fairOffer", color = Slate900, fontWeight = FontWeight.Black)
+                        Icon(
+                            imageVector = if (isListeningToMic) Icons.Default.MicOff else Icons.Default.Mic,
+                            contentDescription = "Voice Input",
+                            tint = if (isListeningToMic) Slate200 else AutoYellow
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.width(6.dp))
+
+                    // Translate Button
+                    IconButton(
+                        onClick = { viewModel.translateCustomPhrase(customInput) },
+                        modifier = Modifier
+                            .size(46.dp)
+                            .background(AutoGreen, CircleShape)
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.Send,
+                            contentDescription = "Translate",
+                            tint = Slate900
+                        )
+                    }
+                }
+
+                // Quick Clickable English Commute Chips
+                Spacer(modifier = Modifier.height(10.dp))
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .horizontalScroll(rememberScrollState()),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    quickEnglishPrompts.forEach { prompt ->
+                        SuggestionChip(
+                            onClick = {
+                                viewModel.translateCustomPhrase(prompt, andSpeakImmediately = false)
+                            },
+                            label = { Text(prompt, fontSize = 11.sp, color = Slate200) },
+                            colors = SuggestionChipDefaults.suggestionChipColors(
+                                containerColor = Slate800
+                            ),
+                            border = BorderStroke(1.dp, Slate700)
+                        )
+                    }
+                }
+
+                // Live Translated Result Banner with Large "Speak to Driver" Button
+                AnimatedVisibility(
+                    visible = activeTranslation != null,
+                    enter = fadeIn(),
+                    exit = fadeOut()
+                ) {
+                    activeTranslation?.let { result ->
+                        Spacer(modifier = Modifier.height(12.dp))
+                        Surface(
+                            modifier = Modifier.fillMaxWidth(),
+                            shape = RoundedCornerShape(12.dp),
+                            color = Slate900,
+                            border = BorderStroke(1.dp, AutoYellow)
+                        ) {
+                            Column(modifier = Modifier.padding(12.dp)) {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Text(
+                                        text = result.sourceEngine.uppercase(),
+                                        color = MonsoonBlue,
+                                        fontSize = 10.sp,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                    Text(
+                                        text = "KANNADA TRANSLATION",
+                                        color = AutoYellow,
+                                        fontSize = 10.sp,
+                                        fontWeight = FontWeight.Black
+                                    )
+                                }
+
+                                Spacer(modifier = Modifier.height(6.dp))
+
+                                // Kannada Lipi
+                                Text(
+                                    text = result.kannadaLipi,
+                                    color = AutoYellow,
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.Black
+                                )
+
+                                Spacer(modifier = Modifier.height(4.dp))
+
+                                // Phonetics
+                                Text(
+                                    text = "🗣️ ${result.phoneticPronunciation}",
+                                    color = Slate200,
+                                    fontSize = 13.sp,
+                                    fontWeight = FontWeight.Medium
+                                )
+
+                                Spacer(modifier = Modifier.height(10.dp))
+
+                                // Speak to Driver Button
+                                Button(
+                                    onClick = {
+                                        val success = viewModel.playActiveTranslation()
+                                        if (!success) {
+                                            Toast.makeText(context, "Free voice quota reached. Upgrade to Pro!", Toast.LENGTH_SHORT).show()
+                                            onNavigateToProStore()
+                                        }
+                                    },
+                                    modifier = Modifier.fillMaxWidth(),
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = if (isSpeaking && lastSpokenId == "custom_translation") AutoGreen else AutoYellow
+                                    ),
+                                    shape = RoundedCornerShape(10.dp)
+                                ) {
+                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                        Icon(
+                                            imageVector = Icons.AutoMirrored.Filled.VolumeUp,
+                                            contentDescription = null,
+                                            tint = Slate900
+                                        )
+                                        Spacer(modifier = Modifier.width(8.dp))
+                                        Text(
+                                            text = if (isSpeaking && lastSpokenId == "custom_translation") "Playing to Driver..." else "Speak Aloud to Auto Driver 🔊",
+                                            color = Slate900,
+                                            fontWeight = FontWeight.Black,
+                                            fontSize = 13.sp
+                                        )
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             }
         }
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(14.dp))
 
-        // Horizontal Category Tabs
+        // Horizontal Category Tabs for Standard Phrasebook
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -194,7 +407,7 @@ fun KannadaSathiScreen(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        // Phrase Cards List
+        // Standard Categorized Phrases List
         LazyColumn(
             modifier = Modifier.weight(1f),
             verticalArrangement = Arrangement.spacedBy(10.dp)
@@ -266,7 +479,7 @@ private fun PhraseItemCard(
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = "💡 ${phrase.contextTip}",
-                    color = com.nammaauto.ai.core.theme.MonsoonBlue,
+                    color = MonsoonBlue,
                     fontSize = 10.sp
                 )
             }
@@ -284,7 +497,7 @@ private fun PhraseItemCard(
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
-                        imageVector = Icons.Default.VolumeUp,
+                        imageVector = Icons.AutoMirrored.Filled.VolumeUp,
                         contentDescription = "Speak Phrase",
                         tint = if (isPlaying) Slate900 else Slate200,
                         modifier = Modifier.size(24.dp)
