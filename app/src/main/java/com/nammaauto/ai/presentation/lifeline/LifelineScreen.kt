@@ -392,6 +392,9 @@ fun LifelineScreen(viewModel: LifelineViewModel) {
             }
         }
 
+        Spacer(modifier = Modifier.height(14.dp))
+        LegalDisclaimerCard()
+
         Spacer(modifier = Modifier.height(24.dp))
     }
 }
@@ -576,6 +579,33 @@ private fun AirportBusCard(route: AirportBusRoute) {
             Text("Frequency: ${route.frequency}", color = AutoYellow, fontSize = 11.sp)
             Spacer(modifier = Modifier.height(2.dp))
             Text("💰 ${route.comparisonWithCab}", color = FairMeterGreen, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+        }
+    }
+}
+
+@Composable
+fun LegalDisclaimerCard() {
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        color = Slate800.copy(alpha = 0.5f),
+        border = BorderStroke(1.dp, Slate700)
+    ) {
+        Column(modifier = Modifier.padding(12.dp)) {
+            Text(
+                text = "LEGAL & FAIR USE DISCLAIMER",
+                color = Slate400,
+                fontSize = 10.sp,
+                fontWeight = FontWeight.Bold,
+                letterSpacing = 0.5.sp
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "NammaAuto AI is an independent utility. All trademarks, service marks, and brand names (Uber, Ola, Rapido, Namma Yatri, BTP) are property of their respective owners. Their reference herein is strictly for descriptive nominative comparison under Section 30 of the Trade Marks Act, 1999 and does not imply endorsement or affiliation.",
+                color = Slate400,
+                fontSize = 10.sp,
+                lineHeight = 14.sp
+            )
         }
     }
 }
