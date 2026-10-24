@@ -6,6 +6,48 @@ import com.nammaauto.ai.domain.model.PhraseCategory
 object PhrasebookRepository {
 
     val phrases: List<KannadaPhrase> = listOf(
+        // Category 0: No-Meter Rides / App-Rate Matcher (#1 Bengaluru Pain Point)
+        KannadaPhrase(
+            id = "nometer_1",
+            category = PhraseCategory.NO_METER,
+            kannadaLipi = "ಮೀಟರ್ ಬೇಡ, ಆಪ್ ರೇಟ್ ₹60 ಕೊಡ್ತೀನಿ, ಬರ್ತೀರಾ?",
+            phoneticEnglish = "Meter beda, app rate aravattu rupayi kodthini, barthira?",
+            englishMeaning = "No meter needed, I will pay app rate ₹60, will you come?",
+            contextTip = "The ultimate icebreaker when driver flatly says 'Meter illa'."
+        ),
+        KannadaPhrase(
+            id = "nometer_2",
+            category = PhraseCategory.NO_METER,
+            kannadaLipi = "ನಮ್ಮ ಯಾತ್ರಿ ರೇಟ್ ₹55 ಇದೆ, ಡೈರೆಕ್ಟ್ ಕ್ಯಾಶ್ ಕೊಡ್ತೀನಿ.",
+            phoneticEnglish = "Namma Yatri rate eevatthaydu ide, direct cash kodthini.",
+            englishMeaning = "Namma Yatri rate is ₹55, I will pay you direct in cash.",
+            contextTip = "Anchors the price to Namma Yatri rather than driver's arbitrary quote."
+        ),
+        KannadaPhrase(
+            id = "nometer_3",
+            category = PhraseCategory.NO_METER,
+            kannadaLipi = "1.5 ಕಿ.ಮೀ ಗೆ ₹120 ಯಾಕೆ ಭೈಯಾ? ₹60 ಫಿಕ್ಸ್ ಮಾಡಿ.",
+            phoneticEnglish = "Onduvare km ge noora ippatthu yaake bhaiya? Aravattu fix maadi.",
+            englishMeaning = "Why ₹120 for just 1.5 km brother? Let's fix ₹60.",
+            contextTip = "Firm polite pushback when driver quotes 2x the app rate."
+        ),
+        KannadaPhrase(
+            id = "nometer_4",
+            category = PhraseCategory.NO_METER,
+            kannadaLipi = "ಆಪ್ ಕಮಿಷನ್ ಕಟ್ ಆಗಲ್ಲ, ಪೂರ್ತಿ ₹60 ನಿಮಗೇ ಸಿಗುತ್ತೆ!",
+            phoneticEnglish = "App commission cut aagalla, poorthi aravattu nimagey sigutthe!",
+            englishMeaning = "No app commission cut, you get the full ₹60 in hand!",
+            contextTip = "Key psychological lever: drivers love cash without platform cuts."
+        ),
+        KannadaPhrase(
+            id = "nometer_5",
+            category = PhraseCategory.NO_METER,
+            kannadaLipi = "ಮೀಟರ್ ಆನ್ ಮಾಡಲ್ಲ ಅಂದ್ರೆ ಸೀದಾ ₹50 ಕೊಡ್ತೀನಿ, ಬನ್ನಿ.",
+            phoneticEnglish = "Meter on maadalla andre seedha eevatthu kodthini, banni.",
+            englishMeaning = "If you won't turn on meter, I will pay flat ₹50, let's go.",
+            contextTip = "Quick short-distance fixed rate agreement."
+        ),
+
         // Category 1: Catching Auto / Hailing
         KannadaPhrase(
             id = "hail_1",

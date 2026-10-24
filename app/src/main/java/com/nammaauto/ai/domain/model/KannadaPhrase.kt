@@ -1,6 +1,7 @@
 package com.nammaauto.ai.domain.model
 
 enum class PhraseCategory(val label: String, val iconDescription: String) {
+    NO_METER("No-Meter Rides", "App-Rate Matcher"),
     HAILING("Catching Auto", "Booking/Stopping"),
     METER("Meter Request", "Enforcing Lawful Fare"),
     NEGOTIATE("Fair Haggling", "Smart Counter-Offer"),
