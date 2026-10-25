@@ -5,7 +5,10 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.nammaauto.ai.NammaAutoApplication
 import com.nammaauto.ai.data.speech.KannadaTtsEngine
+import com.nammaauto.ai.domain.model.CityTransportTariff
+import com.nammaauto.ai.domain.model.KarnatakaRegion
 import com.nammaauto.ai.domain.model.KarnatakaSpot
+import com.nammaauto.ai.domain.model.RegionalDialectInfo
 import com.nammaauto.ai.domain.model.TourismCategory
 import com.nammaauto.ai.domain.repository.KarnatakaTourismRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,16 +25,16 @@ class KarnatakaExplorerViewModel(application: Application) : AndroidViewModel(ap
 
     val isSpeaking = ttsEngine.isSpeaking
 
+    private val _selectedRegion = MutableStateFlow<KarnatakaRegion>(KarnatakaRegion.ALL)
+    val selectedRegion: StateFlow<KarnatakaRegion> = _selectedRegion.asStateFlow()
+
     private val _selectedCategory = MutableStateFlow<TourismCategory?>(null)
     val selectedCategory: StateFlow<TourismCategory?> = _selectedCategory.asStateFlow()
 
     private val _searchQuery = MutableStateFlow("")
     val searchQuery: StateFlow<String> = _searchQuery.asStateFlow()
 
-    private val _maxDistanceFilter = MutableStateFlow<Int?>(null)
-    val maxDistanceFilter: StateFlow<Int?> = _maxDistanceFilter.asStateFlow()
-
-    private val _isForeignerMode = MutableStateFlow(true) // Default to true to assist foreigners immediately
+    private val _isForeignerMode = MutableStateFlow(true)
     val isForeignerMode: StateFlow<Boolean> = _isForeignerMode.asStateFlow()
 
     private val _selectedSpotForDetails = MutableStateFlow<KarnatakaSpot?>(null)
@@ -40,24 +43,33 @@ class KarnatakaExplorerViewModel(application: Application) : AndroidViewModel(ap
     private val _lastSpokenSpotId = MutableStateFlow<String?>(null)
     val lastSpokenSpotId: StateFlow<String?> = _lastSpokenSpotId.asStateFlow()
 
-    // Filtered spots derived from Category, Search Query, and Distance Filter
+    val regionalDialects: List<RegionalDialectInfo> = KarnatakaTourismRepository.regionalDialects
+    val cityTariffs: List<CityTransportTariff> = KarnatakaTourismRepository.cityTariffs
+
+    // Filtered spots derived from Region, Category, and Search Query
     val filteredSpots: StateFlow<List<KarnatakaSpot>> = combine(
+        _selectedRegion,
         _selectedCategory,
-        _searchQuery,
-        _maxDistanceFilter
-    ) { category, query, maxDist ->
+        _searchQuery
+    ) { region, category, query ->
         KarnatakaTourismRepository.spots.filter { spot ->
+            val matchesRegion = region == KarnatakaRegion.ALL || spot.region == region
             val matchesCategory = category == null || spot.category == category
             val matchesQuery = query.isBlank() ||
                 spot.name.contains(query, ignoreCase = true) ||
                 spot.district.contains(query, ignoreCase = true) ||
-                spot.overview.contains(query, ignoreCase = true) ||
                 spot.tagline.contains(query, ignoreCase = true) ||
+                spot.overview.contains(query, ignoreCase = true) ||
+                spot.nearestTransitHub.contains(query, ignoreCase = true) ||
                 spot.keyHighlights.any { it.contains(query, ignoreCase = true) }
-            val matchesDistance = maxDist == null || spot.distanceFromBangaloreKm <= maxDist
-            matchesCategory && matchesQuery && matchesDistance
+
+            matchesRegion && matchesCategory && matchesQuery
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), KarnatakaTourismRepository.spots)
+
+    fun selectRegion(region: KarnatakaRegion) {
+        _selectedRegion.value = region
+    }
 
     fun selectCategory(category: TourismCategory?) {
         _selectedCategory.value = category
@@ -65,10 +77,6 @@ class KarnatakaExplorerViewModel(application: Application) : AndroidViewModel(ap
 
     fun setSearchQuery(query: String) {
         _searchQuery.value = query
-    }
-
-    fun setMaxDistanceFilter(dist: Int?) {
-        _maxDistanceFilter.value = dist
     }
 
     fun toggleForeignerMode() {

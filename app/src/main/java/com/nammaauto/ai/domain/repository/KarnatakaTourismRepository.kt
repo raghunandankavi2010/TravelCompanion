@@ -1,32 +1,37 @@
 package com.nammaauto.ai.domain.repository
 
+import com.nammaauto.ai.domain.model.CityTransportTariff
 import com.nammaauto.ai.domain.model.ForeignerPricingGuidance
+import com.nammaauto.ai.domain.model.KarnatakaRegion
 import com.nammaauto.ai.domain.model.KarnatakaSpot
 import com.nammaauto.ai.domain.model.OfficialBookingInfo
+import com.nammaauto.ai.domain.model.RegionalDialectInfo
 import com.nammaauto.ai.domain.model.TourismCategory
 
 object KarnatakaTourismRepository {
 
     val spots: List<KarnatakaSpot> = listOf(
-        // ==========================================
-        // 1. TEMPLES & HERITAGE
-        // ==========================================
+        // ========================================================
+        // 1. HERITAGE NORTH (UTTARA KARNATAKA & DECCAN)
+        // ========================================================
         KarnatakaSpot(
             id = "hampi_unesco",
             name = "Hampi UNESCO World Heritage Site",
             kannadaName = "ಹಂಪಿ ವಿಶ್ವ ಪರಂಪರೆಯ ತಾಣ",
-            tagline = "The Golden Ruins of the Vijayanagara Empire",
+            tagline = "The Golden Boulders & Capital of the Vijayanagara Empire",
             category = TourismCategory.TEMPLES_HERITAGE,
-            district = "Vijayanagara (Near Hospet)",
+            region = KarnatakaRegion.UTTARA_KARNATAKA,
+            district = "Vijayanagara District",
+            nearestTransitHub = "Airport: Hubballi HBX (140 km) | Train: Hospet Junction (12 km)",
             distanceFromBangaloreKm = 345,
-            bestSeason = "October to March (Winter cool weather)",
+            bestSeason = "October to March (Pleasant winter weather)",
             timings = "6:00 AM – 6:00 PM (Daily)",
-            overview = "Spectacular 14th-century capital of the Vijayanagara Empire spread across 4,100 hectares of otherworldly boulder landscapes and Tungabhadra riverbanks. Highlights include the Virupaksha Temple, the iconic monolithic Stone Chariot at Vijaya Vittala, and Lotus Mahal.",
+            overview = "Spectacular 14th-century capital of the Vijayanagara Empire spread over 4,100 hectares of otherworldly boulder landscapes and Tungabhadra riverbanks. Highlights include the active 7th-century Virupaksha Temple, the monolithic Stone Chariot at Vijaya Vittala, and Lotus Mahal.",
             keyHighlights = listOf(
-                "Stone Chariot & Musical Pillars at Vijaya Vittala",
-                "Active 7th-century Virupaksha Temple darshan",
-                "Bouldering and coracle (Dongdi) boat ride on Tungabhadra River",
-                "Sunset view over boulders from Matanga Hill"
+                "Iconic Stone Chariot & 56 musical pillars at Vijaya Vittala",
+                "Virupaksha Temple darshan with temple elephant Lakshmi blessing",
+                "Tungabhadra river coracle (Dongdi) circular boat crossing",
+                "Panoramic sunset over boulder horizon from Matanga Hill"
             ),
             bookingInfo = OfficialBookingInfo(
                 portalName = "Archaeological Survey of India (ASI)",
@@ -37,386 +42,195 @@ object KarnatakaTourismRepository {
             foreignerPricing = ForeignerPricingGuidance(
                 domesticFeeInr = 40,
                 foreignerFeeInr = 600,
-                approxUsdEquivalent = "~.20 USD",
+                approxUsdEquivalent = "~$7.20 USD",
                 feeIncludes = "Entry to Vijaya Vittala complex, Lotus Mahal & ASI Archaeological Museum.",
                 dressCodeRules = "Modest clothing required. Shoulders and knees must be covered inside active Virupaksha temple. Remove footwear at temple entrances.",
                 photographyPolicy = "Still photography allowed without fee. Drone videography strictly banned without ASI Delhi written clearance.",
                 scamAlertNotes = "Only hire guides wearing the official Ministry of Tourism green badge. Coracle rides should not exceed ₹200–₹300 per person.",
-                cashVsDigitalNotes = "UPI works in Hampi bazaar, but keep ₹1,000 cash for coracle rides and auto rickshaws on the river's Hippie Island side."
+                cashVsDigitalNotes = "UPI works in Hampi bazaar, but keep ₹1,000 cash for coracle rides and auto rickshaws on the river's Sanapur/Hippie side."
             ),
-            howToReachTransit = "Overnight Hampi Express train from KSR Bengaluru to Hospet Junction (12km away), followed by local bus or ₹200 auto ride.",
+            howToReachTransit = "Overnight Hampi Express train from KSR Bengaluru to Hospet Junction, then local bus or ₹200 auto ride.",
             survivalKannadaPhrase = "Hampi Vijaya Vittala temple ge hogalu auto eshtu?",
             survivalKannadaLipi = "ಹಂಪಿ ವಿಜಯ ವಿಠ್ಠಲ ದೇವಸ್ಥಾನಕ್ಕೆ ಹೋಗಲು ಆಟೋ ಎಷ್ಟು?",
             survivalKannadaMeaning = "How much for an auto to Hampi Vijaya Vittala Temple?"
         ),
 
         KarnatakaSpot(
-            id = "belur_halebeedu",
-            name = "Belur & Halebeedu Hoysala Temples",
-            kannadaName = "ಬೇಲೂರು ಮತ್ತು ಹಳೇಬೀಡು ಹೊಯ್ಸಳ ದೇವಾಲಯಗಳು",
-            tagline = "UNESCO 2023 Inscribed Masterpieces of Soapstone Sculpture",
+            id = "badami_caves",
+            name = "Badami Cave Temples & Agastya Lake",
+            kannadaName = "ಬಾದಾಮಿ ಗುಹಾಂತರ ದೇವಾಲಯಗಳು",
+            tagline = "6th-Century Rock-Cut Chalukyan Sandstone Marvels",
             category = TourismCategory.TEMPLES_HERITAGE,
-            district = "Hassan District",
-            distanceFromBangaloreKm = 220,
-            bestSeason = "Year-round (Best: October to February)",
-            timings = "7:30 AM – 7:30 PM (Belur) | 6:30 AM – 6:30 PM (Halebeedu)",
-            overview = "12th-century celestial architecture carved from chloritic schist (soapstone). Chennakeshava Temple at Belur features 42 Madanika (dancing damsel) bracket figures carved with hyper-fine filigree detailing, while Halebeedu's Hoysaleshwara temple features over 20,000 intricate friezes.",
+            region = KarnatakaRegion.UTTARA_KARNATAKA,
+            district = "Bagalkote District",
+            nearestTransitHub = "Airport: Hubballi HBX (105 km) | Train: Badami Railway Station (5 km)",
+            distanceFromBangaloreKm = 450,
+            bestSeason = "October to March",
+            timings = "9:00 AM – 5:30 PM",
+            overview = "Carved directly into red sandstone ravines overlooking the emerald waters of Agastya Lake. The four cave temples showcase exquisite early Chalukyan rock architecture: Cave 1 dedicated to Shiva (18-armed Nataraja performing Tandava), Caves 2 & 3 to Vishnu (Trivikrama & Varaha), and Cave 4 to Jain Tirthankaras.",
             keyHighlights = listOf(
-                "Chennakeshava Temple Belur (Active temple with daily pujas)",
-                "Darpana Sundari (Lady with mirror) soapstone sculpture",
-                "Twin Shiva shrines of Hoysaleshwara & Shantaleshwara at Halebeedu",
-                "Kedareshwara temple and Jain basadis nearby"
+                "18-armed dancing Nataraja carving depicting 81 Bharatanatyam mudras",
+                "Scenic Bhootanatha Temples standing at the water's edge of Agastya Lake",
+                "North Fort climb with ancient granaries and treasury chambers",
+                "Red sandstone canyon bouldering trails"
             ),
             bookingInfo = OfficialBookingInfo(
-                portalName = "Karnataka Tourism & ASI Muzrai Dept",
-                portalUrl = "https://karnatakatourism.org",
-                bookingRule = "Belur Chennakeshava is free general entry. Halebeedu ASI complex has nominal ticketing.",
-                badgeTag = "UNESCO 2023 HERITAGE"
+                portalName = "Archaeological Survey of India (ASI)",
+                portalUrl = "https://asi.nic.in",
+                bookingRule = "ASI ticket counter at Cave 1 entrance or via asi.nic.in portal.",
+                badgeTag = "ASI ROCK CAVE HERITAGE"
             ),
             foreignerPricing = ForeignerPricingGuidance(
                 domesticFeeInr = 25,
                 foreignerFeeInr = 300,
-                approxUsdEquivalent = "~.60 USD (Halebeedu) / Belur is Free",
-                feeIncludes = "Access to Halebeedu Hoysaleshwara museum and landscaped temple gardens.",
-                dressCodeRules = "Traditional/respectful clothing. Sleeveless tops and short pants discouraged inside temple sanctum.",
-                photographyPolicy = "Exterior photography encouraged; flash photography restricted inside dark inner sanctums.",
-                scamAlertNotes = "Official guides charge ₹300-₹500 fixed by tourism committee with receipt. Reject non-certified touts.",
-                cashVsDigitalNotes = "UPI QR codes available at all souvenir shops and official counters."
+                approxUsdEquivalent = "~$3.60 USD",
+                feeIncludes = "Access to all four rock cave temples and Agastya lake pathway.",
+                dressCodeRules = "Comfortable shoes for stone stairways. Beware of local macaques; keep food items inside zipped backpacks.",
+                photographyPolicy = "Standard photography allowed. Tripods require prior ASI permission.",
+                scamAlertNotes = "Local guide charge is standard ₹400-₹600 for all four caves. Verify official tourism badge.",
+                cashVsDigitalNotes = "UPI QR accepted at ticket counters and Badami town cafes."
             ),
-            howToReachTransit = "KSRTC AC Airavat bus from Majestic Bengaluru to Hassan (3.5 hours), then local KSRTC bus or cab to Belur (38 km).",
-            survivalKannadaPhrase = "Belur Chennakeshava temple guide charge eshtu aagutthe?",
-            survivalKannadaLipi = "ಬೇಲೂರು ಚೆನ್ನಕೇಶವ ದೇವಾಲಯ ಗೈಡ್ ಚಾರ್ಜ್ ಎಷ್ಟು ಆಗುತ್ತೆ?",
-            survivalKannadaMeaning = "What is the official guide fee for Belur Chennakeshava Temple?"
+            howToReachTransit = "Direct train from Hubballi, Bengaluru (Gol Gumbaz Express) to Badami Station, then ₹80 auto to Caves.",
+            survivalKannadaPhrase = "Badami cave temples nodoke ticket elli kodthare?",
+            survivalKannadaLipi = "ಬಾದಾಮಿ ಗುಹೆ ನೋಡೋಕೆ ಟಿಕೆಟ್ ಎಲ್ಲಿ ಕೊಡ್ತಾರೆ?",
+            survivalKannadaMeaning = "Where do they give tickets to view Badami cave temples?"
         ),
 
         KarnatakaSpot(
-            id = "murudeshwar_temple",
-            name = "Murudeshwar Shiva Temple & Raja Gopura",
-            kannadaName = "ಮುರುಡೇಶ್ವರ ಶಿವ ದೇವಸ್ಥಾನ ಮತ್ತು ರಾಜ ಗೋಪುರ",
-            tagline = "World's 2nd Tallest Shiva Statue Overlooking the Arabian Sea",
+            id = "pattadakal_aihole",
+            name = "Pattadakal & Aihole UNESCO Monuments",
+            kannadaName = "ಪಟ್ಟದಕಲ್ಲು ಮತ್ತು ಐಹೊಳೆ ದೇವಾಲಯಗಳು",
+            tagline = "Cradle of Indian Temple Architecture & Chalukyan Coronation Site",
             category = TourismCategory.TEMPLES_HERITAGE,
-            district = "Uttara Kannada District",
-            distanceFromBangaloreKm = 485,
+            region = KarnatakaRegion.UTTARA_KARNATAKA,
+            district = "Bagalkote District (Near Badami)",
+            nearestTransitHub = "Airport: Hubballi HBX (125 km) | Train: Badami Station (22 km)",
+            distanceFromBangaloreKm = 465,
             bestSeason = "October to March",
-            timings = "3:00 AM – 1:00 PM & 3:00 PM – 8:00 PM",
-            overview = "Perched on Kanduka Hill surrounded on three sides by the Arabian Sea, Murudeshwar features a colossal 123-foot (37m) Lord Shiva statue and an 18-storey, 249-foot high Raja Gopura with a modern high-speed elevator taking visitors to the top for 360-degree ocean views.",
+            timings = "6:00 AM – 6:00 PM",
+            overview = "Pattadakal was the royal coronation city of the Chalukyas on the banks of the Malaprabha River, presenting a harmonious confluence of Northern Nagara and Southern Dravidian temple styles. Nearby Aihole holds over 125 stone temples dating from 450 AD, notably the apsidal Durga Temple.",
             keyHighlights = listOf(
-                "123-foot Shiva statue glowing against the setting sea sun",
-                "Elevator to the 18th floor of the Raja Gopura for panoramic aerial view",
-                "Sunset beach walk and Arabian sea watersports right beside temple",
-                "Launchpad for Netrani Island scuba diving expeditions"
+                "Virupaksha Temple at Pattadakal built by Queen Lokamahadevi in 740 AD",
+                "Durga Temple Aihole with unique semi-circular buddhist chaitya apsidal plan",
+                "Ravana Phadi rock-cut cave with Nataraja and Saptamatrikas",
+                "Malaprabha river flowing northward (Uttara Vahini)"
             ),
             bookingInfo = OfficialBookingInfo(
-                portalName = "Murudeshwar Temple Trust Official",
-                portalUrl = "https://karnatakatourism.org",
-                bookingRule = "General darshan is free. Raja Gopura 18th-floor lift ticket is purchased at base counter (₹20).",
-                badgeTag = "COASTAL SHRINE"
+                portalName = "Archaeological Survey of India (ASI)",
+                portalUrl = "https://asi.nic.in",
+                bookingRule = "Combined or individual tickets available on ASI portal.",
+                badgeTag = "UNESCO CRADLE OF ART"
             ),
             foreignerPricing = ForeignerPricingGuidance(
-                domesticFeeInr = 20,
-                foreignerFeeInr = 20,
-                approxUsdEquivalent = "~bash.24 USD (Lift ticket)",
-                feeIncludes = "Elevator ticket to 18th floor viewing deck. Temple darshan is free.",
-                dressCodeRules = "Strict dress code: Dhoti/pants for men, saree/salwar for women. Shorts, bermudas, and mini-skirts are prohibited.",
-                photographyPolicy = "Cameras permitted in open courtyard & Gopura; strictly forbidden inside Garbhagriha.",
-                scamAlertNotes = "Do not pay private agents for 'VIP darshan queues' unless purchased from official computer trust counter.",
-                cashVsDigitalNotes = "Car parking and footwear stall require ₹10–₹20 cash coins/small notes."
+                domesticFeeInr = 25,
+                foreignerFeeInr = 300,
+                approxUsdEquivalent = "~$3.60 USD",
+                feeIncludes = "Entry to the 10-temple Pattadakal UNESCO complex.",
+                dressCodeRules = "Modest dress. Footwear removed when entering active sanctums.",
+                photographyPolicy = "Standard photography permitted. Drone flights strictly prohibited.",
+                scamAlertNotes = "Taxis from Badami charge ₹1,200–₹1,500 roundtrip to cover both Pattadakal and Aihole.",
+                cashVsDigitalNotes = "UPI QR working at ASI ticket booths."
             ),
-            howToReachTransit = "Overnight Panchaganga Superfast Express train from Yesvantpur / KSR Bengaluru directly to Murudeshwar Railway Station.",
-            survivalKannadaPhrase = "Raja Gopura lift ticket elli thagobeku?",
-            survivalKannadaLipi = "ರಾಜ ಗೋಪುರ ಲಿಫ್ಟ್ ಟಿಕೆಟ್ ಎಲ್ಲಿ ತಗೋಬೇಕು?",
-            survivalKannadaMeaning = "Where should I buy the Raja Gopura lift ticket?"
+            howToReachTransit = "22 km from Badami; best reached by auto rickshaw or KSRTC bus from Badami bus stand.",
+            survivalKannadaPhrase = "Pattadakal mathu Aihole nodoke auto package eshtu?",
+            survivalKannadaLipi = "ಪಟ್ಟದಕಲ್ಲು ಮತ್ತು ಐಹೊಳೆ ನೋಡೋಕೆ ಆಟೋ ಪ್ಯಾಕೇಜ್ ಎಷ್ಟು?",
+            survivalKannadaMeaning = "How much is an auto package to tour Pattadakal and Aihole?"
         ),
 
         KarnatakaSpot(
-            id = "mysore_palace",
-            name = "Mysore Palace (Amba Vilas)",
-            kannadaName = "ಮೈಸೂರು ಅರಮನೆ (ಅಂಬಾ ವಿಲಾಸ)",
-            tagline = "The Jewel of the Wodeyars & 100,000-Bulb Illumination",
+            id = "gol_gumbaz",
+            name = "Gol Gumbaz & Whispering Gallery",
+            kannadaName = "ಗೋಲ್ ಗುಂಬಜ್ ಮತ್ತು ಪಿಸುಗುಟ್ಟುವ ಗ್ಯಾಲರಿ",
+            tagline = "World's 2nd Largest Dome Unsupported by Pillars & 11-Echo Marvel",
             category = TourismCategory.TEMPLES_HERITAGE,
-            district = "Mysuru District",
-            distanceFromBangaloreKm = 145,
-            bestSeason = "September to March (Spectacular during Dasara)",
-            timings = "10:00 AM – 5:30 PM (Illumination: Sundays & holidays 7:00 – 8:00 PM)",
-            overview = "One of India's most visited royal palaces. Designed by British architect Henry Irwin in Indo-Saracenic style with kaleidoscopic stained-glass ceilings, carved rosewood doors, and the fabled Golden Throne. On Sunday evenings, the entire palace is illuminated by 97,000+ electric incandescent lamps.",
+            region = KarnatakaRegion.UTTARA_KARNATAKA,
+            district = "Vijayapura (Bijapur) District",
+            nearestTransitHub = "Airport: Belagavi IXG (200 km) / Hubballi HBX (195 km) | Train: Vijayapura Station (2 km)",
+            distanceFromBangaloreKm = 525,
+            bestSeason = "October to March",
+            timings = "6:00 AM – 6:00 PM",
+            overview = "The mausoleum of Mohammed Adil Shah (1656 AD), Gol Gumbaz features the second largest dome in the world (44m external diameter) erected without central pillar supports. At the base of the dome, the world-famous Whispering Gallery reproduces even the faintest whisper across 38 meters and echoes every sound 7 to 11 times.",
             keyHighlights = listOf(
-                "Kalyana Mantapa (Octagonal wedding pavilion with stained-glass peacock dome)",
-                "Durbar Hall with ornate painted pillars and royal thrones",
-                "Sunday night grand illumination spectacle",
-                "Sound & Light (Son-et-Lumiere) show in English & Kannada"
+                "Acoustic Whispering Gallery inside the high dome",
+                "Four 7-storey octagonal minaret towers with winding stone staircases",
+                "Ibrahim Rauza nearby (often called the 'Taj Mahal of the Deccan')",
+                "Malik-e-Maidan (Master of the Battlefield) 55-ton medieval bronze cannon"
             ),
             bookingInfo = OfficialBookingInfo(
-                portalName = "Mysore Palace Board (Govt of Karnataka)",
-                portalUrl = "https://mysorepalace.karnataka.gov.in",
-                bookingRule = "Online e-tickets available on palace board portal or at palace South/West Gate counters.",
-                badgeTag = "ROYAL HERITAGE"
+                portalName = "Archaeological Survey of India (ASI)",
+                portalUrl = "https://asi.nic.in",
+                bookingRule = "Tickets available at counter or via asi.nic.in portal.",
+                badgeTag = "DECCAN SULTANATE ARCHITECTURE"
             ),
             foreignerPricing = ForeignerPricingGuidance(
-                domesticFeeInr = 100,
-                foreignerFeeInr = 1000,
-                approxUsdEquivalent = "~2.00 USD (Includes Multilingual Audio Guide)",
-                feeIncludes = "Foreigner ticket includes personal high-definition audio headset guide in English, French, German, Spanish, Japanese, or Italian.",
-                dressCodeRules = "Footwear strictly prohibited inside royal residential chambers (free token shoe stands at entrance).",
-                photographyPolicy = "Still photography allowed without flash. Video cameras require special token.",
-                scamAlertNotes = "Avoid auto/tonga drivers who insist on taking you to private 'handicraft emporiums' instead of the palace; they earn 40% commission.",
-                cashVsDigitalNotes = "Official counters accept international Visa/Mastercard and UPI QR."
+                domesticFeeInr = 25,
+                foreignerFeeInr = 300,
+                approxUsdEquivalent = "~$3.60 USD",
+                feeIncludes = "Access to mausoleum hall, staircase towers, and whispering gallery.",
+                dressCodeRules = "Casual modest attire. Good walking stamina needed to climb the 7 storeys to the gallery.",
+                photographyPolicy = "Still photography permitted; flashes restricted inside tomb chamber.",
+                scamAlertNotes = "Visit early morning (6:30 AM – 8:30 AM) to experience the acoustic echo before crowd noise builds up.",
+                cashVsDigitalNotes = "UPI accepted at ticket counters and Vijayanagar bazaar."
             ),
-            howToReachTransit = "Vande Bharat Express or Tipu Express train from KSR Bengaluru to Mysuru Junction (2 hours), then ₹50 auto to Palace North Gate.",
-            survivalKannadaPhrase = "Palace illumination raathri eshtu gantege shuru aagutthe?",
-            survivalKannadaLipi = "ಅರಮನೆ ಇಲ್ಯುಮಿನೇಷನ್ ರಾತ್ರಿ ಎಷ್ಟು ಗಂಟೆಗೆ ಶುರು ಆಗುತ್ತೆ?",
-            survivalKannadaMeaning = "At what time does the Palace illumination begin tonight?"
+            howToReachTransit = "Direct Gol Gumbaz Express train from Bengaluru/Mysuru/Hubballi directly to Vijayapura Railway Station.",
+            survivalKannadaPhrase = "Whispering gallery ge hogalu stair case ellide?",
+            survivalKannadaLipi = "ಪಿಸುಗುಟ್ಟುವ ಗ್ಯಾಲರಿಗೆ ಹೋಗಲು ಮೆಟ್ಟಿಲು ಎಲ್ಲಿದೆ?",
+            survivalKannadaMeaning = "Where is the staircase to go up to the Whispering Gallery?"
         ),
 
-        // ==========================================
-        // 2. ADVENTURE SPORTS
-        // ==========================================
         KarnatakaSpot(
-            id = "dandeli_rafting",
-            name = "Dandeli Kali River White-Water Rafting",
-            kannadaName = "ದಾಂಡೇಲಿ ಕಾಳಿ ನದಿ ವೈಟ್-ವಾಟರ್ ರಾಫ್ಟಿಂಗ್",
-            tagline = "Grade 3 & 4 Thrilling Rapids in the Dense Western Ghats Rainforest",
-            category = TourismCategory.ADVENTURE_SPORTS,
-            district = "Uttara Kannada District",
-            distanceFromBangaloreKm = 460,
-            bestSeason = "October to May (Regulated by Supa Dam water discharge)",
-            timings = "8:30 AM – 3:30 PM",
-            overview = "Dandeli is South India's capital for white-water river rafting. Guided by certified swift-water rescue river masters, the Kali River offers exhilarating Class II to Class III+ rapids with names like 'Adi's Delusion', 'The Piper', and 'Stanley's Squeeze' surrounded by the hornbill-rich Dandeli-Anshi Tiger Reserve.",
+            id = "bidar_fort",
+            name = "Bidar Fort & Mahmud Gawan Madrasa",
+            kannadaName = "ಬೀದರ್ ಕೋಟೆ ಮತ್ತು ಮಹಮೂದ್ ಗವಾನ್ ಮದರಸಾ",
+            tagline = "Bahmani Sultanate Citadel, Karez Subterranean Aqueducts & Bidriware",
+            category = TourismCategory.TEMPLES_HERITAGE,
+            region = KarnatakaRegion.UTTARA_KARNATAKA,
+            district = "Bidar District (Northern Tip of Karnataka)",
+            nearestTransitHub = "Airport: Bidar Airport IXX (Civil Terminal) / Hyderabad HYD (140 km) | Train: Bidar Station (3 km)",
+            distanceFromBangaloreKm = 690,
+            bestSeason = "October to February",
+            timings = "8:00 AM – 6:30 PM",
+            overview = "A formidable 15th-century Bahmani citadel built atop a red laterite cliff, boasting 5.5 km of ramparts and a triple-layered moat carved directly into solid rock. Bidar is also famous for its ancient Persian Karez underground water network, the Rangin Mahal (painted tile palace), and UNESCO-listed Bidriware silver-inlaid black metal craftsmanship.",
             keyHighlights = listOf(
-                "Full 9.5 km stretch with 9 thrilling rapids",
-                "Natural river whirlpool swimming with life jackets",
-                "Jungle kayaking and river crossing zipline",
-                "Malabar Pied Hornbill birdwatching in buffer canopy"
+                "Triple moat and massive gates of Bidar Fort (Sharza Darwaza, Gagan Darwaza)",
+                "Rangin Mahal with Persian mother-of-pearl mosaics and colored tiles",
+                "Mahmud Gawan Islamic university complex with minaret towers",
+                "Guru Nanak Jhira Sahib holy Sikh gurdwara with perennial sweet water spring"
             ),
             bookingInfo = OfficialBookingInfo(
-                portalName = "Dandeli Ganeshgudi Single Window / Tourism Counter",
+                portalName = "Archaeological Survey of India & Karnataka Tourism",
                 portalUrl = "https://karnatakatourism.org",
-                bookingRule = "Rafting operations depend on Supa Dam hydroelectric water release. Book morning slot at authorized Ganeshgudi counters.",
-                badgeTag = "WHITE WATER RAFTING"
+                bookingRule = "Fort grounds free entry; protected inner palaces have nominal ticketing.",
+                badgeTag = "BAHMANI CITADEL"
             ),
             foreignerPricing = ForeignerPricingGuidance(
-                domesticFeeInr = 1400,
-                foreignerFeeInr = 1500,
-                approxUsdEquivalent = "~7.00 – 8.00 USD",
-                feeIncludes = "Rafting gear (CE certified life vest + helmet + paddle), river transport jeep, and licensed instructor.",
-                dressCodeRules = "Quick-dry nylon clothing or swimwear. No heavy denims or cottons. Mandatory strap-on water shoes or strapped sandals.",
-                photographyPolicy = "Instructors carry waterproof GoPros on helmet mounts; photos/videos provided for ₹300-₹500 per raft.",
-                scamAlertNotes = "Confirm whether the operator is offering the Short Rafting (1.5km for ₹500) or Full Long Stretch (9km for ₹1,400). Always insist on certified river guides.",
-                cashVsDigitalNotes = "Keep ₹500 cash for river shuttle jeep driver and changing room tokens."
+                domesticFeeInr = 25,
+                foreignerFeeInr = 300,
+                approxUsdEquivalent = "~$3.60 USD",
+                feeIncludes = "Entry to Rangin Mahal and museum complex.",
+                dressCodeRules = "Comfortable walking shoes. Head cover required if visiting Guru Nanak Jhira Sahib.",
+                photographyPolicy = "Standard photography permitted; drone photography restricted near defence zones.",
+                scamAlertNotes = "Purchase authentic Bidriware directly from government artisans at Bidar crafts society near fort.",
+                cashVsDigitalNotes = "UPI QR accepted across Bidar town."
             ),
-            howToReachTransit = "Train from Bengaluru to Alnavar Junction or Dharwad, then 1-hour KSRTC bus or taxi to Dandeli town.",
-            survivalKannadaPhrase = "Full stretch 9 km river rafting ge ticket eshtu?",
-            survivalKannadaLipi = "ಫುಲ್ ಸ್ಟ್ರೆಚ್ ಒಂಬತ್ತು ಕಿ.ಮೀ ರಾಫ್ಟಿಂಗ್‌ಗೆ ಟಿಕೆಟ್ ಎಷ್ಟು?",
-            survivalKannadaMeaning = "How much is the ticket for the full stretch 9km river rafting?"
+            howToReachTransit = "Direct express trains from Bengaluru, Hyderabad, and Kalaburagi to Bidar Railway Station.",
+            survivalKannadaPhrase = "Asali Bidriware silver work elli sigutthe?",
+            survivalKannadaLipi = "ಅಸಲಿ ಬಿದ್ರಿ ಕಲೆ ಬೆಳ್ಳಿ ಕೆಲಸ ಎಲ್ಲಿ ಸಿಗುತ್ತೆ?",
+            survivalKannadaMeaning = "Where can I find authentic Bidriware silver inlay artwork?"
         ),
 
-        KarnatakaSpot(
-            id = "netrani_scuba",
-            name = "Netrani Island Scuba Diving & Coral Snorkeling",
-            kannadaName = "ನೇತ್ರಾಣಿ ದ್ವೀಪ ಸ್ಕೂಬಾ ಡೈವಿಂಗ್ ಮತ್ತು ಕೋರಲ್ ರೀಫ್",
-            tagline = "The Heart-Shaped Coral Reef Island of the Arabian Sea",
-            category = TourismCategory.ADVENTURE_SPORTS,
-            district = "Off Murudeshwar Coast (19 km offshore)",
-            distanceFromBangaloreKm = 485,
-            bestSeason = "October to May (Clear water visibility up to 15-20 meters)",
-            timings = "7:30 AM boat departure from Murudeshwar Jetty (Full day: 7:30 AM – 3:30 PM)",
-            overview = "Also known as Pigeon Island, Netrani is a secluded uninhabited island surrounded by vibrant coral reefs. Visibility ranges between 15 and 20 meters, revealing butterflyfish, triggerfish, parrotfish, moray eels, stingrays, and occasional whale shark sightings. Dive is conducted from offshore dive catamarans.",
-            keyHighlights = listOf(
-                "PADI/SSI beginner Discovery Scuba Diving (DSD) up to 10-12 meters",
-                "Guided 1-on-1 dive with personal certified divemaster",
-                "High-definition underwater GoPro video & photos included in package",
-                "Boat cruise across open Arabian sea waters with dolphin sightings"
-            ),
-            bookingInfo = OfficialBookingInfo(
-                portalName = "PADI / SSI Murudeshwar Certified Centers",
-                portalUrl = "https://karnatakatourism.org",
-                bookingRule = "Advance booking required. Island rock landing is restricted by Indian Navy; all diving occurs directly from dive boats.",
-                badgeTag = "PADI DIVE SANCTUARY"
-            ),
-            foreignerPricing = ForeignerPricingGuidance(
-                domesticFeeInr = 3500,
-                foreignerFeeInr = 3500,
-                approxUsdEquivalent = "~2.00 USD (Includes gear, boat & underwater footage)",
-                feeIncludes = "Complete scuba gear (wetsuit, regulator, BCD, tank, fins), 45-min boat ride, training briefing, and 30-min underwater dive.",
-                dressCodeRules = "Swimwear, rashguards or comfortable swimming gear. Bring change of dry clothes.",
-                photographyPolicy = "Underwater video and photos are included free in your package and transferred directly to your smartphone via OTG/AirDrop.",
-                scamAlertNotes = "Ensure your operator is verified with certified PADI/SSI instructors. Non-divers can accompany on the boat for ₹1,999.",
-                cashVsDigitalNotes = "All primary dive operators accept GPay/PhonePe and credit cards at Murudeshwar beach offices."
-            ),
-            howToReachTransit = "Reach Murudeshwar via overnight express train from Bengaluru; dive centers gather at Murudeshwar Temple Beach Jetty.",
-            survivalKannadaPhrase = "Netrani boat ride mathu scuba diving ge permission ideya?",
-            survivalKannadaLipi = "ನೇತ್ರಾಣಿ ಬೋಟ್ ರೈಡ್ ಮತ್ತು ಸ್ಕೂಬಾ ಡೈವಿಂಗ್‌ಗೆ ಪರ್ಮಿಷನ್ ಇದೆಯಾ?",
-            survivalKannadaMeaning = "Is boat ride and scuba diving permitted today at Netrani?"
-        ),
-
-        KarnatakaSpot(
-            id = "ramanagara_climbing",
-            name = "Ramanagara Rock Climbing & Bouldering",
-            kannadaName = "ರಾಮನಗರ ರಾಕ್ ಕ್ಲೈಂಬಿಂಗ್ ಮತ್ತು ಬೌಲ್ಡರಿಂಗ್",
-            tagline = "Granite Monoliths of Sholay & Adventure Hub Just 50km from Bangalore",
-            category = TourismCategory.ADVENTURE_SPORTS,
-            district = "Ramanagara District",
-            distanceFromBangaloreKm = 48,
-            bestSeason = "September to March (Avoid scorching mid-day summer sun)",
-            timings = "6:00 AM – 5:00 PM",
-            overview = "World-renowned bouldering and multi-pitch rock climbing crags carved from granite hills, famous as the shooting location for the Bollywood classic 'Sholay'. Certified climbing clubs offer top-rope climbing, rappelling down 150-foot vertical faces, and cave explorations.",
-            keyHighlights = listOf(
-                "Single-pitch and multi-pitch technical climbing routes",
-                "150-ft cliff rappelling and zip-lining over rocky valley",
-                "Ramadevara Betta Vulture Sanctuary visit (India's only vulture reserve)",
-                "Mysore-Bangalore Expressway quick 1-hour access"
-            ),
-            bookingInfo = OfficialBookingInfo(
-                portalName = "General Adventure Booking / Forest Dept",
-                portalUrl = "https://karnatakatourism.org",
-                bookingRule = "Climbing on Ramadevara Betta requires entry ticket at Forest checkpost (₹25). Certified climbing gear is essential.",
-                badgeTag = "BOULDERING CAPITAL"
-            ),
-            foreignerPricing = ForeignerPricingGuidance(
-                domesticFeeInr = 800,
-                foreignerFeeInr = 1200,
-                approxUsdEquivalent = "~0.00 – 4.00 USD (Guided climbing session)",
-                feeIncludes = "Harness, climbing shoes, dynamic ropes, chalk bag, and safety belayer.",
-                dressCodeRules = "Flexible athletic track pants and moisture-wicking t-shirts. Hard-grip trekking shoes for approach hike.",
-                photographyPolicy = "Drone cameras prohibited inside Vulture Sanctuary zone to protect endangered Long-billed Vultures.",
-                scamAlertNotes = "Do not attempt free-soloing without safety ropes or certified guides; granite rocks can become slippery post-monsoon.",
-                cashVsDigitalNotes = "UPI QR codes work everywhere along Ramanagara highway."
-            ),
-            howToReachTransit = "KSR Bengaluru to Ramanagara via suburban MEMU train (45 mins) or drive along Bengaluru-Mysuru Expressway.",
-            survivalKannadaPhrase = "Ramadevara Betta rock climbing checkpost ellide?",
-            survivalKannadaLipi = "ರಾಮದೇವರ ಬೆಟ್ಟ ರಾಕ್ ಕ್ಲೈಂಬಿಂಗ್ ಚೆಕ್‌ಪೋಸ್ಟ್ ಎಲ್ಲಿದೆ?",
-            survivalKannadaMeaning = "Where is the Ramadevara Betta climbing checkpost?"
-        ),
-
-        // ==========================================
-        // 3. TREKKING & NATURE TRAILS (ARANYA VIHARA)
-        // ==========================================
-        KarnatakaSpot(
-            id = "kudremukh_trek",
-            name = "Kudremukh Peak Trek",
-            kannadaName = "ಕುದುರೆಮುಖ ಶಿಖರ ಚಾರಣ",
-            tagline = "Horse-Face Peak & Velvet Green Shola Grasslands (1,894m)",
-            category = TourismCategory.TREKKING_TRAILS,
-            district = "Chikkamagaluru District (Kudremukh National Park)",
-            distanceFromBangaloreKm = 310,
-            bestSeason = "June to January (Post-monsoon emerald greens are hypnotic)",
-            timings = "6:00 AM checkpost clearance; must exit by 5:00 PM (No camping allowed)",
-            overview = "Named after its distinctive horse-face shaped silhouette, Kudremukh is South India's most celebrated alpine trek. The 22km round-trip trail weaves through rolling montane shola grasslands, crystal cold streams, and mist-draped ridges within a protected tiger and lion-tailed macaque habitat.",
-            keyHighlights = listOf(
-                "Panoramic 360-degree vista of Western Ghats ridge from summit (1,894m)",
-                "Crossing pristine freshwater forest streams",
-                "Lush shola forest canopy with orchids and endemic Western Ghats flora",
-                "Strict zero-litter conservation model managed by Forest Department"
-            ),
-            bookingInfo = OfficialBookingInfo(
-                portalName = "Aranya Vihaara (Karnataka Forest Department)",
-                portalUrl = "https://aranyavihaara.karnataka.gov.in",
-                bookingRule = "STRICT ADVANCE ONLINE BOOKING ONLY on aranyavihaara.karnataka.gov.in. Daily entry strictly capped at 50 trekkers. Zero spot tickets!",
-                badgeTag = "ARANYA VIHARA PERMIT"
-            ),
-            foreignerPricing = ForeignerPricingGuidance(
-                domesticFeeInr = 575,
-                foreignerFeeInr = 575,
-                approxUsdEquivalent = "~.90 USD (Forest Permit) + ~₹100 local guide share",
-                feeIncludes = "Official Forest entry permit, environmental cess, and mandatory certified local eco-guide assigned to batches of 10.",
-                dressCodeRules = "Full-length trekking pants (essential for leech protection during monsoon), moisture-wicking shirts, and sturdy hiking boots.",
-                photographyPolicy = "Personal DSLRs allowed. Drones strictly prohibited and confiscated at checkpost under Wildlife Protection Act.",
-                scamAlertNotes = "CRITICAL: Never believe homestays promising 'offline entrance tickets at gate'. All tickets must be booked on aranyavihaara.karnataka.gov.in in advance.",
-                cashVsDigitalNotes = "ZERO mobile signal (Airtel/Jio) at base checkpost (Balagal/Mullodi). Carry ₹1,000 cash for 4x4 Jeep ride (₹500/head roundtrip) and leech socks."
-            ),
-            howToReachTransit = "Overnight KSRTC bus from Bengaluru to Kalasa (8 hours). From Kalasa take local bus to Balagal, then 4x4 Jeep to Mullodi base camp.",
-            survivalKannadaPhrase = "Aranya Vihaara booking permit ide, Mullodi checkpost yavadu?",
-            survivalKannadaLipi = "ಅರಣ್ಯ ವಿಹಾರ ಬುಕಿಂಗ್ ಪರ್ಮಿಟ್ ಇದೆ, ಮುಳ್ಳೋಡಿ ಚೆಕ್‌ಪೋಸ್ಟ್ ಯಾವುದು?",
-            survivalKannadaMeaning = "I have the Aranya Vihaara booking permit, where is the Mullodi checkpost?"
-        ),
-
-        KarnatakaSpot(
-            id = "skandagiri_trek",
-            name = "Skandagiri Sunrise Trek (Kalavara Durga)",
-            kannadaName = "ಸ್ಕಂದಗಿರಿ ಸೂರ್ಯೋದಯ ಚಾರಣ (ಕಳವಾರ ದುರ್ಗ)",
-            tagline = "Walk Above a Sea of Clouds Just 65km from Bangalore",
-            category = TourismCategory.TREKKING_TRAILS,
-            district = "Chikkaballapura District",
-            distanceFromBangaloreKm = 62,
-            bestSeason = "October to March (Winter months offer thick cloud inversions)",
-            timings = "Morning Batch: 4:00 AM – 9:00 AM (Regulated entry)",
-            overview = "An ancient hill fortress (Kalavara Durga) standing at 1,450m that witnessed battles between Tipu Sultan and the British. Famous for its breathtaking 5:30 AM sunrise spectacle, where hikers look down upon a surreal ocean of white clouds stretching into the horizon.",
-            keyHighlights = listOf(
-                "4:00 AM early morning hike under a canopy of stars",
-                "Hypnotic cloud bed (sea of clouds) inversion below your feet at sunrise",
-                "Historic fort stone walls and ruined temple at the summit plateau",
-                "Quick morning weekend getaway returning to Bangalore by noon"
-            ),
-            bookingInfo = OfficialBookingInfo(
-                portalName = "Aranya Vihaara (Karnataka Forest Department)",
-                portalUrl = "https://aranyavihaara.karnataka.gov.in",
-                bookingRule = "Permits must be booked in advance via aranyavihaara.karnataka.gov.in (Trekking section). Night walking without forest escort is prohibited.",
-                badgeTag = "ARANYA VIHARA PERMIT"
-            ),
-            foreignerPricing = ForeignerPricingGuidance(
-                domesticFeeInr = 250,
-                foreignerFeeInr = 250,
-                approxUsdEquivalent = "~.00 USD (Forest Permit)",
-                feeIncludes = "Official Forest entry permit and trail access. Parking fee extra at base (₹50).",
-                dressCodeRules = "Warm layers or windcheater jacket (summit gets very windy and chilly before dawn). Headlamp or torch mandatory!",
-                photographyPolicy = "Still photography and timelapse phones highly popular; ensure phone is 100% charged before starting.",
-                scamAlertNotes = "Only enter through the official Forest Department checkpost at Kalavara village. Avoid unauthorized trails through private farmland.",
-                cashVsDigitalNotes = "Forest checkpost QR scanner accepts UPI, but keep ₹100 cash for village parking and hot tea at the base."
-            ),
-            howToReachTransit = "Drive from Bengaluru via Bellary Road / Airport Highway to Chikkaballapura (1 hour 15 mins) to reach Kalavara village base.",
-            survivalKannadaPhrase = "Skandagiri base camp ge dari yavadu?",
-            survivalKannadaLipi = "ಸ್ಕಂದಗಿರಿ ಬೇಸ್ ಕ್ಯಾಂಪ್‌ಗೆ ದಾರಿ ಯಾವುದು?",
-            survivalKannadaMeaning = "Which is the way to Skandagiri base camp?"
-        ),
-
-        KarnatakaSpot(
-            id = "kumara_parvatha",
-            name = "Kumara Parvatha Trek (Pushpagiri Sanctuary)",
-            kannadaName = "ಕುಮಾರ ಪರ್ವತ ಚಾರಣ (ಪುಷ್ಪಗಿರಿ ವನ್ಯಜೀವಿ ಧಾಮ)",
-            tagline = "The Toughest & Most Rewarding 22km Mountain Trek in Karnataka",
-            category = TourismCategory.TREKKING_TRAILS,
-            district = "Dakshina Kannada / Kodagu Border",
-            distanceFromBangaloreKm = 280,
-            bestSeason = "October to February (Avoid heavy monsoon due to flash runoff)",
-            timings = "6:00 AM start from Kukke / Beedahalli base. Summit closes at 1:00 PM for descent",
-            overview = "Standing at 1,712 meters, Kumara Parvatha is Karnataka's legendary endurance trek. Starting from behind the sacred Kukke Subramanya temple or the Somwarpet Beedahalli route, the trail challenges hikers with steep rocky ascents through the Shesha Parvatha cliff edge before reaching the Pushpagiri summit.",
-            keyHighlights = listOf(
-                "Historic pitstop at Bhattara Mane for traditional warm malnad meals",
-                "Dramatic Shesha Parvatha vertical rock wall ridge walk",
-                "Unmatched panoramic views across Kodagu and Dakshina Kannada hills",
-                "Pristine virgin evergreen rainforest of Pushpagiri Wildlife Sanctuary"
-            ),
-            bookingInfo = OfficialBookingInfo(
-                portalName = "Aranya Vihaara (Karnataka Forest Department)",
-                portalUrl = "https://aranyavihaara.karnataka.gov.in",
-                bookingRule = "Mandatory online registration on aranyavihaara.karnataka.gov.in. Daily quota capped to protect Pushpagiri sanctuary ecology.",
-                badgeTag = "ARANYA VIHARA PERMIT"
-            ),
-            foreignerPricing = ForeignerPricingGuidance(
-                domesticFeeInr = 350,
-                foreignerFeeInr = 500,
-                approxUsdEquivalent = "~.20 – .00 USD",
-                feeIncludes = "Forest entry permit and eco-development committee trail maintenance fee.",
-                dressCodeRules = "Hardened trekking shoes with deep treads essential; 2.5 liters of drinking water per person is mandatory.",
-                photographyPolicy = "Standard photography allowed. Camping at summit is strictly banned by high court directive to avoid littering.",
-                scamAlertNotes = "Do not purchase single-use plastic bottles; Forest officers conduct thorough bag inspections at the Girigadde checkpost.",
-                cashVsDigitalNotes = "Keep ₹500 cash for traditional lunch at Bhattara Mane (approx ₹150) and hydration buttermilk."
-            ),
-            howToReachTransit = "KSRTC overnight Rajahamsa/Airavat bus from Majestic Bengaluru to Kukke Subramanya (7.5 hours). Base trail begins 1.5 km from temple.",
-            survivalKannadaPhrase = "Bhattara Mane oota ge booking beka?",
-            survivalKannadaLipi = "ಭಟ್ಟರ ಮನೆ ಊಟಕ್ಕೆ ಬುಕಿಂಗ್ ಬೇಕಾ?",
-            survivalKannadaMeaning = "Is advance booking required for food at Bhattara Mane?"
-        ),
-
-        // ==========================================
-        // 4. COASTAL BEACHES
-        // ==========================================
+        // ========================================================
+        // 2. COASTAL KARAVALI (BEACHES, ISLANDS & SHRINES)
+        // ========================================================
         KarnatakaSpot(
             id = "gokarna_om_beach",
             name = "Om Beach & Kudle Beach (Gokarna)",
             kannadaName = "ಓಂ ಬೀಚ್ ಮತ್ತು ಕುಡ್ಲೆ ಬೀಚ್ (ಗೋಕರ್ಣ)",
             tagline = "Sacred Natural ॐ Shaped Coastline & Golden Cliffside Hikes",
             category = TourismCategory.BEACHES,
+            region = KarnatakaRegion.KARAVALI,
             district = "Uttara Kannada District",
+            nearestTransitHub = "Airport: Goa Dabolim GOI (145 km) / Mopa GOX (170 km) | Train: Gokarna Road Station (9 km)",
             distanceFromBangaloreKm = 490,
             bestSeason = "October to March",
             timings = "Open 24 Hours (Swimming recommended: 6:00 AM – 6:30 PM)",
@@ -444,109 +258,29 @@ object KarnatakaTourismRepository {
                 scamAlertNotes = "Avoid swimming beyond the red safety flags; currents on Om Beach rocky inlets can be deceptively strong.",
                 cashVsDigitalNotes = "Beach shacks accept UPI, but keep ₹500 cash for auto rickshaws between Gokarna town and Om Beach (₹150-₹200)."
             ),
-            howToReachTransit = "Overnight train from Bengaluru to Gokarna Road Station (10 km away) or KSRTC Non-AC Sleeper bus to Gokarna bus stand.",
+            howToReachTransit = "Overnight Panchaganga or Matsyagandha train to Gokarna Road Station, then ₹150 auto to town/beaches.",
             survivalKannadaPhrase = "Om Beach inda Kudle Beach ge auto fare eshtu?",
             survivalKannadaLipi = "ಓಂ ಬೀಚ್‌ನಿಂದ ಕುಡ್ಲೆ ಬೀಚ್‌ಗೆ ಆಟೋ ಫೇರ್ ಎಷ್ಟು?",
             survivalKannadaMeaning = "What is the auto fare from Om Beach to Kudle Beach?"
         ),
 
         KarnatakaSpot(
-            id = "malpe_sea_walk",
-            name = "Malpe Beach & 500m Ocean Sea Walk",
-            kannadaName = "ಮಲ್ಪೆ ಬೀಚ್ ಮತ್ತು ಸೀ ವಾಕ್ (ಉಡುಪಿ)",
-            tagline = "Silvery Sands, Water Sports & Gateway to St. Mary's Island",
-            category = TourismCategory.BEACHES,
-            district = "Udupi District",
-            distanceFromBangaloreKm = 405,
-            bestSeason = "October to April",
-            timings = "Beach: 24/7 | Sea Walk: 6:00 AM – 8:00 PM | Water Sports: 9:00 AM – 6:00 PM",
-            overview = "Malpe is Karnataka's premier family beach hub located 6 km from Udupi temple town. It features pristine white sand, 24/7 beach safety patrol, speed boats, jet skis, parasailing, and the iconic Malpe Sea Walk — a 500-meter promenade extending right into the crashing waves of the Arabian Sea.",
-            keyHighlights = listOf(
-                "Malpe Sea Walk promenade extending into the open ocean",
-                "Ferry boat jetty connecting directly to St. Mary's Island",
-                "Parasailing, banana rides, speedboats, and camel rides",
-                "Authentic Udupi fish fry shacks (Kaanane, Anjal, Prawns) along beach avenue"
-            ),
-            bookingInfo = OfficialBookingInfo(
-                portalName = "Malpe Beach Development Committee (Govt of Karnataka)",
-                portalUrl = "https://karnatakatourism.org",
-                bookingRule = "Beach access is free. Sea Walk ticket ₹20 at gate. Water sports tickets bought at Malpe central counters.",
-                badgeTag = "BLUE FLAG RECOGNISED"
-            ),
-            foreignerPricing = ForeignerPricingGuidance(
-                domesticFeeInr = 20,
-                foreignerFeeInr = 20,
-                approxUsdEquivalent = "~bash.24 USD (Sea Walk Entry)",
-                feeIncludes = "Access to 500-meter sea walk jetty with ocean viewing gazebos.",
-                dressCodeRules = "Casual beachwear permitted. Clean beach initiative strictly penalizes glass bottles.",
-                photographyPolicy = "Photography encouraged; popular for spectacular sunset portraits.",
-                scamAlertNotes = "Buy water sports tickets strictly from the official Malpe Beach Development Board counter to ensure life jacket compliance.",
-                cashVsDigitalNotes = "UPI and cards widely accepted at all official counters and restaurants."
-            ),
-            howToReachTransit = "Overnight train or KSRTC Airavat AC bus from Bengaluru to Udupi (8 hours), then local bus or ₹100 auto to Malpe Beach.",
-            survivalKannadaPhrase = "St. Mary's Island ge boat ticket counter ellide?",
-            survivalKannadaLipi = "ಸೇಂಟ್ ಮೇರಿಸ್ ಐಲ್ಯಾಂಡ್‌ಗೆ ಬೋಟ್ ಟಿಕೆಟ್ ಕೌಂಟರ್ ಎಲ್ಲಿದೆ?",
-            survivalKannadaMeaning = "Where is the boat ticket counter for St. Mary's Island?"
-        ),
-
-        KarnatakaSpot(
-            id = "maravanthe_beach",
-            name = "Maravanthe Beach Coastal Highway (NH 66)",
-            kannadaName = "ಮರವಂತೆ ಬೀಚ್ ಕರಾವಳಿ ಹೆದ್ದಾರಿ (NH 66)",
-            tagline = "The Only Spot in India Where Sea & River Flow Parallel on Either Side",
-            category = TourismCategory.BEACHES,
-            district = "Udupi District (Near Kundapura)",
-            distanceFromBangaloreKm = 440,
-            bestSeason = "October to March (Mesmerizing at sunset)",
-            timings = "Open 24 Hours along National Highway 66",
-            overview = "Ranked among the most scenic coastal road stretches in Asia. For over 1 kilometer, National Highway 66 runs on a narrow strip of land with the roaring turquoise Arabian Sea on the left and the calm freshwater Souparnika River flowing parallel on the right against a backdrop of the Kodachadri mountain hills.",
-            keyHighlights = listOf(
-                "Unbelievable visual perspective of roaring ocean on one side and tranquil river on the other",
-                "Designated viewing bays and highway parking spots for sunset photography",
-                "Souparnika river boating and nearby Maraswami Temple visit",
-                "Stopover destination en route between Udupi and Murudeshwar/Gokarna"
-            ),
-            bookingInfo = OfficialBookingInfo(
-                portalName = "National Highway Public Sightseeing",
-                portalUrl = "https://karnatakatourism.org",
-                bookingRule = "Open highway viewing stretch with free roadside parking corridors.",
-                badgeTag = "SCENIC HIGHWAY",
-                hasOnlineBooking = false
-            ),
-            foreignerPricing = ForeignerPricingGuidance(
-                domesticFeeInr = 0,
-                foreignerFeeInr = 0,
-                approxUsdEquivalent = "Free Public Viewing",
-                feeIncludes = "Free public roadside walkway and viewpoint.",
-                dressCodeRules = "Casual road trip attire.",
-                photographyPolicy = "Unrestricted photography; use safe designated pedestrian overpasses to cross the highway.",
-                scamAlertNotes = "Do not venture into the sea here as the undertow is extremely violent; view from the sea wall.",
-                cashVsDigitalNotes = "Roadside tender coconut vendors and seafood shacks accept GPay / cash."
-            ),
-            howToReachTransit = "Drive along NH 66 from Udupi (50 km north) or take express bus from Kundapura.",
-            survivalKannadaPhrase = "Maravanthe viewpoint alli car nillisoke jaga ideya?",
-            survivalKannadaLipi = "ಮರವಂತೆ ವ್ಯೂಪಾಯಿಂಟ್‌ನಲ್ಲಿ ಕಾರ್ ನಿಲ್ಲಿಸೋಕೆ ಜಾಗ ಇದೆಯಾ?",
-            survivalKannadaMeaning = "Is there parking space to stop the car at Maravanthe viewpoint?"
-        ),
-
-        // ==========================================
-        // 5. ISLANDS TO VISIT
-        // ==========================================
-        KarnatakaSpot(
             id = "st_marys_island",
-            name = "St. Mary's Island (Columnar Basaltic Rocks)",
+            name = "St. Mary's Island (Hexagonal Columnar Basalt)",
             kannadaName = "ಸೇಂಟ್ ಮೇರಿಸ್ ದ್ವೀಪ (ಹೆಕ್ಸಾಗೋನಲ್ ಬಸಾಲ್ಟ್ ಕಲ್ಲುಗಳು)",
-            tagline = "88-Million-Year-Old Geological Wonder of Hexagonal Lava Pillars",
+            tagline = "88-Million-Year-Old Geological Wonder of Hexagonal Lava Columns",
             category = TourismCategory.ISLANDS,
-            district = "6 km off Malpe Coast (Udupi)",
+            region = KarnatakaRegion.KARAVALI,
+            district = "Udupi District (6 km off Malpe Coast)",
+            nearestTransitHub = "Airport: Mangaluru IXE (58 km) | Train: Udupi Railway Station (8 km)",
             distanceFromBangaloreKm = 410,
             bestSeason = "October to May (Strictly closed during June–September monsoons)",
             timings = "Ferries operate 9:00 AM – 5:00 PM (Last boat return from island: 5:45 PM)",
-            overview = "Declared a National Geological Monument by the Geological Survey of India. Legend says Vasco da Gama landed here in 1498 and named it after Mother Mary. The island is world-famous for its unique hexagonal columnar basaltic lava columns formed 88 million years ago when Madagascar separated from the Indian tectonic plate.",
+            overview = "Declared a National Geological Monument by the Geological Survey of India. The island is world-famous for its unique hexagonal columnar basaltic lava pillars formed 88 million years ago when Madagascar separated from the Indian tectonic plate. Legend says Vasco da Gama landed here in 1498.",
             keyHighlights = listOf(
                 "Walking among the rare hexagonal columnar basaltic lava cliffs",
                 "Pristine turquoise clear lagoon water (one of South India's clearest)",
-                "Seashell beach covered with billions of polished whole shells",
+                "Seashell beach covered with millions of polished ocean shells",
                 "30-minute thrilling ferry boat voyage across the Arabian Sea from Malpe Jetty"
             ),
             bookingInfo = OfficialBookingInfo(
@@ -558,7 +292,7 @@ object KarnatakaTourismRepository {
             foreignerPricing = ForeignerPricingGuidance(
                 domesticFeeInr = 350,
                 foreignerFeeInr = 400,
-                approxUsdEquivalent = "~.80 USD (Round-trip Ferry Boat + Island Entry)",
+                approxUsdEquivalent = "~$4.80 USD (Round-trip Ferry Boat + Island Entry)",
                 feeIncludes = "Two-way motorized ferry transfer from Malpe Jetty, life jacket, and island environmental upkeep fee.",
                 dressCodeRules = "Footwear with good grip recommended for walking on basalt rock surfaces; flip-flops can slip.",
                 photographyPolicy = "Still and video photography allowed. Drone flights need coastal security permission.",
@@ -572,81 +306,501 @@ object KarnatakaTourismRepository {
         ),
 
         KarnatakaSpot(
-            id = "netrani_coral_island",
-            name = "Netrani Island (Pigeon Island)",
-            kannadaName = "ನೇತ್ರಾಣಿ ಹವಳದ ದ್ವೀಪ (ಪಾರಿವಾಳ ದ್ವೀಪ)",
-            tagline = "Isolated Marine Island & Biodiverse Coral Sanctuary",
-            category = TourismCategory.ISLANDS,
-            district = "Off Murudeshwar Coast (19 km in Arabian Sea)",
-            distanceFromBangaloreKm = 485,
-            bestSeason = "October to May (Monsoon rough sea closure: June to September)",
-            timings = "Boat tours depart 7:30 AM – 8:30 AM; return by 2:30 PM – 3:30 PM",
-            overview = "An uninhabited rocky island shaped like a heart when viewed from the air. Netrani is recognized by marine biologists as one of India's richest coral reef biospheres outside the Andaman and Lakshadweep archipelagos, home to over 80 species of reef fish, sea turtles, and corals.",
+            id = "udupi_krishna_matha",
+            name = "Udupi Sri Krishna Matha & Kanakana Kindi",
+            kannadaName = "ಉಡುಪಿ ಶ್ರೀ ಕೃಷ್ಣ ಮಠ ಮತ್ತು ಕನಕನ ಕಿಂಡಿ",
+            tagline = "13th-Century Dvaita Vedanta Spiritual Capital & World's Free Anna Brahma Feast",
+            category = TourismCategory.TEMPLES_HERITAGE,
+            region = KarnatakaRegion.KARAVALI,
+            district = "Udupi District",
+            nearestTransitHub = "Airport: Mangaluru IXE (55 km) | Train: Udupi Railway Station (3.5 km)",
+            distanceFromBangaloreKm = 400,
+            bestSeason = "Year-round (Grand during Paryaya & Krishna Janmashtami)",
+            timings = "5:00 AM – 9:30 PM (Anna Prasadam lunch: 11:30 AM – 2:00 PM)",
+            overview = "Founded in the 13th century by the saint Madhvacharya, the temple features the unique Kanakana Kindi — a small nine-holed silver window through which Lord Krishna turned westwards to give darshan to the devout low-caste poet-saint Kanakadasa. The temple is celebrated worldwide for its daily free sacred feast (Anna Santharpane) feeding thousands.",
             keyHighlights = listOf(
-                "Heart-shaped island formation rising steeply from deep sea waters",
-                "Snorkeling and scuba diving right around the sheltered island bays",
-                "Hundreds of wild pigeons nesting on high vertical rock crevices",
-                "Encountering pods of humpback dolphins during the open-sea crossing"
+                "Kanakana Kindi (Nine-holed window darshan of Lord Krishna)",
+                "Madhva Sarovara sacred temple tank with oil lamp reflections",
+                "Daily free Anna Brahma lunch prasadam served in traditional coastal dining hall",
+                "Car Street lined with traditional 800-year-old Ashta Mathas and Mitra Samaj snacks"
             ),
             bookingInfo = OfficialBookingInfo(
-                portalName = "Murudeshwar Port & Navy Regulated Dive Boats",
+                portalName = "Sri Krishna Matha Trust Official",
                 portalUrl = "https://karnatakatourism.org",
-                bookingRule = "Stepping foot onto island rocks is prohibited by Indian Navy for defense and sanctuary preservation; all tours are conducted from certified expedition boats.",
-                badgeTag = "MARINE BIOSPHERE"
+                bookingRule = "General darshan and sacred Anna Prasadam lunch are 100% free for all humans regardless of caste or nationality.",
+                badgeTag = "SACRED ASHTA MATHA"
             ),
             foreignerPricing = ForeignerPricingGuidance(
-                domesticFeeInr = 1999,
-                foreignerFeeInr = 3500,
-                approxUsdEquivalent = "~4.00 (Sightseeing boat ride) / ~2.00 (Full Scuba Dive)",
-                feeIncludes = "Boat transfer, life jacket, safety officer, and snorkeling mask.",
-                dressCodeRules = "Breathable quick-dry clothing, sun hat, and high-SPF reef-safe sunscreen.",
-                photographyPolicy = "High quality underwater video included with diving; bring waterproof phone pouch for boat photos.",
-                scamAlertNotes = "Never board unauthorized private fishing trawlers claiming to visit the island; strict coastal guard patrols intercept unauthorized vessels.",
-                cashVsDigitalNotes = "Book tickets at registered dive centers in Murudeshwar town prior to morning departure."
+                domesticFeeInr = 0,
+                foreignerFeeInr = 0,
+                approxUsdEquivalent = "Free Entry & Free Sacred Feast",
+                feeIncludes = "Darshan and hot satvik lunch prasadam served on plantain leaves.",
+                dressCodeRules = "Strict traditional dress code: Men must remove shirts and vests before entering inner shrine. Saree/churidar for women. Shorts strictly barred.",
+                photographyPolicy = "Cameras prohibited inside the inner sanctum.",
+                scamAlertNotes = "Never pay anyone for lunch or darshan; both are completely free offerings of the Matha.",
+                cashVsDigitalNotes = "UPI accepted at temple souvenir stalls for brass Krishna idols."
             ),
-            howToReachTransit = "Boat departures from Murudeshwar Temple Beach Jetty (1-hour high-speed catamaran ride).",
-            survivalKannadaPhrase = "Boat alli dolphin nodoke siguttha?",
-            survivalKannadaLipi = "ಬೋಟ್‌ನಲ್ಲಿ ಡಾಲ್ಫಿನ್ ನೋಡೋಕೆ ಸಿಗುತ್ತಾ?",
-            survivalKannadaMeaning = "Will we be able to spot dolphins from the boat?"
+            howToReachTransit = "Direct trains from Bengaluru (Panchaganga Express) or KSRTC Airavat AC buses stop right in Udupi city.",
+            survivalKannadaPhrase = "Anna Santharpane oota hall ellide?",
+            survivalKannadaLipi = "ಅನ್ನ ಸಂತರ್ಪಣೆ ಊಟ ಹಾಲ್ ಎಲ್ಲಿದೆ?",
+            survivalKannadaMeaning = "Where is the Anna Santharpane sacred dining hall?"
         ),
 
         KarnatakaSpot(
-            id = "kurumgad_island",
-            name = "Kurumgad Tortoise Island (Karwar)",
-            kannadaName = "ಕುರುಂಗಡ್ ಆಮೆ ದ್ವೀಪ (ಕಾರವಾರ)",
-            tagline = "Tortoise-Shaped Historic Island with Narasimha Shrine & Fort Ruins",
-            category = TourismCategory.ISLANDS,
-            district = "Karwar (Uttara Kannada)",
-            distanceFromBangaloreKm = 520,
-            bestSeason = "October to May",
-            timings = "Boat rides from Devbagh/Baithkol port: 8:30 AM – 5:00 PM",
-            overview = "A naturally tortoise-shaped island located 4 km off Karwar coastline. It holds historic remnants of an ancient Maratha/Portuguese coastal fortress, a sacred hilltop Narasimha Temple celebrated during the annual Pushya Purnima jathra, and crystal clear coves frequented by playful dolphins.",
+            id = "murudeshwar_temple",
+            name = "Murudeshwar Shiva Temple & Raja Gopura",
+            kannadaName = "ಮುರುಡೇಶ್ವರ ಶಿವ ದೇವಸ್ಥಾನ ಮತ್ತು ರಾಜ ಗೋಪುರ",
+            tagline = "World's 2nd Tallest Shiva Statue Overlooking the Arabian Sea",
+            category = TourismCategory.TEMPLES_HERITAGE,
+            region = KarnatakaRegion.KARAVALI,
+            district = "Uttara Kannada District",
+            nearestTransitHub = "Airport: Goa Dabolim GOI (160 km) / Mangaluru IXE (160 km) | Train: Murudeshwar Station (2 km)",
+            distanceFromBangaloreKm = 485,
+            bestSeason = "October to March",
+            timings = "3:00 AM – 1:00 PM & 3:00 PM – 8:00 PM",
+            overview = "Perched on Kanduka Hill surrounded on three sides by the Arabian Sea, Murudeshwar features a colossal 123-foot (37m) Lord Shiva statue and an 18-storey, 249-foot high Raja Gopura with a modern high-speed elevator taking visitors to the top for 360-degree ocean views.",
             keyHighlights = listOf(
-                "Historic stone fort wall remains and old cannons on the promontory",
-                "Hilltop trek to the ancient Narasimha Temple with sea views",
-                "Dolphin spotting boat rides in the Kali river estuary confluence",
-                "Beach camping and sea fishing off the rocky shores"
+                "123-foot Shiva statue glowing against the setting sea sun",
+                "Elevator to the 18th floor of the Raja Gopura for panoramic aerial view",
+                "Sunset beach walk and Arabian sea watersports right beside temple",
+                "Launchpad for Netrani Island scuba diving expeditions"
             ),
             bookingInfo = OfficialBookingInfo(
-                portalName = "Karwar Port & Local Boatmen Union",
+                portalName = "Murudeshwar Temple Trust Official",
                 portalUrl = "https://karnatakatourism.org",
-                bookingRule = "Boat transfers operate from Baithkol port or Devbagh beach counter. Weather permits dependent.",
-                badgeTag = "FORT ISLAND"
+                bookingRule = "General darshan is free. Raja Gopura 18th-floor lift ticket is purchased at base counter (₹20).",
+                badgeTag = "COASTAL SHRINE"
             ),
             foreignerPricing = ForeignerPricingGuidance(
-                domesticFeeInr = 400,
-                foreignerFeeInr = 600,
-                approxUsdEquivalent = "~.00 – .20 USD (Boat Return)",
-                feeIncludes = "Return boat ride from Karwar jetty and island pathway access.",
-                dressCodeRules = "Comfortable walking/hiking shoes for the hill climb to the fortress shrine.",
-                photographyPolicy = "Standard photography permitted; drone photography restricted near Karwar naval base corridor.",
-                scamAlertNotes = "Fix boat round-trip fare including waiting time before boarding at the jetty.",
-                cashVsDigitalNotes = "Keep ₹500 cash for boatmen and island coconut stall."
+                domesticFeeInr = 20,
+                foreignerFeeInr = 20,
+                approxUsdEquivalent = "~$0.24 USD (Lift ticket)",
+                feeIncludes = "Elevator ticket to 18th floor viewing deck. Temple darshan is free.",
+                dressCodeRules = "Strict dress code: Dhoti/pants for men, saree/salwar for women. Shorts, bermudas, and mini-skirts are prohibited.",
+                photographyPolicy = "Cameras permitted in open courtyard & Gopura; strictly forbidden inside Garbhagriha.",
+                scamAlertNotes = "Do not pay private agents for 'VIP darshan queues' unless purchased from official computer trust counter.",
+                cashVsDigitalNotes = "Car parking and footwear stall require ₹10–₹20 cash coins/small notes."
             ),
-            howToReachTransit = "Reach Karwar by train or KSRTC bus from Bengaluru, then 10 min taxi to Baithkol Jetty for island boat.",
-            survivalKannadaPhrase = "Kurumgad island ge boat return yavaga?",
-            survivalKannadaLipi = "ಕುರುಂಗಡ್ ಐಲ್ಯಾಂಡ್‌ಗೆ ಬೋಟ್ ರಿಟರ್ನ್ ಯಾವಾಗ?",
-            survivalKannadaMeaning = "When does the boat return from Kurumgad island?"
+            howToReachTransit = "Overnight Panchaganga Superfast Express train from Yesvantpur / KSR Bengaluru directly to Murudeshwar Railway Station.",
+            survivalKannadaPhrase = "Raja Gopura lift ticket elli thagobeku?",
+            survivalKannadaLipi = "ರಾಜ ಗೋಪುರ ಲಿಫ್ಟ್ ಟಿಕೆಟ್ ಎಲ್ಲಿ ತಗೋಬೇಕು?",
+            survivalKannadaMeaning = "Where should I buy the Raja Gopura lift ticket?"
+        ),
+
+        KarnatakaSpot(
+            id = "netrani_scuba",
+            name = "Netrani Island Scuba Diving & Coral Snorkeling",
+            kannadaName = "ನೇತ್ರಾಣಿ ದ್ವೀಪ ಸ್ಕೂಬಾ ಡೈವಿಂಗ್ ಮತ್ತು ಕೋರಲ್ ರೀಫ್",
+            tagline = "The Heart-Shaped Coral Reef Sanctuary of the Arabian Sea",
+            category = TourismCategory.ADVENTURE_SPORTS,
+            region = KarnatakaRegion.KARAVALI,
+            district = "Off Murudeshwar Coast (19 km offshore)",
+            nearestTransitHub = "Airport: Mangaluru IXE (160 km) / Goa GOI (160 km) | Train: Murudeshwar Station (3 km)",
+            distanceFromBangaloreKm = 485,
+            bestSeason = "October to May (Clear water visibility up to 15-20 meters)",
+            timings = "7:30 AM boat departure from Murudeshwar Jetty (Full day: 7:30 AM – 3:30 PM)",
+            overview = "Also known as Pigeon Island, Netrani is a secluded uninhabited island surrounded by vibrant coral reefs. Visibility ranges between 15 and 20 meters, revealing butterflyfish, triggerfish, parrotfish, moray eels, stingrays, and occasional whale shark sightings. Dive is conducted from offshore dive catamarans.",
+            keyHighlights = listOf(
+                "PADI/SSI beginner Discovery Scuba Diving (DSD) up to 10-12 meters",
+                "Guided 1-on-1 dive with personal certified divemaster",
+                "High-definition underwater GoPro video & photos included in package",
+                "Boat cruise across open Arabian sea waters with dolphin sightings"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "PADI / SSI Murudeshwar Certified Centers",
+                portalUrl = "https://karnatakatourism.org",
+                bookingRule = "Advance booking required. Island rock landing is restricted by Indian Navy; all diving occurs directly from dive boats.",
+                badgeTag = "PADI DIVE SANCTUARY"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 3500,
+                foreignerFeeInr = 3500,
+                approxUsdEquivalent = "~$42.00 USD (Includes gear, boat & underwater footage)",
+                feeIncludes = "Complete scuba gear (wetsuit, regulator, BCD, tank, fins), 45-min boat ride, training briefing, and 30-min underwater dive.",
+                dressCodeRules = "Swimwear, rashguards or comfortable swimming gear. Bring change of dry clothes.",
+                photographyPolicy = "Underwater video and photos are included free in your package and transferred directly to your smartphone via OTG/AirDrop.",
+                scamAlertNotes = "Ensure your operator is verified with certified PADI/SSI instructors. Non-divers can accompany on the boat for ₹1,999.",
+                cashVsDigitalNotes = "All primary dive operators accept GPay/PhonePe and credit cards at Murudeshwar beach offices."
+            ),
+            howToReachTransit = "Reach Murudeshwar via overnight express train from Bengaluru; dive centers gather at Murudeshwar Temple Beach Jetty.",
+            survivalKannadaPhrase = "Netrani boat ride mathu scuba diving ge permission ideya?",
+            survivalKannadaLipi = "ನೇತ್ರಾಣಿ ಬೋಟ್ ರೈಡ್ ಮತ್ತು ಸ್ಕೂಬಾ ಡೈವಿಂಗ್‌ಗೆ ಪರ್ಮಿಷನ್ ಇದೆಯಾ?",
+            survivalKannadaMeaning = "Is boat ride and scuba diving permitted today at Netrani?"
+        ),
+
+        KarnatakaSpot(
+            id = "honnavar_backwaters",
+            name = "Honnavar Sharavathi Mangrove Boardwalk & Boating",
+            kannadaName = "ಹೊನ್ನಾವರ ಶರಾವತಿ ಮ್ಯಾಂಗ್ರೋವ್ ಬೋರ್ಡ್‌ವಾಕ್",
+            tagline = "Enchanting Backwater Mangrove Tunnels & Arabian Sea Confluence",
+            category = TourismCategory.WATERFALLS_NATURE,
+            region = KarnatakaRegion.KARAVALI,
+            district = "Uttara Kannada District",
+            nearestTransitHub = "Airport: Goa Dabolim GOI (175 km) / Hubballi HBX (190 km) | Train: Honnavar Station (4 km)",
+            distanceFromBangaloreKm = 460,
+            bestSeason = "October to May",
+            timings = "8:00 AM – 6:00 PM",
+            overview = "Honnavar is Karnataka's tranquil hidden backwater jewel where the sacred Sharavathi River meets the Arabian Sea. The Forest Department's Kandla Mangrove Boardwalk features a wooden walkway elevated above dense mangrove roots, leading to serene boat rides through emerald green river estuaries and untouched sandbars.",
+            keyHighlights = listOf(
+                "Kandla Mangrove Forest elevated wooden canopy walk",
+                "Sharavathi river boat cruises winding through quiet river islands",
+                "Eco Beach (Kasarkod) certified with international Blue Flag standard",
+                "Apsarakonda coastal waterfall and natural pond overlooking the sea"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "Forest Dept & Coastal Boating Union",
+                portalUrl = "https://karnatakatourism.org",
+                bookingRule = "Boardwalk ticket ₹20 at counter. Boat rides ₹150–₹300 per head.",
+                badgeTag = "MANGROVE ECO-SANCTUARY"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 20,
+                foreignerFeeInr = 20,
+                approxUsdEquivalent = "~$0.24 USD (Boardwalk Entry)",
+                feeIncludes = "Access to wooden mangrove nature trail.",
+                dressCodeRules = "Comfortable walking footwear. Mosquito repellent recommended during early evening.",
+                photographyPolicy = "Very popular for nature & landscape photography.",
+                scamAlertNotes = "Book boats at official Kasarkod / Mavinkurve jetty counters.",
+                cashVsDigitalNotes = "UPI accepted at jetty counters."
+            ),
+            howToReachTransit = "Konkan Railway trains stop at Honnavar Railway Station; KSRTC buses run along coastal NH 66.",
+            survivalKannadaPhrase = "Sharavathi backwater boat ride ge ticket counter ellide?",
+            survivalKannadaLipi = "ಶರಾವತಿ ಬ್ಯಾಕ್‌ವಾಟರ್ ಬೋಟ್ ರೈಡ್ ಟಿಕೆಟ್ ಕೌಂಟರ್ ಎಲ್ಲಿದೆ?",
+            survivalKannadaMeaning = "Where is the ticket counter for the Sharavathi backwater boat ride?"
+        ),
+
+        // ========================================================
+        // 3. MALNAD & WESTERN GHATS (RAINFORESTS, COFFEE & PEAKS)
+        // ========================================================
+        KarnatakaSpot(
+            id = "jog_falls",
+            name = "Jog Falls (Gerosoppa Plunge)",
+            kannadaName = "ಜೋಗ್ ಜಲಪಾತ (ಗೇರುಸೊಪ್ಪೆ)",
+            tagline = "India's 2nd Highest Plunge Waterfall (253m) of Four Distinct Cascades",
+            category = TourismCategory.WATERFALLS_NATURE,
+            region = KarnatakaRegion.MALNAD,
+            district = "Shivamogga District",
+            nearestTransitHub = "Airport: Shivamogga RQY (105 km) / Hubballi HBX (160 km) | Train: Talguppa Station (14 km)",
+            distanceFromBangaloreKm = 380,
+            bestSeason = "July to December (Monsoon roaring spectacle)",
+            timings = "7:30 AM – 9:00 PM (Laser show: 7:00 PM – 8:00 PM)",
+            overview = "Fed by the wild Sharavathi River plunging 253 meters (830 ft) down granite chasms in four distinct streams: 'Raja' (the grand dignified plunge), 'Roarer' (surging down rocky cracks), 'Rocket' (jets of water shooting downward), and 'Rani' (gentle winding white ribbon).",
+            keyHighlights = listOf(
+                "Breathtaking amphitheater view from British bungalow & viewing deck",
+                "1,400 stone steps descending to the very mist-shrouded base of the falls",
+                "Evening 3D projection laser light and musical fountain show",
+                "Sharavathi Valley wildlife sanctuary and viewpoint canopy"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "Jog Management Authority (Govt of Karnataka)",
+                portalUrl = "https://karnatakatourism.org",
+                bookingRule = "Entry tickets bought at modern visitor complex counter (₹50). Parking separate.",
+                badgeTag = "ICONIC WATERFALL"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 50,
+                foreignerFeeInr = 50,
+                approxUsdEquivalent = "~$0.60 USD",
+                feeIncludes = "Entry to landscaped viewpoints, walking promenade, and laser viewing area.",
+                dressCodeRules = "Raincoats/umbrellas essential during monsoon; steps to the base are steep and slippery.",
+                photographyPolicy = "Personal cameras permitted. Fog often rolls in; morning visits offer best visibility.",
+                scamAlertNotes = "Do not cross the safety railings near the cliff edges; spray makes granite rocks treacherous.",
+                cashVsDigitalNotes = "UPI QR accepted at tourist gate and KSTDC Mayura restaurant."
+            ),
+            howToReachTransit = "Train from Bengaluru/Mysuru to Talguppa Railway Station (14 km away), then local bus or taxi to Jog Falls.",
+            survivalKannadaPhrase = "Jog falls base ge hogalu steps open ideya?",
+            survivalKannadaLipi = "ಜೋಗ್ ಫಾಲ್ಸ್ ಕೆಳಗಡೆ ಹೋಗಲು ಮೆಟ್ಟಿಲುಗಳು ಓಪನ್ ಇದೆಯಾ?",
+            survivalKannadaMeaning = "Are the steps to the bottom base of Jog Falls open today?"
+        ),
+
+        KarnatakaSpot(
+            id = "kudremukh_trek",
+            name = "Kudremukh Peak Trek",
+            kannadaName = "ಕುದುರೆಮುಖ ಶಿಖರ ಚಾರಣ",
+            tagline = "Horse-Face Peak & Velvet Green Shola Grasslands (1,894m)",
+            category = TourismCategory.TREKKING_TRAILS,
+            region = KarnatakaRegion.MALNAD,
+            district = "Chikkamagaluru District (Kudremukh National Park)",
+            nearestTransitHub = "Airport: Mangaluru IXE (105 km) | Train: Udupi Station (100 km) / Mangaluru (110 km)",
+            distanceFromBangaloreKm = 310,
+            bestSeason = "June to January (Post-monsoon emerald greens are hypnotic)",
+            timings = "6:00 AM checkpost clearance; must exit by 5:00 PM (No camping allowed)",
+            overview = "Named after its distinctive horse-face shaped silhouette, Kudremukh is South India's most celebrated alpine trek. The 22km round-trip trail weaves through rolling montane shola grasslands, crystal cold streams, and mist-draped ridges within a protected tiger and lion-tailed macaque habitat.",
+            keyHighlights = listOf(
+                "Panoramic 360-degree vista of Western Ghats ridge from summit (1,894m)",
+                "Crossing pristine freshwater forest streams",
+                "Lush shola forest canopy with orchids and endemic Western Ghats flora",
+                "Strict zero-litter conservation model managed by Forest Department"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "Aranya Vihaara (Karnataka Forest Department)",
+                portalUrl = "https://aranyavihaara.karnataka.gov.in",
+                bookingRule = "STRICT ADVANCE ONLINE BOOKING ONLY on aranyavihaara.karnataka.gov.in. Daily entry strictly capped at 50 trekkers. Zero spot tickets!",
+                badgeTag = "ARANYA VIHARA PERMIT"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 575,
+                foreignerFeeInr = 575,
+                approxUsdEquivalent = "~$6.90 USD (Forest Permit) + ~₹100 local guide share",
+                feeIncludes = "Official Forest entry permit, environmental cess, and mandatory certified local eco-guide assigned to batches of 10.",
+                dressCodeRules = "Full-length trekking pants (essential for leech protection during monsoon), moisture-wicking shirts, and sturdy hiking boots.",
+                photographyPolicy = "Personal DSLRs allowed. Drones strictly prohibited and confiscated at checkpost under Wildlife Protection Act.",
+                scamAlertNotes = "CRITICAL: Never believe homestays promising 'offline entrance tickets at gate'. All tickets must be booked on aranyavihaara.karnataka.gov.in in advance.",
+                cashVsDigitalNotes = "ZERO mobile signal (Airtel/Jio) at base checkpost (Balagal/Mullodi). Carry ₹1,000 cash for 4x4 Jeep ride (₹500/head roundtrip) and leech socks."
+            ),
+            howToReachTransit = "Overnight KSRTC bus from Bengaluru/Mangaluru to Kalasa (8 hours). From Kalasa take local bus to Balagal, then 4x4 Jeep to Mullodi base camp.",
+            survivalKannadaPhrase = "Aranya Vihaara booking permit ide, Mullodi checkpost yavadu?",
+            survivalKannadaLipi = "ಅರಣ್ಯ ವಿಹಾರ ಬುಕಿಂಗ್ ಪರ್ಮಿಟ್ ಇದೆ, ಮುಳ್ಳೋಡಿ ಚೆಕ್‌ಪೋಸ್ಟ್ ಯಾವುದು?",
+            survivalKannadaMeaning = "I have the Aranya Vihaara booking permit, where is the Mullodi checkpost?"
+        ),
+
+        KarnatakaSpot(
+            id = "mullayanagiri_chik",
+            name = "Mullayanagiri & Baba Budangiri",
+            kannadaName = "ಮುಳ್ಳಯ್ಯನಗಿರಿ ಮತ್ತು ಬಾಬಾ ಬುಡನ್‌ಗಿರಿ",
+            tagline = "Karnataka's Highest Summit (1,930m) & The Birthplace of Indian Coffee",
+            category = TourismCategory.TREKKING_TRAILS,
+            region = KarnatakaRegion.MALNAD,
+            district = "Chikkamagaluru District",
+            nearestTransitHub = "Airport: Mangaluru IXE (155 km) | Train: Kadur Junction (40 km) / Birur (45 km)",
+            distanceFromBangaloreKm = 265,
+            bestSeason = "September to March (Crisp mountain air & drifting clouds)",
+            timings = "6:00 AM – 6:00 PM",
+            overview = "Mullayanagiri is the rooftop of Karnataka standing at 1,930m (6,330 ft), crowned by a small shrine to Sage Mullappa Swamy. Nearby Baba Budangiri is where the Sufi saint Baba Budan first planted seven raw coffee beans smuggled from Yemen in the 17th century, birthing India's coffee heritage.",
+            keyHighlights = listOf(
+                "Standing on the highest geographic point in the state of Karnataka",
+                "500 stone steps climb through cool mountain mist",
+                "Baba Budangiri / Dattatreya Peetha sacred cave shrine",
+                "Manikyadhara and Hebbe waterfalls tucked into coffee estates"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "Chikkamagaluru District Administration",
+                portalUrl = "https://karnatakatourism.org",
+                bookingRule = "Free public entry. Vehicle toll (₹50) collected at hill checkpost.",
+                badgeTag = "HIGHEST SUMMIT IN KARNATAKA"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 0,
+                foreignerFeeInr = 0,
+                approxUsdEquivalent = "Free Entry (Vehicle Toll ₹50)",
+                feeIncludes = "Public road access and stairway to the summit temple.",
+                dressCodeRules = "Windcheater or fleece jacket (very cold and windy at the peak). Sturdy walking shoes.",
+                photographyPolicy = "Spectacular mountain ridge photography.",
+                scamAlertNotes = "Narrow winding ghat roads; hire experienced local taxi drivers if unaccustomed to steep hairpin bends.",
+                cashVsDigitalNotes = "UPI accepted at roadside coffee stalls and base parking."
+            ),
+            howToReachTransit = "KSRTC bus from Bengaluru/Mangaluru to Chikkamagaluru town, then private taxi or local bus up the mountain.",
+            survivalKannadaPhrase = "Mullayanagiri summit ge car hoguttha?",
+            survivalKannadaLipi = "ಮುಳ್ಳಯ್ಯನಗಿರಿ ಶಿಖರಕ್ಕೆ ಕಾರ್ ಹೋಗುತ್ತಾ?",
+            survivalKannadaMeaning = "Can the car drive all the way to Mullayanagiri summit parking?"
+        ),
+
+        KarnatakaSpot(
+            id = "belur_halebeedu",
+            name = "Belur & Halebeedu Hoysala Temples",
+            kannadaName = "ಬೇಲೂರು ಮತ್ತು ಹಳೇಬೀಡು ಹೊಯ್ಸಳ ದೇವಾಲಯಗಳು",
+            tagline = "UNESCO 2023 Inscribed Masterpieces of Soapstone Filigree Art",
+            category = TourismCategory.TEMPLES_HERITAGE,
+            region = KarnatakaRegion.MALNAD,
+            district = "Hassan District",
+            nearestTransitHub = "Airport: Mangaluru IXE (145 km) / Bengaluru BLR (240 km) | Train: Hassan Junction (38 km)",
+            distanceFromBangaloreKm = 220,
+            bestSeason = "Year-round (Best: October to February)",
+            timings = "7:30 AM – 7:30 PM (Belur) | 6:30 AM – 6:30 PM (Halebeedu)",
+            overview = "12th-century celestial architecture carved from chloritic schist (soapstone). Chennakeshava Temple at Belur features 42 Madanika (dancing damsel) bracket figures carved with hyper-fine filigree detailing, while Halebeedu's Hoysaleshwara temple features over 20,000 intricate friezes.",
+            keyHighlights = listOf(
+                "Chennakeshava Temple Belur (Active temple with daily pujas)",
+                "Darpana Sundari (Lady with mirror) soapstone sculpture",
+                "Twin Shiva shrines of Hoysaleshwara & Shantaleshwara at Halebeedu",
+                "Kedareshwara temple and Jain basadis nearby"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "Karnataka Tourism & ASI Muzrai Dept",
+                portalUrl = "https://karnatakatourism.org",
+                bookingRule = "Belur Chennakeshava is free general entry. Halebeedu ASI complex has nominal ticketing.",
+                badgeTag = "UNESCO 2023 HERITAGE"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 25,
+                foreignerFeeInr = 300,
+                approxUsdEquivalent = "~$3.60 USD (Halebeedu) / Belur is Free",
+                feeIncludes = "Access to Halebeedu Hoysaleshwara museum and landscaped temple gardens.",
+                dressCodeRules = "Traditional/respectful clothing. Sleeveless tops and short pants discouraged inside temple sanctum.",
+                photographyPolicy = "Exterior photography encouraged; flash photography restricted inside dark inner sanctums.",
+                scamAlertNotes = "Official guides charge ₹300-₹500 fixed by tourism committee with receipt. Reject non-certified touts.",
+                cashVsDigitalNotes = "UPI QR codes available at all souvenir shops and official counters."
+            ),
+            howToReachTransit = "KSRTC AC Airavat bus from Majestic Bengaluru to Hassan (3.5 hours), then local KSRTC bus or cab to Belur (38 km).",
+            survivalKannadaPhrase = "Belur Chennakeshava temple guide charge eshtu aagutthe?",
+            survivalKannadaLipi = "ಬೇಲೂರು ಚೆನ್ನಕೇಶವ ದೇವಾಲಯ ಗೈಡ್ ಚಾರ್ಜ್ ಎಷ್ಟು ಆಗುತ್ತೆ?",
+            survivalKannadaMeaning = "What is the official guide fee for Belur Chennakeshava Temple?"
+        ),
+
+        KarnatakaSpot(
+            id = "dandeli_rafting",
+            name = "Dandeli Kali River White-Water Rafting",
+            kannadaName = "ದಾಂಡೇಲಿ ಕಾಳಿ ನದಿ ವೈಟ್-ವಾಟರ್ ರಾಫ್ಟಿಂಗ್",
+            tagline = "Grade 3 & 4 Thrilling Rapids in the Dense Western Ghats Rainforest",
+            category = TourismCategory.ADVENTURE_SPORTS,
+            region = KarnatakaRegion.MALNAD,
+            district = "Uttara Kannada District",
+            nearestTransitHub = "Airport: Hubballi HBX (75 km) / Belagavi IXG (85 km) | Train: Alnavar Junction (32 km)",
+            distanceFromBangaloreKm = 460,
+            bestSeason = "October to May (Regulated by Supa Dam water discharge)",
+            timings = "8:30 AM – 3:30 PM",
+            overview = "Dandeli is South India's capital for white-water river rafting. Guided by certified swift-water rescue river masters, the Kali River offers exhilarating Class II to Class III+ rapids with names like 'Adi\'s Delusion', 'The Piper', and 'Stanley\'s Squeeze' surrounded by the hornbill-rich Dandeli-Anshi Tiger Reserve.",
+            keyHighlights = listOf(
+                "Full 9.5 km stretch with 9 thrilling rapids",
+                "Natural river whirlpool swimming with life jackets",
+                "Jungle kayaking and river crossing zipline",
+                "Malabar Pied Hornbill birdwatching in buffer canopy"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "Dandeli Ganeshgudi Single Window / Tourism Counter",
+                portalUrl = "https://karnatakatourism.org",
+                bookingRule = "Rafting operations depend on Supa Dam hydroelectric water release. Book morning slot at authorized Ganeshgudi counters.",
+                badgeTag = "WHITE WATER RAFTING"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 1400,
+                foreignerFeeInr = 1500,
+                approxUsdEquivalent = "~$17.00 – $18.00 USD",
+                feeIncludes = "Rafting gear (CE certified life vest + helmet + paddle), river transport jeep, and licensed instructor.",
+                dressCodeRules = "Quick-dry nylon clothing or swimwear. No heavy denims or cottons. Mandatory strap-on water shoes or strapped sandals.",
+                photographyPolicy = "Instructors carry waterproof GoPros on helmet mounts; photos/videos provided for ₹300-₹500 per raft.",
+                scamAlertNotes = "Confirm whether the operator is offering the Short Rafting (1.5km for ₹500) or Full Long Stretch (9km for ₹1,400). Always insist on certified river guides.",
+                cashVsDigitalNotes = "Keep ₹500 cash for river shuttle jeep driver and changing room tokens."
+            ),
+            howToReachTransit = "Train from Bengaluru to Alnavar Junction or Dharwad, then 1-hour KSRTC bus or taxi to Dandeli town.",
+            survivalKannadaPhrase = "Full stretch 9 km river rafting ge ticket eshtu?",
+            survivalKannadaLipi = "ಫುಲ್ ಸ್ಟ್ರೆಚ್ ಒಂಬತ್ತು ಕಿ.ಮೀ ರಾಫ್ಟಿಂಗ್‌ಗೆ ಟಿಕೆಟ್ ಎಷ್ಟು?",
+            survivalKannadaMeaning = "How much is the ticket for the full stretch 9km river rafting?"
+        ),
+
+        // ========================================================
+        // 4. ROYAL SOUTH (MYSURU, COORG & WILDLIFE TIGER RESERVES)
+        // ========================================================
+        KarnatakaSpot(
+            id = "mysore_palace",
+            name = "Mysore Palace (Amba Vilas)",
+            kannadaName = "ಮೈಸೂರು ಅರಮನೆ (ಅಂಬಾ ವಿಲಾಸ)",
+            tagline = "The Royal Seat of the Wodeyars & 100,000-Bulb Illumination",
+            category = TourismCategory.TEMPLES_HERITAGE,
+            region = KarnatakaRegion.HALE_MYSURU,
+            district = "Mysuru District",
+            nearestTransitHub = "Airport: Mysuru MYQ (12 km) / Bengaluru BLR (180 km) | Train: Mysuru Junction (2 km)",
+            distanceFromBangaloreKm = 145,
+            bestSeason = "September to March (Spectacular during Dasara)",
+            timings = "10:00 AM – 5:30 PM (Illumination: Sundays & holidays 7:00 – 8:00 PM)",
+            overview = "One of India's most visited royal palaces. Designed by British architect Henry Irwin in Indo-Saracenic style with kaleidoscopic stained-glass ceilings, carved rosewood doors, and the fabled Golden Throne. On Sunday evenings, the entire palace is illuminated by 97,000+ electric incandescent lamps.",
+            keyHighlights = listOf(
+                "Kalyana Mantapa (Octagonal wedding pavilion with stained-glass peacock dome)",
+                "Durbar Hall with ornate painted pillars and royal thrones",
+                "Sunday night grand illumination spectacle",
+                "Sound & Light (Son-et-Lumiere) show in English & Kannada"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "Mysore Palace Board (Govt of Karnataka)",
+                portalUrl = "https://mysorepalace.karnataka.gov.in",
+                bookingRule = "Online e-tickets available on palace board portal or at palace South/West Gate counters.",
+                badgeTag = "ROYAL HERITAGE"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 100,
+                foreignerFeeInr = 1000,
+                approxUsdEquivalent = "~$12.00 USD (Includes Multilingual Audio Guide)",
+                feeIncludes = "Foreigner ticket includes personal high-definition audio headset guide in English, French, German, Spanish, Japanese, or Italian.",
+                dressCodeRules = "Footwear strictly prohibited inside royal residential chambers (free token shoe stands at entrance).",
+                photographyPolicy = "Still photography allowed without flash. Video cameras require special token.",
+                scamAlertNotes = "Avoid auto/tonga drivers who insist on taking you to private 'handicraft emporiums' instead of the palace; they earn 40% commission.",
+                cashVsDigitalNotes = "Official counters accept international Visa/Mastercard and UPI QR."
+            ),
+            howToReachTransit = "Vande Bharat Express or Tipu Express train from KSR Bengaluru to Mysuru Junction (2 hours), then ₹50 auto to Palace North Gate.",
+            survivalKannadaPhrase = "Palace illumination raathri eshtu gantege shuru aagutthe?",
+            survivalKannadaLipi = "ಅರಮನೆ ಇಲ್ಯುಮಿನೇಷನ್ ರಾತ್ರಿ ಎಷ್ಟು ಗಂಟೆಗೆ ಶುರು ಆಗುತ್ತೆ?",
+            survivalKannadaMeaning = "At what time does the Palace illumination begin tonight?"
+        ),
+
+        KarnatakaSpot(
+            id = "kabini_safari",
+            name = "Kabini / Nagarhole Tiger Reserve",
+            kannadaName = "ಕಬಿನಿ ಮತ್ತು ನಾಗರಹೊಳೆ ಹುಲಿ ಸಂರಕ್ಷಿತ ಪ್ರದೇಶ",
+            tagline = "World's Premier Leopard, Black Panther & Asiatic Elephant Habitat",
+            category = TourismCategory.WILDLIFE_SAFARI,
+            region = KarnatakaRegion.HALE_MYSURU,
+            district = "Mysuru / Kodagu Border",
+            nearestTransitHub = "Airport: Mysuru MYQ (70 km) / Bengaluru BLR (240 km) | Train: Mysuru Junction (75 km)",
+            distanceFromBangaloreKm = 220,
+            bestSeason = "October to May (Summer waterhole gatherings: March to May)",
+            timings = "Morning Safari: 6:00 AM – 9:00 AM | Evening Safari: 3:30 PM – 6:30 PM",
+            overview = "Kabini is universally recognized as one of the best places in the world to observe the elusive Indian leopard, wild tiger, and the famous black panther ('Sayee'). Nestled along the banks of the Kabini reservoir, boat and jeep safaris conducted by Jungle Lodges offer front-row views of Asiatic elephant herds gathering on the grassy shores.",
+            keyHighlights = listOf(
+                "Kabini River boat safari observing elephant herds swimming",
+                "World's highest density leopard tracking in Nagarhole forest canopy",
+                "Over 300 bird species including Malabar Pied Hornbills and Fish Eagles",
+                "Eco-luxury stays at Government-run Jungle Lodges Kabini River Lodge"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "Jungle Lodges & Resorts (Govt of Karnataka)",
+                portalUrl = "https://junglelodges.com",
+                bookingRule = "Safari slots must be booked through Jungle Lodges packages or Karnataka Forest Dept safari booking counters.",
+                badgeTag = "PROJECT TIGER RESERVE"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 1800,
+                foreignerFeeInr = 3000,
+                approxUsdEquivalent = "~$36.00 USD (Forest Dept Safari)",
+                feeIncludes = "Jeep safari transfer, forest entry permit, and naturalist guide.",
+                dressCodeRules = "Earth-tone clothing (olive green, khaki, brown). Avoid bright neon colors or strong perfumes that disturb wildlife.",
+                photographyPolicy = "DSLR cameras allowed; special camera lens fees may apply at Forest Department checkpost.",
+                scamAlertNotes = "Only book safaris through official Jungle Lodges or Karnataka Forest Department counters at Dammanakatte.",
+                cashVsDigitalNotes = "Keep ₹500 cash; network in forest buffer zones is spotty."
+            ),
+            howToReachTransit = "Drive from Mysuru (2 hours via HD Kote road) or private cab from Mysuru Railway Station.",
+            survivalKannadaPhrase = "Forest safari booking Dammanakatte counter ellide?",
+            survivalKannadaLipi = "ಫಾರೆಸ್ಟ್ ಸಫಾರಿ ಬುಕಿಂಗ್ ದಮ್ಮನಕಟ್ಟೆ ಕೌಂಟರ್ ಎಲ್ಲಿದೆ?",
+            survivalKannadaMeaning = "Where is the Dammanakatte forest safari booking counter?"
+        ),
+
+        KarnatakaSpot(
+            id = "coorg_madikeri",
+            name = "Coorg / Kodagu (Coffee & Dubare Camp)",
+            kannadaName = "ಕೊಡಗು (ಮಡಿಕೇರಿ ಮತ್ತು ದುಬಾರೆ ಆನೆ ಶಿಬಿರ)",
+            tagline = "The Scotland of India, Emerald Coffee Estates & Elephant Bathing",
+            category = TourismCategory.WATERFALLS_NATURE,
+            region = KarnatakaRegion.HALE_MYSURU,
+            district = "Kodagu District",
+            nearestTransitHub = "Airport: Kannur CNN (90 km) / Mangaluru IXE (140 km) / Mysuru MYQ (120 km) | Train: Mysuru Junction (115 km)",
+            distanceFromBangaloreKm = 250,
+            bestSeason = "October to May (Monsoon June-Sept for lush waterfalls)",
+            timings = "Dubare Elephant Camp: 9:00 AM – 11:30 AM (Bathing & Feeding)",
+            overview = "Nestled on the slopes of the Western Ghats, Kodagu (Coorg) is celebrated for its lush coffee and cardamom plantations, misty hilltops, martial Kodava warrior culture, and the sacred Talakaveri (birthplace of River Kaveri). At Dubare Elephant Camp on the Kaveri river, travelers can scrub and bathe rescued elephants alongside mahouts.",
+            keyHighlights = listOf(
+                "Dubare Elephant Camp river scrubbing and feeding sessions",
+                "Abbey Falls cascading through spice and coffee plantations",
+                "Raja's Seat sunset point overlooking rolling valley views",
+                "Namdroling Golden Temple (Tibetan settlement) at Bylakuppe nearby"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "Jungle Lodges & Coorg Tourism",
+                portalUrl = "https://karnatakatourism.org",
+                bookingRule = "Dubare elephant camp entry (₹100) and river boat crossing bought at counter.",
+                badgeTag = "COFFEE HEARTLAND"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 100,
+                foreignerFeeInr = 100,
+                approxUsdEquivalent = "~$1.20 USD (Dubare Camp)",
+                feeIncludes = "Boat crossing across Kaveri river and entrance to elephant interactions.",
+                dressCodeRules = "Comfortable walking shoes. Bring clothes you don't mind getting wet during elephant bathing.",
+                photographyPolicy = "Standard photography allowed everywhere.",
+                scamAlertNotes = "Purchase homemade spices and fresh coffee powder from Kodava cooperative societies in Madikeri town.",
+                cashVsDigitalNotes = "UPI QR widely accepted at homestays and restaurants."
+            ),
+            howToReachTransit = "KSRTC Flybus from Bengaluru Airport direct to Madikeri, or KSRTC Airavat AC bus from Mysuru (2.5 hours).",
+            survivalKannadaPhrase = "Dubare aane camp ge boat ticket elli kodthare?",
+            survivalKannadaLipi = "ದುಬಾರೆ ಆನೆ ಕ್ಯಾಂಪ್‌ಗೆ ಬೋಟ್ ಟಿಕೆಟ್ ಎಲ್ಲಿ ಕೊಡ್ತಾರೆ?",
+            survivalKannadaMeaning = "Where do they issue boat tickets for Dubare elephant camp?"
         ),
 
         KarnatakaSpot(
@@ -655,7 +809,9 @@ object KarnatakaTourismRepository {
             kannadaName = "ಶ್ರೀರಂಗಪಟ್ಟಣ ನದಿ ದ್ವೀಪ ಮತ್ತು ಕೋಟೆ",
             tagline = "Cauvery River Island Fortress of Tipu Sultan & Sri Ranganatha Shrine",
             category = TourismCategory.ISLANDS,
-            district = "Mandya District (15km from Mysuru)",
+            region = KarnatakaRegion.HALE_MYSURU,
+            district = "Mandya District (15 km from Mysuru)",
+            nearestTransitHub = "Airport: Mysuru MYQ (25 km) | Train: Srirangapatna Station (0.5 km)",
             distanceFromBangaloreKm = 125,
             bestSeason = "Year-round (Best: September to March)",
             timings = "6:00 AM – 7:00 PM",
@@ -675,7 +831,7 @@ object KarnatakaTourismRepository {
             foreignerPricing = ForeignerPricingGuidance(
                 domesticFeeInr = 25,
                 foreignerFeeInr = 300,
-                approxUsdEquivalent = "~.60 USD (Daria Daulat Bagh Palace entry)",
+                approxUsdEquivalent = "~$3.60 USD (Daria Daulat Bagh Palace entry)",
                 feeIncludes = "Entry to Daria Daulat Bagh teakwood palace, royal portrait gallery and landscaped gardens.",
                 dressCodeRules = "Modest clothing required inside Sri Ranganathaswamy temple; footwear left at token counter outside.",
                 photographyPolicy = "Exterior palace photography permitted; strictly forbidden inside teakwood painted halls to preserve vegetable dye murals.",
@@ -686,11 +842,192 @@ object KarnatakaTourismRepository {
             survivalKannadaPhrase = "Tipu Sultan Summer Palace entry ticket eshtu?",
             survivalKannadaLipi = "ಟಿಪ್ಪು ಸುಲ್ತಾನ್ ಸಮ್ಮರ್ ಪ್ಯಾಲೇಸ್ ಎಂಟ್ರಿ ಟಿಕೆಟ್ ಎಷ್ಟು?",
             survivalKannadaMeaning = "What is the entry ticket price for Tipu Sultan's Summer Palace?"
+        ),
+
+        // ========================================================
+        // 5. CENTRAL DECCAN & FORTS (BAYALUSEEME)
+        // ========================================================
+        KarnatakaSpot(
+            id = "chitradurga_fort",
+            name = "Chitradurga Fort (Kallina Kote)",
+            kannadaName = "ಚಿತ್ರದುರ್ಗ ಕೋಟೆ (ಕಲ್ಲಿನ ಕೋಟೆ)",
+            tagline = "The Legendary Seven-Walled Fortress of Stone & Onake Obavva",
+            category = TourismCategory.TEMPLES_HERITAGE,
+            region = KarnatakaRegion.BAYALUSEEME,
+            district = "Chitradurga District",
+            nearestTransitHub = "Airport: Hubballi HBX (200 km) / Bengaluru BLR (210 km) | Train: Chitradurga Station (2 km)",
+            distanceFromBangaloreKm = 200,
+            bestSeason = "October to February (Avoid peak summer midday)",
+            timings = "6:00 AM – 5:30 PM",
+            overview = "One of India's most impregnable rock fortresses, built with 7 concentric defensive stone walls (Elu Suttina Kote), 19 gateways, 38 postern gates, and 35 secret subterranean entrances. Famous for the folklore of brave heroine Onake Obavva, who defended the secret crevice against Hyder Ali's invading soldiers wielding a wooden pestle (Onake).",
+            keyHighlights = listOf(
+                "Seven concentric stone defensive walls winding over granite hills",
+                "Onake Obavvana Kindi (the historic stone crevice of valour)",
+                "Ancient rainwater harvesting interconnected rock ponds and reservoirs",
+                "Hidimbeshwara rock-cut cave temple and massive stone grinding oil mills"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "Archaeological Survey of India (ASI)",
+                portalUrl = "https://asi.nic.in",
+                bookingRule = "Tickets bought at main Rangayyana Bagilu gate or via asi.nic.in portal.",
+                badgeTag = "ASI STONE CITADEL"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 25,
+                foreignerFeeInr = 300,
+                approxUsdEquivalent = "~$3.60 USD",
+                feeIncludes = "Access to full 1,500-acre fort complex, gateways, and temples.",
+                dressCodeRules = "Good grip trekking shoes mandatory; granite paths can be smooth. Carry plenty of drinking water.",
+                photographyPolicy = "Stunning architectural and landscape photography permitted.",
+                scamAlertNotes = "Only hire guides registered with the district tourism office inside the main entrance.",
+                cashVsDigitalNotes = "UPI QR code accepted at ASI ticket office."
+            ),
+            howToReachTransit = "KSRTC buses and express trains from Bengaluru, Hubballi, and Davanagere stop right in Chitradurga town.",
+            survivalKannadaPhrase = "Onake Obavvana Kindi nodoke dari yavadu?",
+            survivalKannadaLipi = "ಒನಕೆ ಓಬವ್ವನ ಕಿಂಡಿ ನೋಡೋಕೆ ದಾರಿ ಯಾವುದು?",
+            survivalKannadaMeaning = "Which is the path to see Onake Obavva's historic crevice?"
+        ),
+
+        KarnatakaSpot(
+            id = "shravanabelagola",
+            name = "Shravanabelagola Gommateshwara",
+            kannadaName = "ಶ್ರವಣಬೆಳಗೊಳ ಗೊಮ್ಮಟೇಶ್ವರ",
+            tagline = "57-Foot Monolithic Bahubali Carved in 981 AD atop Vindhyagiri",
+            category = TourismCategory.TEMPLES_HERITAGE,
+            region = KarnatakaRegion.BAYALUSEEME,
+            district = "Hassan District",
+            nearestTransitHub = "Airport: Bengaluru BLR (160 km) | Train: Shravanabelagola Station (2 km)",
+            distanceFromBangaloreKm = 145,
+            bestSeason = "October to March",
+            timings = "6:00 AM – 6:30 PM",
+            overview = "The monumental spiritual center of Jainism for over a millennium. Carved from a single block of fine-grained white granite atop the 400-foot Vindhyagiri hill by Ganga commander Chavundaraya in 981 AD, the 57-foot statue of Lord Gommateshwara (Bahubali) is one of the largest free-standing monolithic statues in the world.",
+            keyHighlights = listOf(
+                "57-foot colossal monolithic statue of Lord Bahubali in meditative kayotsarga posture",
+                "Barefoot climb of 650 stone steps cut into Vindhyagiri granite hill",
+                "Chandragiri hill with ancient Jain basadis and footprint of Chandragupta Maurya",
+                "Bhandara Basadi and Tyagada Kamba stone pillar carvings"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "Shravanabelagola Digambar Jain Matha",
+                portalUrl = "https://karnatakatourism.org",
+                bookingRule = "Entry is 100% free. Doli (palanquin chair service) available for elderly visitors (₹1,500–₹2,000 fixed).",
+                badgeTag = "ANCIENT MONOLITH"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 0,
+                foreignerFeeInr = 0,
+                approxUsdEquivalent = "Free Entry",
+                feeIncludes = "Access to Vindhyagiri and Chandragiri hills and temples.",
+                dressCodeRules = "STRICT: Climb must be done strictly BAREFOOT (or with special grip socks). No leather belts or wallets allowed on the hill.",
+                photographyPolicy = "Photography permitted in open courtyard; follow instructions of Matha volunteers.",
+                scamAlertNotes = "Fix doli (palanquin chair) rates only at the official temple counter at the base of the hill.",
+                cashVsDigitalNotes = "UPI accepted at footwear deposit and baseline coconut vendors."
+            ),
+            howToReachTransit = "Direct train on Bengaluru-Hassan line stops at Shravanabelagola station, or 2.5-hour drive via NH 75.",
+            survivalKannadaPhrase = "Bettada mele hogalu doli charge eshtu?",
+            survivalKannadaLipi = "ಬೆಟ್ಟದ ಮೇಲೆ ಹೋಗಲು ಡೋಲಿ ಚಾರ್ಜ್ ಎಷ್ಟು?",
+            survivalKannadaMeaning = "What is the official doli palanquin charge to go up the hill?"
+        )
+    )
+
+    // ========================================================
+    // REGIONAL DIALECTS & FRIENDLY LOCAL GREETINGS
+    // ========================================================
+    val regionalDialects: List<RegionalDialectInfo> = listOf(
+        RegionalDialectInfo(
+            region = KarnatakaRegion.UTTARA_KARNATAKA,
+            dialectName = "Uttara Karnataka Kannada (Dharwad / Belagavi / Hampi)",
+            commonGreeting = "ಏನ್ ರೀ ಸಮಾಚಾರ? (En ri samachara? - What is the news?)",
+            friendlyPhrases = listOf(
+                Pair("ಬರಿ ಭೈಯಾ / Bari bhaiya", "Come brother (Warm invitation)"),
+                Pair("ಹೌದ್ರೀ / Haudri", "Yes indeed / Exactly"),
+                Pair("ಚಂದ ಐತಿ / Chanda aithi", "It is very beautiful / great quality"),
+                Pair("ಖರೆ ಹೇಳ್ರಿ / Khare helri", "Tell the genuine truth / fair price"),
+                Pair("ಜೋಳದ ರೊಟ್ಟಿ ಊಟ ಮಾಡ್ರಿ / Jolada Rotti oota madori", "Have authentic Jolada Rotti meal")
+            ),
+            regionalCuisines = listOf("Jolada Rotti", "Badanekayi Ennegai", "Shenga Chutney", "Dharwad Peda", "Gokak Karadantu"),
+            localTip = "People here are exceptionally warm and speak with distinct musical elongated vowels. Address elders respectfully as 'Ri'."
+        ),
+        RegionalDialectInfo(
+            region = KarnatakaRegion.KARAVALI,
+            dialectName = "Coastal Kundagannada & Tulu (Mangaluru / Udupi / Gokarna)",
+            commonGreeting = "ನಮಸ್ಕಾರ! ಎಂಚ ಉಲ್ಲರ್? (Encha ullar? - How are you in Tulu)",
+            friendlyPhrases = listOf(
+                Pair("ಮಸ್ತ್ ಶೋಕಿ ಉಂಡು / Mast shoki undu", "It is extremely wonderful / scenic"),
+                Pair("ಖಾರ ಬೇಡ, ಕಮ್ಮಿ ಮಾಡಿ / Khaara beda, kammi maadi", "No spicy please, make it mild"),
+                Pair("ಮೀನ್ ಫ್ರೈ ಕೊಡಿ / Meen fry kodi", "Please serve fresh coastal fish fry"),
+                Pair("ನೀರು ದೋಸೆ ಇದೆಯಾ? / Neer dose ideya?", "Do you have fresh Neer Dosa?")
+            ),
+            regionalCuisines = listOf("Neer Dosa", "Mangalore Buns", "Kori Rotti", "Goli Baje", "Anjal Fish Fry", "Patrode"),
+            localTip = "Coastal auto drivers are among the most disciplined and honest in India; meters are almost universally respected without haggling!"
+        ),
+        RegionalDialectInfo(
+            region = KarnatakaRegion.MALNAD,
+            dialectName = "Malnad Kannada (Chikkamagaluru / Shivamogga / Coorg)",
+            commonGreeting = "ಹೇಗಿದ್ದೀರಾ? ಊಟ ಆಯ್ತಾ? (Heggiddira? Oota aaytha? - How are you? Did you have food?)",
+            friendlyPhrases = listOf(
+                Pair("ಫಿಲ್ಟರ್ ಕಾಫಿ ಸೂಪರ್ / Filter coffee super", "The estate filter coffee is superb"),
+                Pair("ಮಳೆ ಬರ್ತಿದೆ, ರೇನ್‌ಕೋಟ್ ಕೊಡಿ / Male barthide, raincoat kodi", "It is raining, please lend a raincoat"),
+                Pair("ಅಕ್ಕಿ ರೊಟ್ಟಿ ಕೊಡಿ / Akki rotti kodi", "Please give traditional rice roti")
+            ),
+            regionalCuisines = listOf("Akki Rotti", "Jackfruit Chips", "Thambuli", "Bamboo Shoot (Kalale) Curry", "Estate Filter Coffee"),
+            localTip = "Homestays are the heart of Malnad; hosts treat guests like family. Always remove outdoor footwear before entering homestay verandas."
+        ),
+        RegionalDialectInfo(
+            region = KarnatakaRegion.HALE_MYSURU,
+            dialectName = "Royal South & Mysore Kannada (Mysuru / Mandya)",
+            commonGreeting = "ಬನ್ನಿ ಸಾರ್, ಚೆನ್ನಾಗಿದ್ದೀರಾ? (Banni saar, chennagidira? - Welcome sir, are you well?)",
+            friendlyPhrases = listOf(
+                Pair("ಮೈಸೂರ್ ಪಾಕ್ ಫ್ರೆಶ್ ಇದೆಯಾ? / Mysore Pak fresh ideya?", "Is the Mysore Pak freshly prepared?"),
+                Pair("ಚಾಮುಂಡಿ ಬೆಟ್ಟಕ್ಕೆ ಹೋಗೋಣ / Chamundi betta-ge hogona", "Let us go to Chamundi Hill"),
+                Pair("ಒಂದು ಮದ್ದೂರ್ ವಡೆ ಕೊಡಿ / Ondu Maddur Vade kodi", "Please give one crispy Maddur Vada")
+            ),
+            regionalCuisines = listOf("Original Mysore Pak", "Maddur Vada", "Mysore Masala Dosa", "Thatte Idli", "Ragi Mudde with Saaru"),
+            localTip = "Mysore Kannada is soft-spoken, polite, and royal. Use 'Banni' (Please come) and 'Hogi' (Please go)."
+        )
+    )
+
+    // ========================================================
+    // STATEWIDE CITY TRANSPORT & AUTO TARIFF BENCHMARKS
+    // ========================================================
+    val cityTariffs: List<CityTransportTariff> = listOf(
+        CityTransportTariff(
+            cityName = "Mangaluru & Udupi",
+            baseFare = "₹40.00 (First 1.5 km)",
+            perKmRate = "₹20.00 / km",
+            localAdvice = "Ranked #1 for auto driver honesty in Karnataka. Drivers automatically turn on digital meters without asking. Night fare (+50%) applies 10 PM – 5 AM.",
+            sharedAutoOption = "Local city buses (private blue buses in Mangalore) run every 3 minutes for ₹10–₹25."
+        ),
+        CityTransportTariff(
+            cityName = "Mysuru",
+            baseFare = "₹30.00 (First 2.0 km)",
+            perKmRate = "₹15.00 / km",
+            localAdvice = "At Mysuru Railway Station, use the official Pre-Paid Auto Booth near Exit 1 to avoid haggling. Tongas (horse buggies) near Palace charge ₹150–₹250.",
+            sharedAutoOption = "KSRTC city circular buses cover Chamundi Hill, Zoo, and KRS Brindavan Gardens."
+        ),
+        CityTransportTariff(
+            cityName = "Hubballi & Dharwad",
+            baseFare = "₹30.00 (First 1.8 km)",
+            perKmRate = "₹16.00 / km",
+            localAdvice = "Hubballi-Dharwad features the ultra-fast HDBRTS (Bus Rapid Transit System) dedicated corridor linking both twin cities every 2 minutes.",
+            sharedAutoOption = "Shared 'Tum-Tum' 8-seater autos operate along highway corridors for flat ₹15–₹25."
+        ),
+        CityTransportTariff(
+            cityName = "Hampi & Hospet",
+            baseFare = "Day-Hire: ₹800 – ₹1,200",
+            perKmRate = "Flat tour packages",
+            localAdvice = "Hampi monuments are spread over 25 km. Hire an auto for a full day (₹800–₹1,000 for Vijaya Vittala, Royal Enclosure, Virupaksha, and sunset point).",
+            sharedAutoOption = "Bicycles (₹150/day) and electric scooters (₹400/day) are available for rent in Hampi bazaar."
         )
     )
 
     fun getSpotsByCategory(category: TourismCategory): List<KarnatakaSpot> {
         return spots.filter { it.category == category }
+    }
+
+    fun getSpotsByRegion(region: KarnatakaRegion): List<KarnatakaSpot> {
+        return if (region == KarnatakaRegion.ALL) spots
+        else spots.filter { it.region == region }
     }
 
     fun getSpotById(id: String): KarnatakaSpot? {

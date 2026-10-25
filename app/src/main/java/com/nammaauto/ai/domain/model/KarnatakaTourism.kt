@@ -1,11 +1,22 @@
 package com.nammaauto.ai.domain.model
 
 enum class TourismCategory(val label: String, val iconDescription: String) {
-    TEMPLES_HERITAGE("Temples & Heritage", "Ancient Hoysala & Vijayanagara UNESCO Architecture"),
-    ADVENTURE_SPORTS("Adventure Sports", "White-Water Rafting, Scuba Diving & Bouldering"),
-    TREKKING_TRAILS("Trekking & Ghats", "Western Ghats, Shola Grasslands & Mountain Peaks"),
+    TEMPLES_HERITAGE("Temples & Heritage", "Ancient Hoysala, Vijayanagara & Chalukya Architecture"),
+    ADVENTURE_SPORTS("Adventure Sports", "White-Water Rafting, Scuba Diving, Surfing & Bouldering"),
+    TREKKING_TRAILS("Trekking & Peaks", "Western Ghats, Shola Grasslands & Peak Trails via Aranya Vihaara"),
     BEACHES("Coastal Beaches", "Golden Sands, Watersports & Arabian Sea Sunsets"),
-    ISLANDS("Islands to Visit", "Geological Columnar Basalt & Coral Reef Islands")
+    ISLANDS("Islands to Visit", "Geological Columnar Basalt & Coral Reef Marine Islands"),
+    WATERFALLS_NATURE("Waterfalls & Rainforests", "Jog Falls, Agumbe, Shivanasamudra & Plunges"),
+    WILDLIFE_SAFARI("Wildlife & Tiger Safaris", "Kabini, Bandipur, Nagarhole & Jungle Lodges")
+}
+
+enum class KarnatakaRegion(val label: String, val districtsDescription: String, val iconTag: String) {
+    ALL("All Karnataka", "All 31 Districts Statewide", "🌟"),
+    UTTARA_KARNATAKA("Heritage North", "Hampi, Badami, Bijapur, Bidar, Belagavi, Hubballi", "🏛️"),
+    KARAVALI("Coastal Karavali", "Udupi, Gokarna, Mangaluru, Karwar, Murudeshwar", "🌊"),
+    MALNAD("Malnad & Ghats", "Chikkamagaluru, Shivamogga, Coorg, Sakleshpur, Jog Falls", "🌿"),
+    HALE_MYSURU("Royal South", "Mysuru, Kabini, Bandipur, Srirangapatna, Mandya", "👑"),
+    BAYALUSEEME("Central Deccan", "Chitradurga, Ramanagara, Chikkaballapura, Hassan", "🏰")
 }
 
 data class OfficialBookingInfo(
@@ -33,7 +44,9 @@ data class KarnatakaSpot(
     val kannadaName: String,
     val tagline: String,
     val category: TourismCategory,
+    val region: KarnatakaRegion,
     val district: String,
+    val nearestTransitHub: String,
     val distanceFromBangaloreKm: Int,
     val bestSeason: String,
     val timings: String,
@@ -45,4 +58,21 @@ data class KarnatakaSpot(
     val survivalKannadaPhrase: String,
     val survivalKannadaLipi: String,
     val survivalKannadaMeaning: String
+)
+
+data class RegionalDialectInfo(
+    val region: KarnatakaRegion,
+    val dialectName: String,
+    val commonGreeting: String,
+    val friendlyPhrases: List<Pair<String, String>>, // Kannada Lipi/Phonetic to English
+    val regionalCuisines: List<String>,
+    val localTip: String
+)
+
+data class CityTransportTariff(
+    val cityName: String,
+    val baseFare: String,
+    val perKmRate: String,
+    val localAdvice: String,
+    val sharedAutoOption: String
 )

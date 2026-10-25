@@ -5,9 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -31,25 +28,25 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.filled.BeachAccess
-import androidx.compose.material.icons.filled.BookOnline
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.CurrencyExchange
+import androidx.compose.material.icons.filled.DirectionsBus
 import androidx.compose.material.icons.filled.Explore
-import androidx.compose.material.icons.filled.Forest
 import androidx.compose.material.icons.filled.Hiking
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Kayaking
-import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.OpenInBrowser
+import androidx.compose.material.icons.filled.Pets
 import androidx.compose.material.icons.filled.Place
+import androidx.compose.material.icons.filled.Restaurant
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Security
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material.icons.filled.TempleHindu
-import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material.icons.filled.Train
+import androidx.compose.material.icons.filled.WaterDrop
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -85,20 +82,18 @@ import com.nammaauto.ai.core.theme.AutoGreen
 import com.nammaauto.ai.core.theme.AutoGreenDark
 import com.nammaauto.ai.core.theme.AutoYellow
 import com.nammaauto.ai.core.theme.FastMeterAlert
-import com.nammaauto.ai.core.theme.GoldPro
 import com.nammaauto.ai.core.theme.MetroPurple
 import com.nammaauto.ai.core.theme.MonsoonBlue
 import com.nammaauto.ai.core.theme.Slate200
 import com.nammaauto.ai.core.theme.Slate400
-import com.nammaauto.ai.core.theme.Slate600
 import com.nammaauto.ai.core.theme.Slate700
 import com.nammaauto.ai.core.theme.Slate800
 import com.nammaauto.ai.core.theme.Slate900
 import com.nammaauto.ai.core.theme.SurgeWarningOrange
+import com.nammaauto.ai.domain.model.KarnatakaRegion
 import com.nammaauto.ai.domain.model.KarnatakaSpot
 import com.nammaauto.ai.domain.model.TourismCategory
 import com.nammaauto.ai.domain.model.TouristGuidanceData
-import com.nammaauto.ai.presentation.components.BangaloreBadge
 import com.nammaauto.ai.presentation.components.GlassCard
 
 @Composable
@@ -108,9 +103,9 @@ fun KarnatakaExplorerScreen(
     onNavigateToProStore: () -> Unit
 ) {
     val context = LocalContext.current
+    val selectedRegion by viewModel.selectedRegion.collectAsState()
     val selectedCategory by viewModel.selectedCategory.collectAsState()
     val searchQuery by viewModel.searchQuery.collectAsState()
-    val maxDistanceFilter by viewModel.maxDistanceFilter.collectAsState()
     val isForeignerMode by viewModel.isForeignerMode.collectAsState()
     val filteredSpots by viewModel.filteredSpots.collectAsState()
     val selectedSpotForDetails by viewModel.selectedSpotForDetails.collectAsState()
@@ -118,6 +113,8 @@ fun KarnatakaExplorerScreen(
     val lastSpokenSpotId by viewModel.lastSpokenSpotId.collectAsState()
 
     var showScamBusterTab by remember { mutableStateOf(false) }
+    var showStatewideTransportTab by remember { mutableStateOf(false) }
+    var showRegionalDialectTab by remember { mutableStateOf(false) }
 
     // Detail Dialog
     selectedSpotForDetails?.let { spot ->
@@ -141,7 +138,7 @@ fun KarnatakaExplorerScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(horizontal = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
             // Header Section
             item {
@@ -154,8 +151,8 @@ fun KarnatakaExplorerScreen(
                     Column {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Text(
-                                text = "Explore Karnataka",
-                                fontSize = 24.sp,
+                                text = "Karnataka Explorer",
+                                fontSize = 23.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = Slate200
                             )
@@ -163,8 +160,8 @@ fun KarnatakaExplorerScreen(
                             Text(text = "🧭", fontSize = 22.sp)
                         }
                         Text(
-                            text = "Official Heritage, Ghats & Coastal Guide",
-                            fontSize = 13.sp,
+                            text = "Statewide Tourism • Heritage, Ghats & Coast",
+                            fontSize = 12.sp,
                             color = AutoYellow
                         )
                     }
@@ -198,235 +195,380 @@ fun KarnatakaExplorerScreen(
                 }
             }
 
-            // Quick Scam-Buster & Trek Booking Banner
+            // Region Selector Scroll (North, Coastal, Malnad, South, Deccan)
             item {
-                GlassCard(
-                    backgroundColor = Slate800.copy(alpha = 0.95f),
-                    borderColor = MonsoonBlue.copy(alpha = 0.6f)
-                ) {
-                    Column(modifier = Modifier.fillMaxWidth()) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Box(
-                                    modifier = Modifier
-                                        .size(34.dp)
-                                        .background(MonsoonBlue.copy(alpha = 0.2f), CircleShape),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Icon(
-                                        imageVector = Icons.Default.Security,
-                                        contentDescription = null,
-                                        tint = MonsoonBlue,
-                                        modifier = Modifier.size(20.dp)
-                                    )
-                                }
-                                Spacer(modifier = Modifier.width(10.dp))
-                                Column {
-                                    Text(
-                                        text = "Tourist Scam Buster & Fair Prices",
-                                        fontSize = 15.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        color = Slate200
-                                    )
-                                    Text(
-                                        text = "ASI Entry, Aranya Vihaara & Darshini MRPs",
-                                        fontSize = 11.sp,
-                                        color = Slate400
-                                    )
-                                }
-                            }
-
-                            Button(
-                                onClick = { showScamBusterTab = !showScamBusterTab },
-                                colors = ButtonDefaults.buttonColors(
-                                    containerColor = if (showScamBusterTab) MonsoonBlue else Slate700
-                                ),
-                                shape = RoundedCornerShape(12.dp)
+                val regionScrollState = rememberScrollState()
+                Column {
+                    Text(
+                        text = "EXPLORE BY REGION / CIRCUIT:",
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Slate400,
+                        letterSpacing = 1.sp
+                    )
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .horizontalScroll(regionScrollState),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        KarnatakaRegion.values().forEach { region ->
+                            val isSelected = selectedRegion == region
+                            Surface(
+                                shape = RoundedCornerShape(12.dp),
+                                color = if (isSelected) AutoYellow else Slate800,
+                                border = BorderStroke(1.dp, if (isSelected) AutoYellow else Slate700),
+                                modifier = Modifier.clickable { viewModel.selectRegion(region) }
                             ) {
-                                Text(
-                                    text = if (showScamBusterTab) "Hide" else "View",
-                                    fontSize = 12.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = if (showScamBusterTab) Slate900 else Slate200
-                                )
+                                Row(
+                                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 7.dp),
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Text(text = region.iconTag, fontSize = 14.sp)
+                                    Spacer(modifier = Modifier.width(6.dp))
+                                    Text(
+                                        text = region.label,
+                                        fontSize = 12.sp,
+                                        fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,
+                                        color = if (isSelected) Slate900 else Slate200
+                                    )
+                                }
                             }
                         }
+                    }
+                }
+            }
 
-                        AnimatedVisibility(visible = showScamBusterTab) {
-                            Column(modifier = Modifier.padding(top = 14.dp)) {
-                                HorizontalDivider(color = Slate700)
-                                Spacer(modifier = Modifier.height(12.dp))
-
+            // Quick Statewide Info Hub Toggles (Transport Tariffs, Dialect, Scam Buster)
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    // Statewide Auto Tariffs Button
+                    Surface(
+                        modifier = Modifier
+                            .weight(1f)
+                            .clickable { showStatewideTransportTab = !showStatewideTransportTab },
+                        shape = RoundedCornerShape(12.dp),
+                        color = if (showStatewideTransportTab) MonsoonBlue.copy(alpha = 0.25f) else Slate800,
+                        border = BorderStroke(1.dp, if (showStatewideTransportTab) MonsoonBlue else Slate700)
+                    ) {
+                        Column(modifier = Modifier.padding(10.dp)) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(
+                                    imageVector = Icons.Default.DirectionsBus,
+                                    contentDescription = null,
+                                    tint = MonsoonBlue,
+                                    modifier = Modifier.size(16.dp)
+                                )
+                                Spacer(modifier = Modifier.width(6.dp))
                                 Text(
-                                    text = "Official Consumer Price Benchmarks:",
-                                    fontSize = 13.sp,
+                                    text = "City Auto Rates",
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = Slate200
+                                )
+                            }
+                            Text(
+                                text = "Mangalore, Mysuru, Hubli",
+                                fontSize = 10.sp,
+                                color = Slate400
+                            )
+                        }
+                    }
+
+                    // Regional Dialects & Food Button
+                    Surface(
+                        modifier = Modifier
+                            .weight(1f)
+                            .clickable { showRegionalDialectTab = !showRegionalDialectTab },
+                        shape = RoundedCornerShape(12.dp),
+                        color = if (showRegionalDialectTab) AutoGreen.copy(alpha = 0.25f) else Slate800,
+                        border = BorderStroke(1.dp, if (showRegionalDialectTab) AutoGreen else Slate700)
+                    ) {
+                        Column(modifier = Modifier.padding(10.dp)) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(
+                                    imageVector = Icons.Default.Restaurant,
+                                    contentDescription = null,
+                                    tint = AutoGreen,
+                                    modifier = Modifier.size(16.dp)
+                                )
+                                Spacer(modifier = Modifier.width(6.dp))
+                                Text(
+                                    text = "Dialects & Food",
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = Slate200
+                                )
+                            }
+                            Text(
+                                text = "Tulu, Malnad, Uttara KA",
+                                fontSize = 10.sp,
+                                color = Slate400
+                            )
+                        }
+                    }
+
+                    // Scam Buster Button
+                    Surface(
+                        modifier = Modifier
+                            .weight(1f)
+                            .clickable { showScamBusterTab = !showScamBusterTab },
+                        shape = RoundedCornerShape(12.dp),
+                        color = if (showScamBusterTab) SurgeWarningOrange.copy(alpha = 0.25f) else Slate800,
+                        border = BorderStroke(1.dp, if (showScamBusterTab) SurgeWarningOrange else Slate700)
+                    ) {
+                        Column(modifier = Modifier.padding(10.dp)) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(
+                                    imageVector = Icons.Default.Security,
+                                    contentDescription = null,
+                                    tint = SurgeWarningOrange,
+                                    modifier = Modifier.size(16.dp)
+                                )
+                                Spacer(modifier = Modifier.width(6.dp))
+                                Text(
+                                    text = "Scam Buster",
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = Slate200
+                                )
+                            }
+                            Text(
+                                text = "MRP & Rules",
+                                fontSize = 10.sp,
+                                color = Slate400
+                            )
+                        }
+                    }
+                }
+            }
+
+            // Expandable: Statewide City Auto Tariffs & KSRTC Guide
+            item {
+                AnimatedVisibility(visible = showStatewideTransportTab) {
+                    GlassCard(
+                        backgroundColor = Slate800.copy(alpha = 0.95f),
+                        borderColor = MonsoonBlue.copy(alpha = 0.5f)
+                    ) {
+                        Column(modifier = Modifier.fillMaxWidth()) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = "🛺 All-Karnataka Auto Rickshaw & Transit Benchmarks",
+                                    fontSize = 14.sp,
                                     fontWeight = FontWeight.Bold,
                                     color = AutoYellow
                                 )
-                                Spacer(modifier = Modifier.height(8.dp))
-
-                                TouristGuidanceData.priceBenchmarks.forEach { item ->
-                                    Surface(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(vertical = 4.dp),
-                                        shape = RoundedCornerShape(10.dp),
-                                        color = Slate900.copy(alpha = 0.8f),
-                                        border = BorderStroke(1.dp, Slate700.copy(alpha = 0.5f))
-                                    ) {
-                                        Row(
-                                            modifier = Modifier.padding(10.dp),
-                                            horizontalArrangement = Arrangement.SpaceBetween,
-                                            verticalAlignment = Alignment.CenterVertically
-                                        ) {
-                                            Column(modifier = Modifier.weight(1f)) {
-                                                Text(
-                                                    text = item.itemName,
-                                                    fontSize = 13.sp,
-                                                    fontWeight = FontWeight.SemiBold,
-                                                    color = Slate200
-                                                )
-                                                Text(
-                                                    text = item.ripOffWarning,
-                                                    fontSize = 11.sp,
-                                                    color = SurgeWarningOrange
-                                                )
-                                                Spacer(modifier = Modifier.height(4.dp))
-                                                Text(
-                                                    text = "Say: '" + item.phoneticKannada + "'",
-                                                    fontSize = 11.sp,
-                                                    color = MonsoonBlue
-                                                )
-                                            }
-                                            Column(horizontalAlignment = Alignment.End) {
-                                                Text(
-                                                    text = item.fairPriceInr,
-                                                    fontSize = 13.sp,
-                                                    fontWeight = FontWeight.Bold,
-                                                    color = AutoGreen
-                                                )
-                                                Text(
-                                                    text = item.approxUsd,
-                                                    fontSize = 11.sp,
-                                                    color = Slate400
-                                                )
-                                                IconButton(
-                                                    onClick = {
-                                                        viewModel.playRawKannada(
-                                                            item.survivalKannada,
-                                                            "benchmark_${item.id}"
-                                                        )
-                                                    },
-                                                    modifier = Modifier.size(32.dp)
-                                                ) {
-                                                    Icon(
-                                                        imageVector = Icons.AutoMirrored.Filled.VolumeUp,
-                                                        contentDescription = "Speak",
-                                                        tint = AutoYellow,
-                                                        modifier = Modifier.size(18.dp)
-                                                    )
-                                                }
-                                            }
-                                        }
-                                    }
+                                IconButton(
+                                    onClick = { showStatewideTransportTab = false },
+                                    modifier = Modifier.size(24.dp)
+                                ) {
+                                    Icon(Icons.Default.Close, contentDescription = "Close", tint = Slate400)
                                 }
+                            }
+                            Spacer(modifier = Modifier.height(8.dp))
 
-                                Spacer(modifier = Modifier.height(10.dp))
-                                Text(
-                                    text = "Important Tourist Checkpoint Rules:",
-                                    fontSize = 13.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = AutoYellow
-                                )
-                                Spacer(modifier = Modifier.height(6.dp))
-
-                                TouristGuidanceData.touristGuidelines.forEach { guide ->
-                                    Row(
-                                        modifier = Modifier.padding(vertical = 4.dp),
-                                        verticalAlignment = Alignment.Top
-                                    ) {
-                                        Icon(
-                                            imageVector = Icons.Default.CheckCircle,
-                                            contentDescription = null,
-                                            tint = AutoGreen,
-                                            modifier = Modifier
-                                                .size(16.dp)
-                                                .padding(top = 2.dp)
-                                        )
-                                        Spacer(modifier = Modifier.width(8.dp))
-                                        Column {
+                            viewModel.cityTariffs.forEach { tariff ->
+                                Surface(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 4.dp),
+                                    shape = RoundedCornerShape(8.dp),
+                                    color = Slate900,
+                                    border = BorderStroke(1.dp, Slate700)
+                                ) {
+                                    Column(modifier = Modifier.padding(10.dp)) {
+                                        Row(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            horizontalArrangement = Arrangement.SpaceBetween
+                                        ) {
                                             Text(
-                                                text = "${guide.title} (${guide.keyRule})",
-                                                fontSize = 12.sp,
-                                                fontWeight = FontWeight.SemiBold,
+                                                text = tariff.cityName,
+                                                fontSize = 13.sp,
+                                                fontWeight = FontWeight.Bold,
                                                 color = Slate200
                                             )
                                             Text(
-                                                text = guide.detailedAdvice,
-                                                fontSize = 11.sp,
-                                                color = Slate400
+                                                text = "${tariff.baseFare} | ${tariff.perKmRate}",
+                                                fontSize = 12.sp,
+                                                fontWeight = FontWeight.Bold,
+                                                color = AutoGreen
                                             )
                                         }
+                                        Spacer(modifier = Modifier.height(4.dp))
+                                        Text(text = tariff.localAdvice, fontSize = 11.sp, color = Slate400)
+                                        Text(
+                                            text = "🚌 Transit Option: ${tariff.sharedAutoOption}",
+                                            fontSize = 11.sp,
+                                            color = MonsoonBlue
+                                        )
                                     }
                                 }
+                            }
 
-                                Spacer(modifier = Modifier.height(12.dp))
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
+                                Button(
+                                    onClick = { openBrowserUrl(context, "https://ksrtc.in") },
+                                    colors = ButtonDefaults.buttonColors(containerColor = MonsoonBlue),
+                                    shape = RoundedCornerShape(8.dp),
+                                    modifier = Modifier.weight(1f)
                                 ) {
-                                    Button(
-                                        onClick = {
-                                            openBrowserUrl(
-                                                context,
-                                                "https://aranyavihaara.karnataka.gov.in"
-                                            )
-                                        },
-                                        colors = ButtonDefaults.buttonColors(containerColor = AutoGreenDark),
-                                        shape = RoundedCornerShape(8.dp),
-                                        modifier = Modifier.weight(1f)
-                                    ) {
-                                        Icon(
-                                            imageVector = Icons.Default.Hiking,
-                                            contentDescription = null,
-                                            modifier = Modifier.size(16.dp),
-                                            tint = Slate200
-                                        )
-                                        Spacer(modifier = Modifier.width(6.dp))
+                                    Icon(Icons.Default.DirectionsBus, contentDescription = null, tint = Slate900, modifier = Modifier.size(16.dp))
+                                    Spacer(modifier = Modifier.width(4.dp))
+                                    Text("Book KSRTC Buses", fontSize = 11.sp, fontWeight = FontWeight.Bold, color = Slate900)
+                                }
+                                OutlinedButton(
+                                    onClick = { openBrowserUrl(context, "https://karnatakatourism.org") },
+                                    border = BorderStroke(1.dp, AutoYellow),
+                                    shape = RoundedCornerShape(8.dp),
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Text("KSTDC Tours", fontSize = 11.sp, color = AutoYellow)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Expandable: Regional Dialects & Food Guide
+            item {
+                AnimatedVisibility(visible = showRegionalDialectTab) {
+                    GlassCard(
+                        backgroundColor = Slate800.copy(alpha = 0.95f),
+                        borderColor = AutoGreen.copy(alpha = 0.5f)
+                    ) {
+                        Column(modifier = Modifier.fillMaxWidth()) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = "🍛 Regional Dialects & Iconic Cuisines of Karnataka",
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = AutoYellow
+                                )
+                                IconButton(
+                                    onClick = { showRegionalDialectTab = false },
+                                    modifier = Modifier.size(24.dp)
+                                ) {
+                                    Icon(Icons.Default.Close, contentDescription = "Close", tint = Slate400)
+                                }
+                            }
+                            Spacer(modifier = Modifier.height(8.dp))
+
+                            viewModel.regionalDialects.forEach { dialect ->
+                                Surface(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 4.dp),
+                                    shape = RoundedCornerShape(8.dp),
+                                    color = Slate900,
+                                    border = BorderStroke(1.dp, Slate700)
+                                ) {
+                                    Column(modifier = Modifier.padding(10.dp)) {
                                         Text(
-                                            text = "Aranya Vihaara",
+                                            text = dialect.dialectName,
+                                            fontSize = 13.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = AutoGreen
+                                        )
+                                        Text(
+                                            text = "Greeting: ${dialect.commonGreeting}",
                                             fontSize = 11.sp,
+                                            fontWeight = FontWeight.SemiBold,
                                             color = Slate200
                                         )
-                                    }
-
-                                    OutlinedButton(
-                                        onClick = {
-                                            val dialIntent = Intent(Intent.ACTION_DIAL).apply {
-                                                data = Uri.parse("tel:112")
-                                            }
-                                            context.startActivity(dialIntent)
-                                        },
-                                        border = BorderStroke(1.dp, FastMeterAlert),
-                                        shape = RoundedCornerShape(8.dp),
-                                        modifier = Modifier.weight(1f)
-                                    ) {
-                                        Icon(
-                                            imageVector = Icons.Default.Call,
-                                            contentDescription = null,
-                                            modifier = Modifier.size(16.dp),
-                                            tint = FastMeterAlert
-                                        )
-                                        Spacer(modifier = Modifier.width(6.dp))
+                                        Spacer(modifier = Modifier.height(4.dp))
                                         Text(
-                                            text = "Tourist SOS (112)",
+                                            text = "Famous Cuisines: ${dialect.regionalCuisines.joinToString(", ")}",
                                             fontSize = 11.sp,
-                                            color = FastMeterAlert
+                                            color = MonsoonBlue
                                         )
+                                        Spacer(modifier = Modifier.height(4.dp))
+                                        Text(
+                                            text = "💡 Local Tip: ${dialect.localTip}",
+                                            fontSize = 11.sp,
+                                            color = Slate400
+                                        )
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Expandable: Scam Buster & Price Benchmarks
+            item {
+                AnimatedVisibility(visible = showScamBusterTab) {
+                    GlassCard(
+                        backgroundColor = Slate800.copy(alpha = 0.95f),
+                        borderColor = SurgeWarningOrange.copy(alpha = 0.5f)
+                    ) {
+                        Column(modifier = Modifier.fillMaxWidth()) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = "🛡️ Karnataka Tourist Scam Buster & Fair Prices",
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = AutoYellow
+                                )
+                                IconButton(
+                                    onClick = { showScamBusterTab = false },
+                                    modifier = Modifier.size(24.dp)
+                                ) {
+                                    Icon(Icons.Default.Close, contentDescription = "Close", tint = Slate400)
+                                }
+                            }
+                            Spacer(modifier = Modifier.height(8.dp))
+
+                            TouristGuidanceData.priceBenchmarks.forEach { item ->
+                                Surface(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 3.dp),
+                                    shape = RoundedCornerShape(8.dp),
+                                    color = Slate900,
+                                    border = BorderStroke(1.dp, Slate700)
+                                ) {
+                                    Row(
+                                        modifier = Modifier.padding(8.dp),
+                                        horizontalArrangement = Arrangement.SpaceBetween,
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
+                                        Column(modifier = Modifier.weight(1f)) {
+                                            Text(text = item.itemName, fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = Slate200)
+                                            Text(text = item.ripOffWarning, fontSize = 10.sp, color = SurgeWarningOrange)
+                                            Text(text = "Say: '" + item.phoneticKannada + "'", fontSize = 10.sp, color = MonsoonBlue)
+                                        }
+                                        Column(horizontalAlignment = Alignment.End) {
+                                            Text(text = item.fairPriceInr, fontSize = 12.sp, fontWeight = FontWeight.Bold, color = AutoGreen)
+                                            Text(text = item.approxUsd, fontSize = 10.sp, color = Slate400)
+                                            IconButton(
+                                                onClick = { viewModel.playRawKannada(item.survivalKannada, "bench_" + item.id) },
+                                                modifier = Modifier.size(28.dp)
+                                            ) {
+                                                Icon(Icons.AutoMirrored.Filled.VolumeUp, contentDescription = "Play", tint = AutoYellow, modifier = Modifier.size(16.dp))
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -443,7 +585,7 @@ fun KarnatakaExplorerScreen(
                     modifier = Modifier.fillMaxWidth(),
                     placeholder = {
                         Text(
-                            text = "Search Hampi, Kudremukh, Netrani, Beaches...",
+                            text = "Search Hampi, Jog Falls, Kudremukh, Netrani, Udupi...",
                             color = Slate400,
                             fontSize = 13.sp
                         )
@@ -492,7 +634,7 @@ fun KarnatakaExplorerScreen(
                     FilterChip(
                         selected = selectedCategory == null,
                         onClick = { viewModel.selectCategory(null) },
-                        label = { Text("🌟 All Highlights") },
+                        label = { Text("🌟 All Categories") },
                         colors = FilterChipDefaults.filterChipColors(
                             selectedContainerColor = AutoYellow,
                             selectedLabelColor = Slate900,
@@ -530,38 +672,24 @@ fun KarnatakaExplorerScreen(
                 }
             }
 
-            // Quick Distance Filters
+            // Active Results Count Banner
             item {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "Distance:",
-                        fontSize = 11.sp,
+                        text = "Showing ${filteredSpots.size} destinations in ${selectedRegion.label}",
+                        fontSize = 12.sp,
                         color = Slate400
                     )
-
-                    DistanceFilterChip(
-                        label = "All KA",
-                        isSelected = maxDistanceFilter == null,
-                        onClick = { viewModel.setMaxDistanceFilter(null) }
-                    )
-                    DistanceFilterChip(
-                        label = "< 100 km",
-                        isSelected = maxDistanceFilter == 100,
-                        onClick = { viewModel.setMaxDistanceFilter(100) }
-                    )
-                    DistanceFilterChip(
-                        label = "< 300 km",
-                        isSelected = maxDistanceFilter == 300,
-                        onClick = { viewModel.setMaxDistanceFilter(300) }
-                    )
-                    DistanceFilterChip(
-                        label = "Ghats & Coast",
-                        isSelected = maxDistanceFilter == 550,
-                        onClick = { viewModel.setMaxDistanceFilter(550) }
+                    Text(
+                        text = selectedRegion.districtsDescription,
+                        fontSize = 11.sp,
+                        color = AutoYellow,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
                     )
                 }
             }
@@ -584,7 +712,7 @@ fun KarnatakaExplorerScreen(
                             color = Slate200
                         )
                         Text(
-                            text = "Try searching another keyword or clearing distance filters",
+                            text = "Try switching region or searching another keyword",
                             fontSize = 12.sp,
                             color = Slate400
                         )
@@ -631,41 +759,48 @@ fun DestinationCard(
         border = BorderStroke(1.dp, Slate700)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            // Header Row: Category Badge + District + Distance
+            // Header Row: Category Badge + Region Badge + District
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Surface(
-                    shape = RoundedCornerShape(8.dp),
-                    color = getCategoryColor(spot.category).copy(alpha = 0.2f),
-                    border = BorderStroke(1.dp, getCategoryColor(spot.category))
-                ) {
-                    Text(
-                        text = spot.category.label,
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = getCategoryColor(spot.category),
-                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-                    )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Surface(
+                        shape = RoundedCornerShape(8.dp),
+                        color = getCategoryColor(spot.category).copy(alpha = 0.2f),
+                        border = BorderStroke(1.dp, getCategoryColor(spot.category))
+                    ) {
+                        Text(
+                            text = spot.category.label,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = getCategoryColor(spot.category),
+                            modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.width(6.dp))
+
+                    Surface(
+                        shape = RoundedCornerShape(8.dp),
+                        color = Slate700.copy(alpha = 0.5f)
+                    ) {
+                        Text(
+                            text = spot.region.iconTag + " " + spot.region.label,
+                            fontSize = 10.sp,
+                            color = Slate200,
+                            modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
+                        )
+                    }
                 }
 
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(
-                        imageVector = Icons.Default.Place,
-                        contentDescription = null,
-                        tint = Slate400,
-                        modifier = Modifier.size(14.dp)
-                    )
-                    Spacer(modifier = Modifier.width(3.dp))
-                    Text(
-                        text = "${spot.distanceFromBangaloreKm} km from BLR",
-                        fontSize = 12.sp,
-                        color = Slate400,
-                        fontWeight = FontWeight.Medium
-                    )
-                }
+                Text(
+                    text = spot.district,
+                    fontSize = 11.sp,
+                    color = Slate400,
+                    fontWeight = FontWeight.Medium
+                )
             }
 
             Spacer(modifier = Modifier.height(10.dp))
@@ -693,7 +828,33 @@ fun DestinationCard(
                 overflow = TextOverflow.Ellipsis
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(8.dp))
+
+            // Transit Hub Indicator
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Slate900.copy(alpha = 0.6f), RoundedCornerShape(6.dp))
+                    .padding(horizontal = 8.dp, vertical = 4.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Train,
+                    contentDescription = null,
+                    tint = MonsoonBlue,
+                    modifier = Modifier.size(13.dp)
+                )
+                Spacer(modifier = Modifier.width(5.dp))
+                Text(
+                    text = spot.nearestTransitHub,
+                    fontSize = 11.sp,
+                    color = MonsoonBlue,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
 
             // Dual Pricing Pill / Box
             Surface(
@@ -731,20 +892,20 @@ fun DestinationCard(
                     }
 
                     // Portal Badge
+                    val isAranya = spot.bookingInfo.badgeTag.contains("ARANYA")
                     Surface(
                         shape = RoundedCornerShape(6.dp),
-                        color = if (spot.bookingInfo.badgeTag.contains("ARANYA")) AutoGreenDark.copy(alpha = 0.3f)
-                        else MetroPurple.copy(alpha = 0.2f),
+                        color = if (isAranya) AutoGreenDark.copy(alpha = 0.3f) else MetroPurple.copy(alpha = 0.2f),
                         border = BorderStroke(
                             1.dp,
-                            if (spot.bookingInfo.badgeTag.contains("ARANYA")) AutoGreen else MetroPurple
+                            if (isAranya) AutoGreen else MetroPurple
                         )
                     ) {
                         Text(
                             text = spot.bookingInfo.badgeTag,
                             fontSize = 10.sp,
                             fontWeight = FontWeight.Bold,
-                            color = if (spot.bookingInfo.badgeTag.contains("ARANYA")) AutoGreen else MetroPurple,
+                            color = if (isAranya) AutoGreen else MetroPurple,
                             modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
                         )
                     }
@@ -767,13 +928,13 @@ fun DestinationCard(
                 ) {
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            text = "🗣️ Tourist Kannada to Ask:",
+                            text = "🗣️ Local Kannada to Ask:",
                             fontSize = 10.sp,
                             color = AutoYellow,
                             fontWeight = FontWeight.Bold
                         )
                         Text(
-                            text = "\"" + spot.survivalKannadaPhrase + "\"",
+                            text = """ + spot.survivalKannadaPhrase + """,
                             fontSize = 12.sp,
                             fontWeight = FontWeight.SemiBold,
                             color = Slate200,
@@ -814,10 +975,11 @@ fun DestinationCard(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
+                val isAranya = spot.bookingInfo.badgeTag.contains("ARANYA")
                 Button(
                     onClick = { onOpenBookingUrl() },
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = if (spot.bookingInfo.badgeTag.contains("ARANYA")) AutoGreenDark else Slate700
+                        containerColor = if (isAranya) AutoGreenDark else Slate700
                     ),
                     shape = RoundedCornerShape(10.dp),
                     modifier = Modifier.weight(1f)
@@ -830,7 +992,7 @@ fun DestinationCard(
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     Text(
-                        text = if (spot.bookingInfo.badgeTag.contains("ARANYA")) "Aranya Booking" else "Official Portal",
+                        text = if (isAranya) "Aranya Booking" else "Official Portal",
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
                         color = Slate200
@@ -895,17 +1057,27 @@ fun DestinationDetailDialog(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Surface(
-                        shape = RoundedCornerShape(8.dp),
-                        color = getCategoryColor(spot.category).copy(alpha = 0.2f),
-                        border = BorderStroke(1.dp, getCategoryColor(spot.category))
-                    ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Surface(
+                            shape = RoundedCornerShape(8.dp),
+                            color = getCategoryColor(spot.category).copy(alpha = 0.2f),
+                            border = BorderStroke(1.dp, getCategoryColor(spot.category))
+                        ) {
+                            Text(
+                                text = spot.category.label,
+                                fontSize = 11.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = getCategoryColor(spot.category),
+                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.width(6.dp))
+
                         Text(
-                            text = spot.category.label,
-                            fontSize = 11.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = getCategoryColor(spot.category),
-                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                            text = "${spot.region.iconTag} ${spot.region.label}",
+                            fontSize = 12.sp,
+                            color = Slate400
                         )
                     }
 
@@ -944,6 +1116,12 @@ fun DestinationDetailDialog(
                             fontSize = 15.sp,
                             color = AutoYellow,
                             fontWeight = FontWeight.Medium
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = "District: ${spot.district} | ${spot.nearestTransitHub}",
+                            fontSize = 11.sp,
+                            color = MonsoonBlue
                         )
                         Spacer(modifier = Modifier.height(6.dp))
                         Text(
@@ -1090,7 +1268,7 @@ fun DestinationDetailDialog(
 
                     // How to Reach & Transit
                     item {
-                        DetailSectionCard(title = "🚌 How to Reach from Bangalore") {
+                        DetailSectionCard(title = "🚌 How to Reach & Regional Transit") {
                             Text(
                                 text = spot.howToReachTransit,
                                 fontSize = 12.sp,
@@ -1154,10 +1332,11 @@ fun DestinationDetailDialog(
                 Spacer(modifier = Modifier.height(12.dp))
 
                 // Bottom Action: Open Booking Portal
+                val isAranya = spot.bookingInfo.badgeTag.contains("ARANYA")
                 Button(
                     onClick = onOpenBookingUrl,
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = if (spot.bookingInfo.badgeTag.contains("ARANYA")) AutoGreenDark else MonsoonBlue
+                        containerColor = if (isAranya) AutoGreenDark else MonsoonBlue
                     ),
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier.fillMaxWidth()
@@ -1206,28 +1385,6 @@ fun DetailSectionCard(
     }
 }
 
-@Composable
-fun DistanceFilterChip(
-    label: String,
-    isSelected: Boolean,
-    onClick: () -> Unit
-) {
-    Surface(
-        shape = RoundedCornerShape(12.dp),
-        color = if (isSelected) MonsoonBlue.copy(alpha = 0.2f) else Slate800,
-        border = BorderStroke(1.dp, if (isSelected) MonsoonBlue else Slate700),
-        modifier = Modifier.clickable { onClick() }
-    ) {
-        Text(
-            text = label,
-            fontSize = 11.sp,
-            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
-            color = if (isSelected) MonsoonBlue else Slate400,
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-        )
-    }
-}
-
 fun getCategoryIcon(cat: TourismCategory): ImageVector {
     return when (cat) {
         TourismCategory.TEMPLES_HERITAGE -> Icons.Default.TempleHindu
@@ -1235,6 +1392,8 @@ fun getCategoryIcon(cat: TourismCategory): ImageVector {
         TourismCategory.TREKKING_TRAILS -> Icons.Default.Hiking
         TourismCategory.BEACHES -> Icons.Default.BeachAccess
         TourismCategory.ISLANDS -> Icons.Default.Explore
+        TourismCategory.WATERFALLS_NATURE -> Icons.Default.WaterDrop
+        TourismCategory.WILDLIFE_SAFARI -> Icons.Default.Pets
     }
 }
 
@@ -1245,6 +1404,8 @@ fun getCategoryColor(cat: TourismCategory): Color {
         TourismCategory.TREKKING_TRAILS -> AutoGreen
         TourismCategory.BEACHES -> MonsoonBlue
         TourismCategory.ISLANDS -> MetroPurple
+        TourismCategory.WATERFALLS_NATURE -> Color(0xFF38BDF8)
+        TourismCategory.WILDLIFE_SAFARI -> Color(0xFFF59E0B)
     }
 }
 

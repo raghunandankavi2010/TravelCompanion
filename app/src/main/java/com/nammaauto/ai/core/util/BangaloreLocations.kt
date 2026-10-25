@@ -31,7 +31,16 @@ object BangaloreLocations {
         BangaloreHub("marath", "Marathahalli", "Bridge / Multiplex Choke", "East", 12.9591, 77.6974),
         BangaloreHub("hebbal", "Hebbal Flyover", "Airport Highway Junction", "North", 13.0358, 77.5970),
         BangaloreHub("airport", "Kempegowda Intl Airport (KIAL)", "Terminal 1 & 2 Departure", "Airport", 13.1986, 77.7066),
-        BangaloreHub("sarjapur", "Sarjapur Road", "Wipro Corporate Office", "East", 12.9110, 77.6880)
+        BangaloreHub("sarjapur", "Sarjapur Road", "Wipro Corporate Office", "East", 12.9110, 77.6880),
+        BangaloreHub("mysuru", "Mysuru Junction & Palace", "Suburban Bus Stand / Palace", "Royal South", 12.3052, 76.6552),
+        BangaloreHub("mangaluru", "Mangaluru Central & Port", "Hampankatta / Panambur", "Coastal Karavali", 12.8698, 74.8430),
+        BangaloreHub("udupi", "Udupi Temple & Malpe", "Sri Krishna Matha / Sea Walk", "Coastal Karavali", 13.3409, 74.7421),
+        BangaloreHub("hampi", "Hampi & Hospet Junction", "Virupaksha / Vijaya Vittala", "Heritage North", 15.3350, 76.4600),
+        BangaloreHub("hubballi", "Hubballi Junction & Dharwad", "HDBRTS Corridor / SWR HQ", "Heritage North", 15.3647, 75.1240),
+        BangaloreHub("coorg", "Coorg (Madikeri Hub)", "Raja Seat / Abbey Falls", "Western Ghats", 12.4244, 75.7382),
+        BangaloreHub("gokarna", "Gokarna Om Beach Hub", "Mahabaleshwar / Kudle", "Coastal Karavali", 14.5426, 74.3163),
+        BangaloreHub("shivamogga", "Shivamogga & Jog Falls", "Sharavathi Valley Gateway", "Malnad", 13.9299, 75.5681),
+        BangaloreHub("chitradurga", "Chitradurga Kallina Kote", "Seven-Walled Stone Fort", "Central Deccan", 14.2251, 76.3980),
     )
 
     /**

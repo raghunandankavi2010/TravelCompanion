@@ -88,13 +88,13 @@ fun LifelineScreen(viewModel: LifelineViewModel) {
         ) {
             Column {
                 Text(
-                    text = "Bengaluru Lifeline Hub",
+                    text = "Karnataka Lifeline & Safety Hub",
                     color = Slate200,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Black
                 )
                 Text(
-                    text = "24x7 Emergency, Hospitals & City Survival Hacks",
+                    text = "24x7 State Emergency, Hospitals, Flybus & Auto Grievance",
                     color = Slate400,
                     fontSize = 12.sp
                 )

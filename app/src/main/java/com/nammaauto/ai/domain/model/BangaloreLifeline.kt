@@ -47,6 +47,29 @@ object BangaloreLifelineDirectory {
 
     val emergencyContacts: List<EmergencyContact> = listOf(
         EmergencyContact(
+            id = "tourist_police",
+            title = "Karnataka Tourist Police & Emergency 112",
+            phoneNumber = "112",
+            category = HelplineCategory.POLICE_SAFETY,
+            subtitle = "Dedicated assistance for national & international tourists across Karnataka",
+            isPrimarySos = true
+        ),
+        EmergencyContact(
+            id = "tourism_dept",
+            title = "Karnataka State Tourism Helpline",
+            phoneNumber = "180042545656",
+            category = HelplineCategory.POLICE_SAFETY,
+            subtitle = "Toll-Free 24x7 official tourist assistance & grievance support",
+            isPrimarySos = true
+        ),
+        EmergencyContact(
+            id = "aranya_vihaara",
+            title = "Forest Dept / Aranya Vihaara Trekking Desk",
+            phoneNumber = "08023344446",
+            category = HelplineCategory.POLICE_SAFETY,
+            subtitle = "Inquiries for Western Ghats trek permits, eco-trails, and checkposts"
+        ),
+        EmergencyContact(
             id = "sos_112",
             title = "All-in-One Emergency (Police / Fire / Medical)",
             phoneNumber = "112",
@@ -117,6 +140,38 @@ object BangaloreLifelineDirectory {
 
     val topTraumaHospitals: List<HospitalInfo> = listOf(
         HospitalInfo(
+            name = "KMC Hospital (Kasturba Medical College)",
+            zone = "Coastal Karavali (Mangaluru & Manipal)",
+            emergencyPhone = "08242444590",
+            address = "Dr B R Ambedkar Circle, Mangaluru / Tiger Circle, Manipal",
+            specialty = "Premier Level 1 Trauma & Emergency Center of Coastal Karnataka",
+            mapsQuery = "KMC Hospital Mangalore"
+        ),
+        HospitalInfo(
+            name = "KIMS Hospital (Karnataka Institute of Medical Sciences)",
+            zone = "North Karnataka (Hubballi-Dharwad)",
+            emergencyPhone = "08362372222",
+            address = "PB Road, Vidyanagar, Hubballi",
+            specialty = "Largest Tertiary Trauma & Critical Care Center in North Karnataka",
+            mapsQuery = "KIMS Hospital Hubballi"
+        ),
+        HospitalInfo(
+            name = "KR Hospital & Apollo BGS Hospital",
+            zone = "Royal South (Mysuru)",
+            emergencyPhone = "08212568888",
+            address = "Irwin Road, Mysuru / Adhichunchanagiri Road, Kuvempunagar",
+            specialty = "24x7 Advanced Cardiac, Stroke & Trauma Care",
+            mapsQuery = "Apollo BGS Hospital Mysore"
+        ),
+        HospitalInfo(
+            name = "VIMS Hospital (Vijayanagar Institute of Medical Sciences)",
+            zone = "Heritage Circuit (Hospet / Ballari / Hampi)",
+            emergencyPhone = "08392235201",
+            address = "Cantonment, Ballari (Serving Hampi & Vijayanagara district)",
+            specialty = "Emergency Trauma & Snakebite Anti-Venom Care for Hampi region",
+            mapsQuery = "VIMS Hospital Ballari"
+        ),
+        HospitalInfo(
             name = "St. John's Medical College Hospital",
             zone = "South (Koramangala / HSR / Sarjapur)",
             emergencyPhone = "08022065000",
@@ -167,6 +222,30 @@ object BangaloreLifelineDirectory {
     )
 
     val airportBusRoutes: List<AirportBusRoute> = listOf(
+        AirportBusRoute(
+            routeCode = "FLYBUS-1",
+            destination = "Mysuru (Suburban Bus Stand)",
+            majorStops = listOf("Bengaluru Airport (KIAL)", "Mysuru-BLR Expressway", "Columbia Asia Circle", "Mysuru Bus Stand"),
+            frequency = "Every 1–2 hours (24x7 Non-Stop Volvo AC)",
+            fareRupees = 800,
+            comparisonWithCab = "Save ~₹2,500 compared to ₹3,300 intercity taxi"
+        ),
+        AirportBusRoute(
+            routeCode = "FLYBUS-2",
+            destination = "Madikeri (Coorg)",
+            majorStops = listOf("Bengaluru Airport", "Kushalnagar", "Madikeri Bus Stand"),
+            frequency = "Daily Direct Departures",
+            fareRupees = 1050,
+            comparisonWithCab = "Save ~₹4,000 compared to ₹5,200 cab ride to Coorg"
+        ),
+        AirportBusRoute(
+            routeCode = "FLYBUS-3",
+            destination = "Mangaluru / Udupi / Kundapura",
+            majorStops = listOf("Bengaluru Airport", "Hassan", "Mangaluru Central", "Udupi", "Kundapura"),
+            frequency = "Overnight Multi-Axle Sleeper",
+            fareRupees = 1200,
+            comparisonWithCab = "Save ~₹6,000 compared to private intercity taxi"
+        ),
         AirportBusRoute(
             routeCode = "KIAS-4",
             destination = "Electronic City / HSR Layout",
