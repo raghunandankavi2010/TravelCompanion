@@ -57,14 +57,17 @@ data class KarnatakaSpot(
     val howToReachTransit: String,
     val survivalKannadaPhrase: String,
     val survivalKannadaLipi: String,
-    val survivalKannadaMeaning: String
+    val survivalKannadaMeaning: String,
+    val imageUrl: String = "",
+    val videoTourUrl: String = "",
+    val guideInfo: String = "Govt certified guides available at ticket counter (₹400–₹800 fixed)"
 )
 
 data class RegionalDialectInfo(
     val region: KarnatakaRegion,
     val dialectName: String,
     val commonGreeting: String,
-    val friendlyPhrases: List<Pair<String, String>>, // Kannada Lipi/Phonetic to English
+    val friendlyPhrases: List<Pair<String, String>>,
     val regionalCuisines: List<String>,
     val localTip: String
 )

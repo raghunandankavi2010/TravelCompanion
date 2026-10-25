@@ -52,7 +52,10 @@ object KarnatakaTourismRepository {
             howToReachTransit = "Overnight Hampi Express train from KSR Bengaluru to Hospet Junction, then local bus or ₹200 auto ride.",
             survivalKannadaPhrase = "Hampi Vijaya Vittala temple ge hogalu auto eshtu?",
             survivalKannadaLipi = "ಹಂಪಿ ವಿಜಯ ವಿಠ್ಠಲ ದೇವಸ್ಥಾನಕ್ಕೆ ಹೋಗಲು ಆಟೋ ಎಷ್ಟು?",
-            survivalKannadaMeaning = "How much for an auto to Hampi Vijaya Vittala Temple?"
+            survivalKannadaMeaning = "How much for an auto to Hampi Vijaya Vittala Temple?",
+            imageUrl = "https://images.unsplash.com/photo-1600100397608-f010f443b749?w=800&auto=format&fit=crop&q=80",
+            videoTourUrl = "https://www.youtube.com/results?search_query=karnataka+tourism+hampi+official+documentary",
+            guideInfo = "ASI registered guides available at Vittala entrance; look for Ministry of Tourism green photo ID card (₹500-₹800 fixed)"
         ),
 
         KarnatakaSpot(
@@ -93,7 +96,10 @@ object KarnatakaTourismRepository {
             howToReachTransit = "Direct train from Hubballi, Bengaluru (Gol Gumbaz Express) to Badami Station, then ₹80 auto to Caves.",
             survivalKannadaPhrase = "Badami cave temples nodoke ticket elli kodthare?",
             survivalKannadaLipi = "ಬಾದಾಮಿ ಗುಹೆ ನೋಡೋಕೆ ಟಿಕೆಟ್ ಎಲ್ಲಿ ಕೊಡ್ತಾರೆ?",
-            survivalKannadaMeaning = "Where do they give tickets to view Badami cave temples?"
+            survivalKannadaMeaning = "Where do they give tickets to view Badami cave temples?",
+            imageUrl = "https://images.unsplash.com/photo-1628151015968-3a4429e9ef04?w=800&auto=format&fit=crop&q=80",
+            videoTourUrl = "https://www.youtube.com/results?search_query=badami+cave+temples+karnataka+tourism",
+            guideInfo = "Certified rock cave guides at Cave 1 counter (₹400 for all 4 caves)"
         ),
 
         KarnatakaSpot(
@@ -302,7 +308,10 @@ object KarnatakaTourismRepository {
             howToReachTransit = "Reach Malpe Beach Jetty from Udupi; board the official Malpe Beach Development Committee ferry boat.",
             survivalKannadaPhrase = "St. Mary's Island ninda last boat yavaga barutthe?",
             survivalKannadaLipi = "ಸೇಂಟ್ ಮೇರಿಸ್ ಐಲ್ಯಾಂಡ್‌ ನಿಂದ ಕೊನೆ ಬೋಟ್ ಯಾವಾಗ ಬರುತ್ತೆ?",
-            survivalKannadaMeaning = "When does the last ferry boat depart from St. Mary's Island?"
+            survivalKannadaMeaning = "When does the last ferry boat depart from St. Mary's Island?",
+            imageUrl = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80",
+            videoTourUrl = "https://www.youtube.com/results?search_query=st+marys+island+malpe+karnataka+tourism",
+            guideInfo = "Geological Survey information boards along the basalt pillar trails explaining 88-million-year volcanic origin"
         ),
 
         KarnatakaSpot(
@@ -425,7 +434,10 @@ object KarnatakaTourismRepository {
             howToReachTransit = "Reach Murudeshwar via overnight express train from Bengaluru; dive centers gather at Murudeshwar Temple Beach Jetty.",
             survivalKannadaPhrase = "Netrani boat ride mathu scuba diving ge permission ideya?",
             survivalKannadaLipi = "ನೇತ್ರಾಣಿ ಬೋಟ್ ರೈಡ್ ಮತ್ತು ಸ್ಕೂಬಾ ಡೈವಿಂಗ್‌ಗೆ ಪರ್ಮಿಷನ್ ಇದೆಯಾ?",
-            survivalKannadaMeaning = "Is boat ride and scuba diving permitted today at Netrani?"
+            survivalKannadaMeaning = "Is boat ride and scuba diving permitted today at Netrani?",
+            imageUrl = "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&auto=format&fit=crop&q=80",
+            videoTourUrl = "https://www.youtube.com/results?search_query=netrani+island+scuba+diving+murudeshwar",
+            guideInfo = "Dedicated PADI / SSI certified divemaster assigned 1-on-1 for every diver under water"
         ),
 
         KarnatakaSpot(
@@ -510,7 +522,10 @@ object KarnatakaTourismRepository {
             howToReachTransit = "Train from Bengaluru/Mysuru to Talguppa Railway Station (14 km away), then local bus or taxi to Jog Falls.",
             survivalKannadaPhrase = "Jog falls base ge hogalu steps open ideya?",
             survivalKannadaLipi = "ಜೋಗ್ ಫಾಲ್ಸ್ ಕೆಳಗಡೆ ಹೋಗಲು ಮೆಟ್ಟಿಲುಗಳು ಓಪನ್ ಇದೆಯಾ?",
-            survivalKannadaMeaning = "Are the steps to the bottom base of Jog Falls open today?"
+            survivalKannadaMeaning = "Are the steps to the bottom base of Jog Falls open today?",
+            imageUrl = "https://images.unsplash.com/photo-1588714477688-cf28a50e94f7?w=800&auto=format&fit=crop&q=80",
+            videoTourUrl = "https://www.youtube.com/results?search_query=jog+falls+karnataka+tourism+official",
+            guideInfo = "Local tourism volunteers at viewpoint deck guide on steps clearance and laser show timings"
         ),
 
         KarnatakaSpot(
@@ -551,7 +566,10 @@ object KarnatakaTourismRepository {
             howToReachTransit = "Overnight KSRTC bus from Bengaluru/Mangaluru to Kalasa (8 hours). From Kalasa take local bus to Balagal, then 4x4 Jeep to Mullodi base camp.",
             survivalKannadaPhrase = "Aranya Vihaara booking permit ide, Mullodi checkpost yavadu?",
             survivalKannadaLipi = "ಅರಣ್ಯ ವಿಹಾರ ಬುಕಿಂಗ್ ಪರ್ಮಿಟ್ ಇದೆ, ಮುಳ್ಳೋಡಿ ಚೆಕ್‌ಪೋಸ್ಟ್ ಯಾವುದು?",
-            survivalKannadaMeaning = "I have the Aranya Vihaara booking permit, where is the Mullodi checkpost?"
+            survivalKannadaMeaning = "I have the Aranya Vihaara booking permit, where is the Mullodi checkpost?",
+            imageUrl = "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&auto=format&fit=crop&q=80",
+            videoTourUrl = "https://www.youtube.com/results?search_query=kudremukh+trek+aranya+vihara+karnataka",
+            guideInfo = "Mandatory certified Forest Dept eco-guide assigned to every batch of 10 trekkers at Mullodi checkpoint"
         ),
 
         KarnatakaSpot(
@@ -718,7 +736,10 @@ object KarnatakaTourismRepository {
             howToReachTransit = "Vande Bharat Express or Tipu Express train from KSR Bengaluru to Mysuru Junction (2 hours), then ₹50 auto to Palace North Gate.",
             survivalKannadaPhrase = "Palace illumination raathri eshtu gantege shuru aagutthe?",
             survivalKannadaLipi = "ಅರಮನೆ ಇಲ್ಯುಮಿನೇಷನ್ ರಾತ್ರಿ ಎಷ್ಟು ಗಂಟೆಗೆ ಶುರು ಆಗುತ್ತೆ?",
-            survivalKannadaMeaning = "At what time does the Palace illumination begin tonight?"
+            survivalKannadaMeaning = "At what time does the Palace illumination begin tonight?",
+            imageUrl = "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=800&auto=format&fit=crop&q=80",
+            videoTourUrl = "https://www.youtube.com/results?search_query=mysore+palace+illumination+karnataka+tourism",
+            guideInfo = "Foreigner ticket includes personal high-definition audio headset guide wand in 8 international languages"
         ),
 
         KarnatakaSpot(
@@ -759,7 +780,10 @@ object KarnatakaTourismRepository {
             howToReachTransit = "Drive from Mysuru (2 hours via HD Kote road) or private cab from Mysuru Railway Station.",
             survivalKannadaPhrase = "Forest safari booking Dammanakatte counter ellide?",
             survivalKannadaLipi = "ಫಾರೆಸ್ಟ್ ಸಫಾರಿ ಬುಕಿಂಗ್ ದಮ್ಮನಕಟ್ಟೆ ಕೌಂಟರ್ ಎಲ್ಲಿದೆ?",
-            survivalKannadaMeaning = "Where is the Dammanakatte forest safari booking counter?"
+            survivalKannadaMeaning = "Where is the Dammanakatte forest safari booking counter?",
+            imageUrl = "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=800&auto=format&fit=crop&q=80",
+            videoTourUrl = "https://www.youtube.com/results?search_query=kabini+wildlife+safari+jungle+lodges",
+            guideInfo = "Expert naturalists and trackers accompany every Jungle Lodges river boat and 4x4 open safari jeep"
         ),
 
         KarnatakaSpot(

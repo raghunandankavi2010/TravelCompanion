@@ -3,9 +3,11 @@ package com.nammaauto.ai.presentation
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Calculate
+import androidx.compose.material.icons.filled.DirectionsBus
 import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.filled.HealthAndSafety
 import androidx.compose.material.icons.filled.RecordVoiceOver
+import androidx.compose.material.icons.filled.SmartDisplay
 import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
@@ -40,13 +42,19 @@ import com.nammaauto.ai.presentation.store.ProStoreScreen
 import com.nammaauto.ai.presentation.store.ProStoreViewModel
 import com.nammaauto.ai.presentation.tourism.KarnatakaExplorerScreen
 import com.nammaauto.ai.presentation.tourism.KarnatakaExplorerViewModel
+import com.nammaauto.ai.presentation.tourism.KarnatakaMediaShowcaseScreen
+import com.nammaauto.ai.presentation.tourism.StatewideTravelNavigatorScreen
 
 sealed class AppDestination(val route: String, val label: String, val icon: ImageVector) {
+    data object ExploreKA : AppDestination("explore_ka", "Explore KA", Icons.Default.Explore)
+    data object TransitGuide : AppDestination("transit_guide", "Transit Hub", Icons.Default.DirectionsBus)
+    data object MediaGallery : AppDestination("media_gallery", "Photos & 4K", Icons.Default.SmartDisplay)
+    data object KannadaSathi : AppDestination("kannada", "Kannada Voice", Icons.Default.RecordVoiceOver)
+    data object Lifeline : AppDestination("lifeline", "SafeGuard SOS", Icons.Default.HealthAndSafety)
+
+    // Optional utility routes accessible from screens
     data object MeterCam : AppDestination("meter_cam", "Meter", Icons.Default.Speed)
     data object FairFare : AppDestination("fair_fare", "Ride Radar", Icons.Default.Calculate)
-    data object ExploreKA : AppDestination("explore_ka", "Explore KA", Icons.Default.Explore)
-    data object KannadaSathi : AppDestination("kannada", "Kannada Voice", Icons.Default.RecordVoiceOver)
-    data object Lifeline : AppDestination("lifeline", "Lifeline SOS", Icons.Default.HealthAndSafety)
     data object ProStore : AppDestination("pro_store", "Pro Pass", Icons.Default.Star)
 }
 
@@ -56,10 +64,10 @@ fun NammaAutoNavHost() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
-    val items = listOf(
-        AppDestination.MeterCam,
-        AppDestination.FairFare,
+    val primaryDestinations = listOf(
         AppDestination.ExploreKA,
+        AppDestination.TransitGuide,
+        AppDestination.MediaGallery,
         AppDestination.KannadaSathi,
         AppDestination.Lifeline
     )
@@ -70,7 +78,7 @@ fun NammaAutoNavHost() {
                 containerColor = Slate800,
                 contentColor = Slate400
             ) {
-                items.forEach { dest ->
+                primaryDestinations.forEach { dest ->
                     val isSelected = currentRoute == dest.route
                     NavigationBarItem(
                         selected = isSelected,
@@ -103,9 +111,40 @@ fun NammaAutoNavHost() {
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = AppDestination.MeterCam.route,
+            startDestination = AppDestination.ExploreKA.route,
             modifier = Modifier.padding(innerPadding)
         ) {
+            composable(AppDestination.ExploreKA.route) {
+                val vm: KarnatakaExplorerViewModel = viewModel()
+                KarnatakaExplorerScreen(
+                    viewModel = vm,
+                    onNavigateToPhrasebook = {
+                        navController.navigate(AppDestination.KannadaSathi.route)
+                    },
+                    onNavigateToProStore = {
+                        navController.navigate(AppDestination.ProStore.route)
+                    }
+                )
+            }
+            composable(AppDestination.TransitGuide.route) {
+                StatewideTravelNavigatorScreen()
+            }
+            composable(AppDestination.MediaGallery.route) {
+                KarnatakaMediaShowcaseScreen()
+            }
+            composable(AppDestination.KannadaSathi.route) {
+                val vm: KannadaSathiViewModel = viewModel()
+                KannadaSathiScreen(
+                    viewModel = vm,
+                    onNavigateToProStore = {
+                        navController.navigate(AppDestination.ProStore.route)
+                    }
+                )
+            }
+            composable(AppDestination.Lifeline.route) {
+                val vm: LifelineViewModel = viewModel()
+                LifelineScreen(viewModel = vm)
+            }
             composable(AppDestination.MeterCam.route) {
                 val vm: MeterViewModel = viewModel()
                 MeterCamScreen(
@@ -123,31 +162,6 @@ fun NammaAutoNavHost() {
                         navController.navigate(AppDestination.KannadaSathi.route)
                     }
                 )
-            }
-            composable(AppDestination.ExploreKA.route) {
-                val vm: KarnatakaExplorerViewModel = viewModel()
-                KarnatakaExplorerScreen(
-                    viewModel = vm,
-                    onNavigateToPhrasebook = {
-                        navController.navigate(AppDestination.KannadaSathi.route)
-                    },
-                    onNavigateToProStore = {
-                        navController.navigate(AppDestination.ProStore.route)
-                    }
-                )
-            }
-            composable(AppDestination.KannadaSathi.route) {
-                val vm: KannadaSathiViewModel = viewModel()
-                KannadaSathiScreen(
-                    viewModel = vm,
-                    onNavigateToProStore = {
-                        navController.navigate(AppDestination.ProStore.route)
-                    }
-                )
-            }
-            composable(AppDestination.Lifeline.route) {
-                val vm: LifelineViewModel = viewModel()
-                LifelineScreen(viewModel = vm)
             }
             composable(AppDestination.ProStore.route) {
                 val vm: ProStoreViewModel = viewModel()
