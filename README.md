@@ -38,6 +38,25 @@ Every day, over **1.5 crore Bangalore residents and 2+ lakh auto rickshaw driver
 - One-tap audio speaker: Plays native Kannada directly to the driver with clear pronunciation.
 - Dual display: Native Kannada Lipi + Romanized phonetics ("Indiranagar ge meter haaki barthira?").
 
+### 5. 🧭 "Explore Karnataka" & Tourist Scam-Buster Super Hub
+- **Curated Tourism Discovery:**
+  - 🛕 **Temples & Heritage:** Hampi (UNESCO), Belur & Halebeedu (UNESCO 2023), Murudeshwar Sea Temple, Mysore Palace, Badami Cave Temples, Dharmasthala & Kukke.
+  - 🧗 **Adventure Sports:** Dandeli Kali River White-Water Rafting (Grade 3/4 rapids), Netrani Island PADI Scuba Diving & coral snorkeling, Ramanagara rock climbing, Gokarna surfing.
+  - 🥾 **Trekking & Nature Trails:** Kudremukh Peak, Skandagiri Sunrise Sea-of-Clouds, Kumara Parvatha (Pushpagiri), Netravathi Ridge, Tadiandamol Coorg.
+  - 🏖️ **Coastal Beaches:** Om Beach & Kudle Beach (Gokarna cliff hikes), Malpe Beach & Sea Walk (Udupi), Maravanthe Beach Highway (NH 66).
+  - 🏝️ **Islands to Visit:** St. Mary's Island (88-million-year-old hexagonal columnar basalt rock pillars), Netrani Pigeon Island, Kurumgad Tortoise Island, Srirangapatna Cauvery River Island.
+- **🌲 Official Aranya Vihaara & Govt Portals Integration:**
+  - Direct 1-tap booking launch for **`aranyavihaara.karnataka.gov.in`** (Karnataka Forest Dept official trekking permits), **`asi.nic.in`** (Archaeological Survey of India monument ticketing), **`karnatakatourism.org`**, **`kstdc.co`**, and **`ksrtc.in`**.
+  - Strict advisory on mandatory advance booking (1–30 days prior) and physical ID/Passport verification to avoid illegal tout scams.
+- **🌍 Foreigner Pricing Transparency & Currency Converter:**
+  - Instant dual pricing display (Domestic INR vs Foreign National INR / USD $ estimate).
+  - Full guidance on ASI monument tickets (e.g., Hampi ₹40 vs ₹600 / ~$7.20 USD), Mysore Palace (₹100 vs ₹1,000 / ~$12 incl. multilingual audio guide).
+  - Strict dress codes (modest attire, footwear outside temples, no leather in sanctums).
+  - Forest Department zero-single-use-plastic enforcement (₹500 fine for disposable plastic bottles in Western Ghats).
+- **🗣️ On-Location Tourist Kannada Voice Lifeline:**
+  - 1-tap TTS speech for place-specific survival phrases (asking for checkposts, verified guides, ticket counters, and auto rates).
+  - New Phrasebook categories: *Tourist & Sightseeing*, *Food & Darshini* ("Khaara beda" / No spicy, Filter Coffee, Neer Dosa), *Hotels & Shopping*, *Intercity Bus Transit*.
+
 ### 4. 🛡️ Night Guardian & Route Safety Radar
 - Automatically geofences commute routes.
 - Alerts passenger if the auto deviates > 400m from the route corridor or makes unscheduled stops in unlit areas.

@@ -234,6 +234,142 @@ object PhrasebookRepository {
             phoneticEnglish = "Live location share maadiddini nanna family jothe.",
             englishMeaning = "I have shared my live location with my family.",
             contextTip = "Subtle safety deterrent for late night trips."
+        ),
+
+        // Category 7: Tourist & Sightseeing
+        KannadaPhrase(
+            id = "tour_1",
+            category = PhraseCategory.TOURIST_SIGHTSEEING,
+            kannadaLipi = "ಅರಣ್ಯ ವಿಹಾರ ಟ್ರೆಕ್ ಪರ್ಮಿಟ್ ಇದೆ, ಚೆಕ್‌ಪೋಸ್ಟ್ ಎಲ್ಲಿದೆ?",
+            phoneticEnglish = "Aranya Vihaara trek permit ide, checkpost ellide?",
+            englishMeaning = "I have an Aranya Vihaara trek permit, where is the checkpost?",
+            contextTip = "Essential question when arriving at Kudremukh / Skandagiri / Kumara Parvatha bases."
+        ),
+        KannadaPhrase(
+            id = "tour_2",
+            category = PhraseCategory.TOURIST_SIGHTSEEING,
+            kannadaLipi = "ಸರ್ಕಾರಿ ಮಾನ್ಯತೆ ಪಡೆದ ಗೈಡ್ ಬೇಕು, ನಿಮ್ಮ ಐಡಿ ತೋರಿಸಿ.",
+            phoneticEnglish = "Sarkari maanyathe padeda guide beku, nimma ID thorisi.",
+            englishMeaning = "We want a government authorized guide, please show your ID card.",
+            contextTip = "Safeguard against unauthorized touts at Hampi, Belur, or Mysore Palace."
+        ),
+        KannadaPhrase(
+            id = "tour_3",
+            category = PhraseCategory.TOURIST_SIGHTSEEING,
+            kannadaLipi = "ಎಂಟ್ರಿ ಟಿಕೆಟ್‌ಗೆ ಗೂಗಲ್ ಪೇ ಅಥವಾ ಕಾರ್ಡ್ ಆಗ್ತದಾ?",
+            phoneticEnglish = "Entry ticket-ge Google Pay athava card aagthada?",
+            englishMeaning = "Do you accept Google Pay or card for the entry ticket?",
+            contextTip = "Verifying digital payment at monument or museum counters."
+        ),
+        KannadaPhrase(
+            id = "tour_4",
+            category = PhraseCategory.TOURIST_SIGHTSEEING,
+            kannadaLipi = "ಒಳಗಡೆ ಕ್ಯಾಮೆರಾ ಮತ್ತು ಫೋಟೋ ತೆಗೆಯೋಕೆ ಅನುಮತಿ ಇದೆಯಾ?",
+            phoneticEnglish = "Olagade camera mathu photo thegeyoke anumathi ideya?",
+            englishMeaning = "Is camera and photography permitted inside?",
+            contextTip = "Always confirm before photographing inside temple sanctums or ASI monuments."
+        ),
+        KannadaPhrase(
+            id = "tour_5",
+            category = PhraseCategory.TOURIST_SIGHTSEEING,
+            kannadaLipi = "ದೇವಸ್ಥಾನದ ದರ್ಶನ ಸಮಯ ಯಾವಾಗ ಮುಗಿಯುತ್ತೆ?",
+            phoneticEnglish = "Devasthanada darshana samaya yaavaga mugiyutthe?",
+            englishMeaning = "When do the temple darshan timings close?",
+            contextTip = "Helpful when planning afternoon temple visits (most close 1:00 PM – 4:00 PM)."
+        ),
+
+        // Category 8: Food & Darshini Dining
+        KannadaPhrase(
+            id = "food_1",
+            category = PhraseCategory.FOOD_DINING,
+            kannadaLipi = "ದಯವಿಟ್ಟು ಖಾರ ಬೇಡ, ತುಂಬಾ ಕಮ್ಮಿ ಮಾಡಿ!",
+            phoneticEnglish = "Dayavittu khaara beda, thumba kammi maadi!",
+            englishMeaning = "Please no spicy, make it very mild / not spicy!",
+            contextTip = "Number one lifeline phrase for foreign travelers and sensitive eaters."
+        ),
+        KannadaPhrase(
+            id = "food_2",
+            category = PhraseCategory.FOOD_DINING,
+            kannadaLipi = "ಒಂದು ಮಸಾಲೆ ದೋಸೆ ಮತ್ತು ಫಿಲ್ಟರ್ ಕಾಫಿ ಕೊಡಿ.",
+            phoneticEnglish = "Ondu masala dose mathu filter coffee kodi.",
+            englishMeaning = "Please give one Masala Dosa and one Filter Coffee.",
+            contextTip = "The iconic breakfast order at any Bangalore Darshini (CTR, Vidyarthi Bhavan, MTR)."
+        ),
+        KannadaPhrase(
+            id = "food_3",
+            category = PhraseCategory.FOOD_DINING,
+            kannadaLipi = "ಕುಡಿಯುವ ನೀರು ಸೀಲ್ಡ್ ಬಾಟಲ್ ಇದೆಯಾ?",
+            phoneticEnglish = "Kudiyuva neeru sealed bottle ideya?",
+            englishMeaning = "Do you have a sealed bottle of drinking water?",
+            contextTip = "Ensures safe, hygienically packaged water."
+        ),
+        KannadaPhrase(
+            id = "food_4",
+            category = PhraseCategory.FOOD_DINING,
+            kannadaLipi = "ಬಿಲ್ ಕೊಡಿ ಪ್ಲೀಸ್, ಫೋನ್ ಪೇ ಮಾಡ್ತೀನಿ.",
+            phoneticEnglish = "Bill kodi please, PhonePe maadthini.",
+            englishMeaning = "Please give the bill, I will pay via PhonePe.",
+            contextTip = "Quick settlement at restaurants and cafe tables."
+        ),
+        KannadaPhrase(
+            id = "food_5",
+            category = PhraseCategory.FOOD_DINING,
+            kannadaLipi = "ಇದು ಪ್ಯೂರ್ ವೆಜಿಟೇರಿಯನ್ ಹೋಟೆಲ್ ಅಲ್ವಾ?",
+            phoneticEnglish = "Idu pure vegetarian hotel alwa?",
+            englishMeaning = "This is a pure vegetarian restaurant right?",
+            contextTip = "Confirmation for strict vegetarians and vegans."
+        ),
+
+        // Category 9: Hotels & Shopping
+        KannadaPhrase(
+            id = "shop_1",
+            category = PhraseCategory.HOTEL_SHOPPING,
+            kannadaLipi = "ಇದಕ್ಕೆ ರೀಸನೇಬಲ್ ರೇಟ್ ಹೇಳಿ, ಸ್ವಲ್ಪ ಕಮ್ಮಿ ಮಾಡಿ.",
+            phoneticEnglish = "Idakke reasonable rate heli, swalpa kammi maadi.",
+            englishMeaning = "Tell a reasonable price for this, please give a discount.",
+            contextTip = "Polite bargaining at handicraft, spice, and souvenir markets."
+        ),
+        KannadaPhrase(
+            id = "shop_2",
+            category = PhraseCategory.HOTEL_SHOPPING,
+            kannadaLipi = "ಇದು ಅಸಲಿ ಮೈಸೂರು ರೇಷ್ಮೆ ಸೀರೆನಾ? ಗವರ್ನಮೆಂಟ್ ಸಿಲ್ಕ್ ಮಾರ್ಕ್ ಇದೆಯಾ?",
+            phoneticEnglish = "Idu asali Mysore Reshme Sareena? Govt silk mark ideya?",
+            englishMeaning = "Is this authentic Mysore Silk? Does it have the govt Silk Mark?",
+            contextTip = "Crucial test to avoid synthetic knockoffs in tourist bazaars."
+        ),
+        KannadaPhrase(
+            id = "shop_3",
+            category = PhraseCategory.HOTEL_SHOPPING,
+            kannadaLipi = "ರೂಮ್‌ನಲ್ಲಿ 24 ಗಂಟೆ ಬಿಸಿ ನೀರು ಬರುತ್ತಾ?",
+            phoneticEnglish = "Room-nalli 24 gante bisi neeru baruttha?",
+            englishMeaning = "Does the room have 24-hour hot water?",
+            contextTip = "Important check for homestays and budget hotels in hill stations (Coorg, Chikkamagaluru)."
+        ),
+
+        // Category 10: Bus & Intercity Transit
+        KannadaPhrase(
+            id = "bus_1",
+            category = PhraseCategory.TRANSIT_BUS,
+            kannadaLipi = "ಈ ಕೆ.ಎಸ್.ಆರ್.ಟಿ.ಸಿ ಬಸ್ ಮೈಸೂರು / ಹಂಪಿಗೆ ಹೋಗುತ್ತಾ?",
+            phoneticEnglish = "Ee KSRTC bus Mysore / Hampi-ge hoguttha?",
+            englishMeaning = "Does this KSRTC bus go to Mysore / Hampi?",
+            contextTip = "Verifying long-distance bus destination at Majestic / Satellite bus stand."
+        ),
+        KannadaPhrase(
+            id = "bus_2",
+            category = PhraseCategory.TRANSIT_BUS,
+            kannadaLipi = "ಏರ್‌ಪೋರ್ಟ್ ಫ್ಲೈಬಸ್ (Flybus) ಪ್ಲಾಟ್‌ಫಾರ್ಮ್ ಎಲ್ಲಿದೆ?",
+            phoneticEnglish = "Airport Flybus platform ellide?",
+            englishMeaning = "Where is the platform for the Airport Flybus?",
+            contextTip = "Direction query for direct airport AC buses from Mysore/Bangalore."
+        ),
+        KannadaPhrase(
+            id = "bus_3",
+            category = PhraseCategory.TRANSIT_BUS,
+            kannadaLipi = "ಮುಂದಿನ ಸ್ಟಾಪ್‌ನಲ್ಲಿ ಇಳಿತೀನಿ, ದಯವಿಟ್ಟು ನಿಲ್ಲಿಸಿ.",
+            phoneticEnglish = "Mundina stop-nalli ilithini, dayavittu nillisi.",
+            englishMeaning = "I will get down at the next stop, please stop.",
+            contextTip = "Alerting the bus conductor and driver before arriving at your stop."
         )
     )
 

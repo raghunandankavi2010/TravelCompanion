@@ -3,6 +3,7 @@ package com.nammaauto.ai.presentation
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Calculate
+import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.filled.HealthAndSafety
 import androidx.compose.material.icons.filled.RecordVoiceOver
 import androidx.compose.material.icons.filled.Speed
@@ -37,10 +38,13 @@ import com.nammaauto.ai.presentation.phrasebook.KannadaSathiScreen
 import com.nammaauto.ai.presentation.phrasebook.KannadaSathiViewModel
 import com.nammaauto.ai.presentation.store.ProStoreScreen
 import com.nammaauto.ai.presentation.store.ProStoreViewModel
+import com.nammaauto.ai.presentation.tourism.KarnatakaExplorerScreen
+import com.nammaauto.ai.presentation.tourism.KarnatakaExplorerViewModel
 
 sealed class AppDestination(val route: String, val label: String, val icon: ImageVector) {
     data object MeterCam : AppDestination("meter_cam", "Meter", Icons.Default.Speed)
     data object FairFare : AppDestination("fair_fare", "Ride Radar", Icons.Default.Calculate)
+    data object ExploreKA : AppDestination("explore_ka", "Explore KA", Icons.Default.Explore)
     data object KannadaSathi : AppDestination("kannada", "Kannada Voice", Icons.Default.RecordVoiceOver)
     data object Lifeline : AppDestination("lifeline", "Lifeline SOS", Icons.Default.HealthAndSafety)
     data object ProStore : AppDestination("pro_store", "Pro Pass", Icons.Default.Star)
@@ -55,9 +59,9 @@ fun NammaAutoNavHost() {
     val items = listOf(
         AppDestination.MeterCam,
         AppDestination.FairFare,
+        AppDestination.ExploreKA,
         AppDestination.KannadaSathi,
-        AppDestination.Lifeline,
-        AppDestination.ProStore
+        AppDestination.Lifeline
     )
 
     Scaffold(
@@ -117,6 +121,18 @@ fun NammaAutoNavHost() {
                     viewModel = vm,
                     onOpenKannadaNegotiator = {
                         navController.navigate(AppDestination.KannadaSathi.route)
+                    }
+                )
+            }
+            composable(AppDestination.ExploreKA.route) {
+                val vm: KarnatakaExplorerViewModel = viewModel()
+                KarnatakaExplorerScreen(
+                    viewModel = vm,
+                    onNavigateToPhrasebook = {
+                        navController.navigate(AppDestination.KannadaSathi.route)
+                    },
+                    onNavigateToProStore = {
+                        navController.navigate(AppDestination.ProStore.route)
                     }
                 )
             }

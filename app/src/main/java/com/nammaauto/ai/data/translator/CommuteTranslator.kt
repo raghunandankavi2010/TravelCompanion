@@ -295,6 +295,80 @@ object CommuteTranslator {
                 )
             }
 
+            // Food & Dining / Tourist Lifelines
+            lower.contains("spic") || lower.contains("chilli") || lower.contains("khaara") -> {
+                TranslationResult(
+                    englishOriginal = input,
+                    kannadaLipi = "ದಯವಿಟ್ಟು ಖಾರ ಬೇಡ, ತುಂಬಾ ಕಮ್ಮಿ ಮಾಡಿ!",
+                    phoneticPronunciation = "Dayavittu khaara beda, thumba kammi maadi!",
+                    isBangaloreSlangOptimized = true,
+                    sourceEngine = "Karnataka Tourist AI"
+                )
+            }
+            lower.contains("dosa") || lower.contains("coffee") || lower.contains("breakfast") -> {
+                TranslationResult(
+                    englishOriginal = input,
+                    kannadaLipi = "ಒಂದು ಮಸಾಲೆ ದೋಸೆ ಮತ್ತು ಫಿಲ್ಟರ್ ಕಾಫಿ ಕೊಡಿ.",
+                    phoneticPronunciation = "Ondu masala dose mathu filter coffee kodi.",
+                    isBangaloreSlangOptimized = true,
+                    sourceEngine = "Karnataka Tourist AI"
+                )
+            }
+            lower.contains("water") -> {
+                TranslationResult(
+                    englishOriginal = input,
+                    kannadaLipi = "ಕುಡಿಯುವ ನೀರು ಸೀಲ್ಡ್ ಬಾಟಲ್ ಕೊಡಿ.",
+                    phoneticPronunciation = "Kudiyuva neeru sealed bottle kodi.",
+                    isBangaloreSlangOptimized = true,
+                    sourceEngine = "Karnataka Tourist AI"
+                )
+            }
+            lower.contains("bill") || lower.contains("check please") -> {
+                TranslationResult(
+                    englishOriginal = input,
+                    kannadaLipi = "ಬಿಲ್ ಕೊಡಿ ಪ್ಲೀಸ್, ಫೋನ್ ಪೇ / ಗೂಗಲ್ ಪೇ ಮಾಡ್ತೀನಿ.",
+                    phoneticPronunciation = "Bill kodi please, PhonePe / Google Pay maadthini.",
+                    isBangaloreSlangOptimized = true,
+                    sourceEngine = "Karnataka Tourist AI"
+                )
+            }
+            lower.contains("trek") || lower.contains("permit") || lower.contains("aranya") -> {
+                TranslationResult(
+                    englishOriginal = input,
+                    kannadaLipi = "ಅರಣ್ಯ ವಿಹಾರ ಟ್ರೆಕ್ ಪರ್ಮಿಟ್ ಇದೆ, ಚೆಕ್‌ಪೋಸ್ಟ್ ಎಲ್ಲಿದೆ?",
+                    phoneticPronunciation = "Aranya Vihaara trek permit ide, checkpost ellide?",
+                    isBangaloreSlangOptimized = true,
+                    sourceEngine = "Karnataka Tourist AI"
+                )
+            }
+            lower.contains("guide") -> {
+                TranslationResult(
+                    englishOriginal = input,
+                    kannadaLipi = "ಸರ್ಕಾರಿ ಮಾನ್ಯತೆ ಪಡೆದ ಗೈಡ್ ಬೇಕು, ನಿಮ್ಮ ಐಡಿ ತೋರಿಸಿ.",
+                    phoneticPronunciation = "Sarkari maanyathe padeda guide beku, nimma ID thorisi.",
+                    isBangaloreSlangOptimized = true,
+                    sourceEngine = "Karnataka Tourist AI"
+                )
+            }
+            lower.contains("bus") || lower.contains("ksrtc") -> {
+                TranslationResult(
+                    englishOriginal = input,
+                    kannadaLipi = "ಈ ಕೆ.ಎಸ್.ಆರ್.ಟಿ.ಸಿ ಬಸ್ ಮೈಸೂರು / ಹಂಪಿಗೆ ಹೋಗುತ್ತಾ?",
+                    phoneticPronunciation = "Ee KSRTC bus Mysore / Hampi-ge hoguttha?",
+                    isBangaloreSlangOptimized = true,
+                    sourceEngine = "Karnataka Tourist AI"
+                )
+            }
+            lower.contains("temple") || lower.contains("darshan") -> {
+                TranslationResult(
+                    englishOriginal = input,
+                    kannadaLipi = "ದೇವಸ್ಥಾನದ ದರ್ಶನ ಸಮಯ ಯಾವಾಗ ಮುಗಿಯುತ್ತೆ?",
+                    phoneticPronunciation = "Devasthanada darshana samaya yaavaga mugiyutthe?",
+                    isBangaloreSlangOptimized = true,
+                    sourceEngine = "Karnataka Tourist AI"
+                )
+            }
+
             else -> null
         }
     }

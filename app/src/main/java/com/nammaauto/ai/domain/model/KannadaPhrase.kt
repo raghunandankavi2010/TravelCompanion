@@ -7,7 +7,11 @@ enum class PhraseCategory(val label: String, val iconDescription: String) {
     NEGOTIATE("Fair Haggling", "Smart Counter-Offer"),
     DIRECTIONS("Turn & Stop", "Driver Guidance"),
     RAIN_SURGE("Rain & Night", "Special Scenarios"),
-    SAFETY("Emergency", "Immediate Assistance")
+    SAFETY("Emergency", "Immediate Assistance"),
+    TOURIST_SIGHTSEEING("Tourist & Sights", "Tickets, Guides & Entry"),
+    FOOD_DINING("Food & Darshini", "Order Food & 'No Spicy'"),
+    HOTEL_SHOPPING("Hotels & Shopping", "Bargaining & Check-In"),
+    TRANSIT_BUS("Bus & Intercity", "KSRTC & Metro")
 }
 
 data class KannadaPhrase(
