@@ -787,6 +787,50 @@ object KarnatakaTourismRepository {
         ),
 
         KarnatakaSpot(
+            id = "bandipur_safari",
+            name = "Bandipur Tiger Reserve & National Park",
+            kannadaName = "ಬಂಡೀಪುರ ಹುಲಿ ಸಂರಕ್ಷಿತ ಪ್ರದೇಶ",
+            tagline = "Project Tiger Bastion, Nilgiri Biosphere & Forest Safaris",
+            category = TourismCategory.WILDLIFE_SAFARI,
+            region = KarnatakaRegion.HALE_MYSURU,
+            district = "Chamarajanagar",
+            nearestTransitHub = "Airport: Mysuru MYQ (72 km) / Coimbatore CJB (135 km) | Train: Mysuru Junction (78 km)",
+            distanceFromBangaloreKm = 220,
+            bestSeason = "October to May (Optimal tiger & herd sightings: March to May)",
+            timings = "Morning Safari: 6:00 AM – 9:00 AM | Evening Safari: 3:30 PM – 6:00 PM (Melukamanahalli Counter)",
+            overview = "Bandipur is one of India's earliest and most successful Project Tiger reserves, spanning over 874 sq km in the Nilgiri Biosphere Reserve. Known for its population of Royal Bengal Tigers, Indian leopards, dholes (wild dogs), and gaurs (Indian bison). Official safaris depart from the Melukamanahalli reception center on the Mysuru-Ooty highway.",
+            keyHighlights = listOf(
+                "Royal Bengal Tiger and Indian Leopard tracking in deciduous forest",
+                "Largest wild population of endangered Asiatic elephants in South Asia",
+                "Gaur (Indian Bison), Chital deer, and Sambhar herds roaming grasslands",
+                "Official Karnataka Forest Dept Canter bus & open Gypsy safaris"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "Bandipur Tiger Reserve (Govt of Karnataka)",
+                portalUrl = "https://junglelodges.com",
+                bookingRule = "Online tickets open 30 days in advance. Offline counter tickets open 6:00 AM (queues begin 5:15 AM).",
+                badgeTag = "PROJECT TIGER RESERVE"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 1000,
+                foreignerFeeInr = 2500,
+                approxUsdEquivalent = "~$30.00 USD (Forest Dept Safari Bus)",
+                feeIncludes = "Shared Canter safari bus entry, sanctuary permit, and forest guide.",
+                dressCodeRules = "Muted earth tones (olive, khaki). Strictly no plastic bottles allowed inside safari vehicles.",
+                photographyPolicy = "DSLR camera permit ₹250. Video cameras require special commercial permit.",
+                scamAlertNotes = "Avoid unauthorized roadside touts claiming 'private core-zone jeep tours'. Only official Forest Dept and Jungle Lodges vehicles are legally permitted in the core tiger zone.",
+                cashVsDigitalNotes = "Spot booking counters demand CASH ONLY when highway mobile internet is down. Carry ₹1,500 cash."
+            ),
+            howToReachTransit = "KSRTC buses from Mysuru to Ooty stop at Bandipur Melukamanahalli Forest Gate directly.",
+            survivalKannadaPhrase = "Bandipura safari counter ticket siguttha?",
+            survivalKannadaLipi = "ಬಂಡೀಪುರ ಸಫಾರಿ ಕೌಂಟರ್ ಟಿಕೆಟ್ ಸಿಗುತ್ತಾ?",
+            survivalKannadaMeaning = "Is the Bandipur safari counter ticket available?",
+            imageUrl = "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?w=800&auto=format&fit=crop&q=80",
+            videoTourUrl = "https://www.youtube.com/results?search_query=bandipur+tiger+reserve+safari+karnataka",
+            guideInfo = "Certified Forest Department naturalists accompany every morning and evening vehicle batch"
+        ),
+
+        KarnatakaSpot(
             id = "coorg_madikeri",
             name = "Coorg / Kodagu (Coffee & Dubare Camp)",
             kannadaName = "ಕೊಡಗು (ಮಡಿಕೇರಿ ಮತ್ತು ದುಬಾರೆ ಆನೆ ಶಿಬಿರ)",
@@ -951,6 +995,182 @@ object KarnatakaTourismRepository {
             survivalKannadaPhrase = "Bettada mele hogalu doli charge eshtu?",
             survivalKannadaLipi = "ಬೆಟ್ಟದ ಮೇಲೆ ಹೋಗಲು ಡೋಲಿ ಚಾರ್ಜ್ ಎಷ್ಟು?",
             survivalKannadaMeaning = "What is the official doli palanquin charge to go up the hill?"
+        ),
+
+        // Dharmasthala Manjunatha Temple
+        KarnatakaSpot(
+            id = "dharmasthala_temple",
+            name = "Dharmasthala Sri Manjunatha Swamy Temple",
+            kannadaName = "ಧರ್ಮಸ್ಥಳ ಶ್ರೀ ಮಂಜುನಾಥ ಸ್ವಾಮಿ ಕ್ಷೇತ್ರ",
+            tagline = "The Abode of Dharma, Charity & World-Famous Sacred Annadana",
+            category = TourismCategory.TEMPLES_HERITAGE,
+            region = KarnatakaRegion.KARAVALI,
+            district = "Dakshina Kannada",
+            nearestTransitHub = "Mangaluru Airport: IXE (75 km) | Train: Subrahmanya Road SBHR (45 km)",
+            distanceFromBangaloreKm = 305,
+            bestSeason = "September to March (Pleasant weather in foothills)",
+            timings = "6:30 AM – 2:00 PM & 5:00 PM – 8:30 PM (Daily)",
+            overview = "Over 800 years old, Dharmasthala represents a unique harmony where Lord Shiva is worshipped by Madhwa Vaishnava priests while the temple is traditionally administered by the Jain Pergade/Heggade family. Renowned across India for boundless Dana (charity), free continuous meals at Annapoorna dining hall, and the 39-foot monolithic Bahubali statue atop Ratnagiri.",
+            keyHighlights = listOf(
+                "Sri Manjunatha Swamy sanctum darshan & Chandranatha Swami Basadi",
+                "World-renowned Annapoorna Free Sacred Dining Hall feeding 30,000+ daily",
+                "39-foot monolithic Bhagavan Bahubali statue at Ratnagiri Hill",
+                "Manjusha Heritage Vintage Car Museum with royal Wadiyar collections"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "Sri Kshetra Dharmasthala Trust",
+                portalUrl = "https://shridharmasthala.org",
+                bookingRule = "Guesthouse rooms (Netravathi, Ganga, Sharavathi) and special sevas can be reserved online.",
+                badgeTag = "DHARMASTHALA TRUST"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 0,
+                foreignerFeeInr = 0,
+                approxUsdEquivalent = "Free Entry & Free Meals",
+                feeIncludes = "Free general darshan and multi-course sacred Annadana prasadam.",
+                dressCodeRules = "Men must remove shirts/vests before entering sanctum inner hall. Traditional clothing for women. Footwear strictly prohibited inside campus.",
+                photographyPolicy = "Handheld photography permitted outside; strictly prohibited inside sanctum.",
+                scamAlertNotes = "Beware of unofficial room booking websites; only book via shridharmasthala.org.",
+                cashVsDigitalNotes = "UPI accepted at official sevas counter; keep ₹500 cash for auto rickshaws."
+            ),
+            howToReachTransit = "Direct KSRTC Rajahamsa and Airavat Club Class buses run round the clock from Majestic Bengaluru (6-hour journey via Shiradi Ghat).",
+            survivalKannadaPhrase = "Annapoorna oota timings eshtu gantege?",
+            survivalKannadaLipi = "ಅನ್ನಪೂರ್ಣ ಊಟ ಟೈಮಿಂಗ್ಸ್ ಎಷ್ಟು ಗಂಟೆಗೆ?",
+            survivalKannadaMeaning = "What time does the sacred Annapoorna dining hall serve meals?",
+            imageUrl = "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop",
+            videoTourUrl = "https://www.youtube.com/results?search_query=dharmasthala+temple+documentary"
+        ),
+
+        // Sringeri Sharada Peetham
+        KarnatakaSpot(
+            id = "sringeri_peetham",
+            name = "Sringeri Sharada Peetham & Vidyashankara Temple",
+            kannadaName = "ಶೃಂಗೇರಿ ಶಾರದಾ ಪೀಠ ಮತ್ತು ವಿದ್ಯಾಶಂಕರ ದೇವಾಲಯ",
+            tagline = "Adi Shankaracharya 1st Dakshinamnaya Matha on the Pristine Tunga River",
+            category = TourismCategory.TEMPLES_HERITAGE,
+            region = KarnatakaRegion.MALNAD,
+            district = "Chikkamagaluru",
+            nearestTransitHub = "Mangaluru Airport (105 km) | Train: Shimoga Town SMET (90 km)",
+            distanceFromBangaloreKm = 320,
+            bestSeason = "October to March (Post-monsoon lush Malnad greenery)",
+            timings = "6:00 AM – 2:00 PM & 5:00 PM – 9:00 PM",
+            overview = "Established in the 8th century by Jagadguru Adi Shankaracharya as the supreme seat of Advaita Vedanta philosophy. The architectural marvel Vidyashankara Temple features 12 zodiac stone pillars engineered such that morning sunlight strikes the astrological pillar corresponding to the current zodiac month. Flanked by sacred fish in the crystal-clear Tunga river.",
+            keyHighlights = listOf(
+                "Vidyashankara Temple 12 astronomical Zodiac stone pillars",
+                "Goddess Sharadamba sanctum blessing for students and artists",
+                "Feeding holy fish (Puffed rice / Mandakki) on the Tunga suspension bridge",
+                "Divine satvik banana-leaf meal at Sri Bharati Tirtha Bhojanashala"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "Sringeri Sharada Peetham Official",
+                portalUrl = "https://sringeri.net",
+                bookingRule = "Matha guesthouse accommodation and special Chandramouleshwara Pooja passes available online.",
+                badgeTag = "SHARADA PEETHAM"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 0,
+                foreignerFeeInr = 0,
+                approxUsdEquivalent = "Free Entry & Divine Satvik Food",
+                feeIncludes = "Temple entry, Goddess darshan, and two free satvik meals daily.",
+                dressCodeRules = "Men remove upper clothing (shirts/vests) in inner sanctum. No shorts or skirts permitted.",
+                photographyPolicy = "Allowed in outer river courtyard; strictly prohibited in sanctums.",
+                scamAlertNotes = "Do not purchase overpriced flower baskets outside; official matha counter provides genuine prasada.",
+                cashVsDigitalNotes = "UPI accepted at matha publication and sevas counters."
+            ),
+            howToReachTransit = "Direct KSRTC non-stop buses from Bengaluru Majestic (7 hours via Hassan-Mudigere-Balehonnur).",
+            survivalKannadaPhrase = "Tunga nadiya meenige mandaakki elli siguththe?",
+            survivalKannadaLipi = "ತುಂಗಾ ನದಿಯ ಮೀನಿಗೆ ಮಂಡಕ್ಕಿ ಎಲ್ಲಿ ಸಿಗುತ್ತೆ?",
+            survivalKannadaMeaning = "Where can I buy puffed rice to feed the sacred Tunga river fish?",
+            imageUrl = "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&auto=format&fit=crop",
+            videoTourUrl = "https://www.youtube.com/results?search_query=sringeri+sharada+peetham+temple"
+        ),
+
+        // Kukke Subramanya Temple
+        KarnatakaSpot(
+            id = "kukke_subramanya",
+            name = "Kukke Sri Subramanya Swamy Temple",
+            kannadaName = "ಕುಕ್ಕೆ ಶ್ರೀ ಸುಬ್ರಹ್ಮಣ್ಯ ಸ್ವಾಮಿ ಕ್ಷೇತ್ರ",
+            tagline = "Sacred Serpent Shrine at the Misty Foot of Kumara Parvatha",
+            category = TourismCategory.TEMPLES_HERITAGE,
+            region = KarnatakaRegion.KARAVALI,
+            district = "Dakshina Kannada",
+            nearestTransitHub = "Train: Subrahmanya Road SBHR (12 km) | Airport: Mangaluru IXE (110 km)",
+            distanceFromBangaloreKm = 280,
+            bestSeason = "September to March",
+            timings = "6:00 AM – 1:30 PM & 3:30 PM – 8:30 PM",
+            overview = "Nestled amidst the dense rainforests of the Western Ghats beneath the towering Kumara Parvatha peak. Lord Kartikeya (Subramanya) is worshipped here as the ultimate refuge and protector of snakes. Pilgrims take holy purification dips in the Kumara Dhara river before seeking blessings.",
+            keyHighlights = listOf(
+                "Kumara Dhara river holy dip & temple chariot car street",
+                "Base camp for Karnataka toughest trek (Kumara Parvatha)",
+                "Sarpa Samskara & Ashlesha Bali sacred ancient rituals",
+                "Free Annadana meals at modern mega dining hall"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "Kukke Temple Muzrai Administration",
+                portalUrl = "https://kukke.org",
+                bookingRule = "Mandatory prior online booking required for Sarpa Samskara and Ashlesha Bali rituals.",
+                badgeTag = "MUZRAI TEMPLE"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 0,
+                foreignerFeeInr = 0,
+                approxUsdEquivalent = "Free Entry",
+                feeIncludes = "Temple entry and sacred Annadana meals.",
+                dressCodeRules = "Men remove shirts/vests before sanctum entry. Women in sarees/churidars. No Western shorts.",
+                photographyPolicy = "Strictly prohibited inside inner sanctum.",
+                scamAlertNotes = "Book all rituals exclusively via kukke.org to prevent tout fraud.",
+                cashVsDigitalNotes = "UPI QR available at temple counter; ATMs near bus stand."
+            ),
+            howToReachTransit = "Direct overnight train from Bengaluru (Karwar/Kannur Express) stops at Subrahmanya Road station.",
+            survivalKannadaPhrase = "Kumara Dhara nadige hege hogodu?",
+            survivalKannadaLipi = "ಕುಮಾರಧಾರ ನದಿಗೆ ಹೇಗೆ ಹೋಗೋದು?",
+            survivalKannadaMeaning = "How do I reach the holy Kumara Dhara river?",
+            imageUrl = "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=800&auto=format&fit=crop",
+            videoTourUrl = "https://www.youtube.com/results?search_query=kukke+subramanya+temple"
+        ),
+
+        // Ranganathittu Bird Sanctuary
+        KarnatakaSpot(
+            id = "ranganathittu_bird",
+            name = "Ranganathittu Bird Sanctuary (Pakshi Kashi)",
+            kannadaName = "ರಂಗನತಿಟ್ಟು ಪಕ್ಷಿಧಾಮ (ಕರ್ನಾಟಕದ ಪಕ್ಷಿ ಕಾಶಿ)",
+            tagline = "Cauvery River Islets with Painted Storks & Marsh Crocodiles",
+            category = TourismCategory.WILDLIFE_SAFARI,
+            region = KarnatakaRegion.HALE_MYSURU,
+            district = "Mandya / Srirangapatna",
+            nearestTransitHub = "Mysuru Airport (25 km) | Train: Srirangapatna (4 km)",
+            distanceFromBangaloreKm = 128,
+            bestSeason = "December to June (Peak migratory nesting & breeding season)",
+            timings = "9:00 AM – 6:00 PM (Daily)",
+            overview = "Comprising six picturesque islets in the Cauvery River, Ranganathittu is the largest bird sanctuary in Karnataka. Guided boat safaris take visitors within meters of nesting colonies of Painted Storks, Spoonbills, Spot-billed Pelicans, and basking Mugger Crocodiles.",
+            keyHighlights = listOf(
+                "Cauvery river boat safari gliding past roosting migratory bird colonies",
+                "Close-up viewing of basking wild Mugger Crocodiles on rocky islets",
+                "Lush bamboo groves, nature interpretation center, and butterfly park",
+                "Ranganatha Swamy temple & Tipu Sultan monuments within 5 km"
+            ),
+            bookingInfo = OfficialBookingInfo(
+                portalName = "Karnataka Forest Dept (MyEcoTrip)",
+                portalUrl = "https://myecotrip.com",
+                bookingRule = "Sanctuary entry and special boat safari tickets can be purchased on myecotrip.com or at entrance.",
+                badgeTag = "FOREST ECO-TRIP"
+            ),
+            foreignerPricing = ForeignerPricingGuidance(
+                domesticFeeInr = 100,
+                foreignerFeeInr = 500,
+                approxUsdEquivalent = "~$6.00 USD (Sanctuary Entry + Boat Safari)",
+                feeIncludes = "Entry to sanctuary grounds and guided Cauvery river boat safari.",
+                dressCodeRules = "Life jackets provided by Forest Dept are mandatory on the boat. Keep hands inside.",
+                photographyPolicy = "Camera allowed. Telephoto lens fee ₹250. Drones strictly illegal under Wildlife Act.",
+                scamAlertNotes = "Only take the official Forest Department boat counter; private boats are illegal.",
+                cashVsDigitalNotes = "UPI QR accepted at entrance ticket counter."
+            ),
+            howToReachTransit = "Just 3.5 km off Bengaluru-Mysuru Expressway (NH 275) near Srirangapatna bypass.",
+            survivalKannadaPhrase = "Doni safari ticket charge eshtu?",
+            survivalKannadaLipi = "ದೋಣಿ ಸಫಾರಿ ಟಿಕೆಟ್ ಚಾರ್ಜ್ ಎಷ್ಟು?",
+            survivalKannadaMeaning = "What is the ticket charge for the Cauvery boat safari?",
+            imageUrl = "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?w=800&auto=format&fit=crop",
+            videoTourUrl = "https://www.youtube.com/results?search_query=ranganathittu+bird+sanctuary+boat+safari"
         )
     )
 

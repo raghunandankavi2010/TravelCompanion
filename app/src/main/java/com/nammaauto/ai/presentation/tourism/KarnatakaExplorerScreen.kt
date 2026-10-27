@@ -151,7 +151,7 @@ fun KarnatakaExplorerScreen(
                     Column {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Text(
-                                text = "Karnataka Explorer",
+                                text = "Travel Companion",
                                 fontSize = 23.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = Slate200
@@ -160,7 +160,7 @@ fun KarnatakaExplorerScreen(
                             Text(text = "🧭", fontSize = 22.sp)
                         }
                         Text(
-                            text = "Statewide Tourism • Heritage, Ghats & Coast",
+                            text = "Karnataka Explorer • Temples, Wildlife & Nature",
                             fontSize = 12.sp,
                             color = AutoYellow
                         )

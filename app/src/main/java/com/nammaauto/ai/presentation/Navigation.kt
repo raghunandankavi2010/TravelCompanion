@@ -6,7 +6,9 @@ import androidx.compose.material.icons.filled.Calculate
 import androidx.compose.material.icons.filled.DirectionsBus
 import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.filled.HealthAndSafety
+import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.RecordVoiceOver
+import androidx.compose.material.icons.filled.Restaurant
 import androidx.compose.material.icons.filled.SmartDisplay
 import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.filled.Star
@@ -32,12 +34,18 @@ import com.nammaauto.ai.core.theme.Slate800
 import com.nammaauto.ai.core.theme.Slate900
 import com.nammaauto.ai.presentation.calculator.FareEstimatorScreen
 import com.nammaauto.ai.presentation.calculator.FareEstimatorViewModel
+import com.nammaauto.ai.presentation.cost.TravelCostCalculatorScreen
+import com.nammaauto.ai.presentation.cost.TravelCostViewModel
+import com.nammaauto.ai.presentation.food.VegFoodScreen
+import com.nammaauto.ai.presentation.food.VegFoodViewModel
 import com.nammaauto.ai.presentation.lifeline.LifelineScreen
 import com.nammaauto.ai.presentation.lifeline.LifelineViewModel
 import com.nammaauto.ai.presentation.meter.MeterCamScreen
 import com.nammaauto.ai.presentation.meter.MeterViewModel
 import com.nammaauto.ai.presentation.phrasebook.KannadaSathiScreen
 import com.nammaauto.ai.presentation.phrasebook.KannadaSathiViewModel
+import com.nammaauto.ai.presentation.scraper.LiveTravelIntelScreen
+import com.nammaauto.ai.presentation.scraper.LiveTravelScraperViewModel
 import com.nammaauto.ai.presentation.store.ProStoreScreen
 import com.nammaauto.ai.presentation.store.ProStoreViewModel
 import com.nammaauto.ai.presentation.tourism.KarnatakaExplorerScreen
@@ -47,12 +55,15 @@ import com.nammaauto.ai.presentation.tourism.StatewideTravelNavigatorScreen
 
 sealed class AppDestination(val route: String, val label: String, val icon: ImageVector) {
     data object ExploreKA : AppDestination("explore_ka", "Explore KA", Icons.Default.Explore)
-    data object TransitGuide : AppDestination("transit_guide", "Transit Hub", Icons.Default.DirectionsBus)
+    data object VegFood : AppDestination("veg_food", "Veg Dining", Icons.Default.Restaurant)
+    data object LiveIntel : AppDestination("live_intel", "Live Intel", Icons.Default.Public)
+    data object TripCosts : AppDestination("trip_costs", "Trip Costs", Icons.Default.Calculate)
     data object MediaGallery : AppDestination("media_gallery", "Photos & 4K", Icons.Default.SmartDisplay)
+
+    // Companion Utility Routes
+    data object TransitGuide : AppDestination("transit_guide", "Transit Hub", Icons.Default.DirectionsBus)
     data object KannadaSathi : AppDestination("kannada", "Kannada Voice", Icons.Default.RecordVoiceOver)
     data object Lifeline : AppDestination("lifeline", "SafeGuard SOS", Icons.Default.HealthAndSafety)
-
-    // Optional utility routes accessible from screens
     data object MeterCam : AppDestination("meter_cam", "Meter", Icons.Default.Speed)
     data object FairFare : AppDestination("fair_fare", "Ride Radar", Icons.Default.Calculate)
     data object ProStore : AppDestination("pro_store", "Pro Pass", Icons.Default.Star)
@@ -66,10 +77,10 @@ fun NammaAutoNavHost() {
 
     val primaryDestinations = listOf(
         AppDestination.ExploreKA,
-        AppDestination.TransitGuide,
-        AppDestination.MediaGallery,
-        AppDestination.KannadaSathi,
-        AppDestination.Lifeline
+        AppDestination.VegFood,
+        AppDestination.LiveIntel,
+        AppDestination.TripCosts,
+        AppDestination.MediaGallery
     )
 
     Scaffold(
@@ -126,11 +137,23 @@ fun NammaAutoNavHost() {
                     }
                 )
             }
-            composable(AppDestination.TransitGuide.route) {
-                StatewideTravelNavigatorScreen()
+            composable(AppDestination.VegFood.route) {
+                val vm: VegFoodViewModel = viewModel()
+                VegFoodScreen(viewModel = vm)
+            }
+            composable(AppDestination.LiveIntel.route) {
+                val vm: LiveTravelScraperViewModel = viewModel()
+                LiveTravelIntelScreen(viewModel = vm)
+            }
+            composable(AppDestination.TripCosts.route) {
+                val vm: TravelCostViewModel = viewModel()
+                TravelCostCalculatorScreen(viewModel = vm)
             }
             composable(AppDestination.MediaGallery.route) {
                 KarnatakaMediaShowcaseScreen()
+            }
+            composable(AppDestination.TransitGuide.route) {
+                StatewideTravelNavigatorScreen()
             }
             composable(AppDestination.KannadaSathi.route) {
                 val vm: KannadaSathiViewModel = viewModel()

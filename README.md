@@ -1,93 +1,92 @@
-# NammaAuto AI: Bengaluru Commute & Meter Guardian 🛺⚡
+# Travel Companion: The #1 Karnataka Tourism & Real-Time Travel Guide Super App 🧭🌿
 
-> **The Ultimate On-Device AI Super App for Every Bengaluru Commuter.**  
-> Powered by CameraX, Google ML Kit On-Device Vision OCR, Real-Time BTP Legal Tariff Telemetry, and "NammaBhasha" Conversational Kannada Speech AI.
-
----
-
-## 🎯 The Real Bengaluru Problem We Solved
-
-Every day, over **1.5 crore Bangalore residents and 2+ lakh auto rickshaw drivers** engage in high-friction haggling:
-1. **Unfair Quotes & "One-and-Half" Demands:** Passengers are quoted arbitrary prices (₹150 for 2.5 km) or charged 1.5x during broad daylight.
-2. **Language Barrier & Negotiation Anxiety:** Hundreds of thousands of techies, students, and immigrants struggle to speak conversational Kannada, leading to misunderstandings, rejection, or overpaying.
-3. **Rigged & Fast Meters:** Suspicions of tampered or altered pulse meters are frequent, but commuters have zero real-time verification tools.
-4. **Surging Cab Cancellations:** Uber/Ola surge 2x-3x during Silk Board / ORR traffic gridlocks or rain, while rejecting 4 out of 5 rides. Commuters need to instantly know if taking a street auto is cheaper and what win-win price to offer.
-5. **Late Night Commute Safety:** Techies heading home late from Outer Ring Road / Whitefield / Manyata need active corridor tracking and one-tap emergency broadcast.
+> **The Ultimate On-Device AI & Real-Time Travel Companion for Karnataka.**  
+> Built for serious travelers, nature lovers, temple pilgrims, and road trippers. Powered by real-time web scraping, verified ground-truth travel intelligence, pure vegetarian dining guides, dynamic trip cost estimation, and 100% non-copyrighted media.
 
 ---
 
-## 🚀 Key AI & Engineering Features
+## 🌟 The Vision: Karnataka's Premier Travel Super App
 
-### 1. 📷 MeterCam AI: On-Device Real-Time Vision OCR
-- Uses **Android CameraX** streaming into **Google ML Kit Text Recognition** at 6-7 FPS.
-- Instantly detects digital 7-segment LED/LCD auto meter digits (< 30ms latency, zero cloud dependency, 100% offline).
-- Dynamically compares the scanned fare with the lawful **Bengaluru Traffic Police (BTP)** tariff for the trip.
-- Flashes **"Fast Meter Alert (+35% above legal rate)"** if meter tampering is detected.
-
-### 2. ⚖️ Official BTP Fare Engine & Tri-Fare Arbiter
-- Strict implementation of Karnataka State Transport Department tariff rules:
-  - Base: ₹30.00 (first 1.8 km)
-  - Subsequent: ₹15.00 / km
-  - Night Surcharge: +50% (strictly 10:00 PM – 5:00 AM)
-  - Waiting Charges: First 5 mins free; ₹5 per 15 mins
-- **Tri-Fare Matrix:** Displays (1) Lawful Meter Fare, (2) Win-Win "Fair-Fare" Offer (accounting for rain & Silk Board traffic delays so drivers accept), and (3) Cab App Surge Benchmark showing net savings.
-
-### 3. 🗣️ "NammaBhasha" Conversational Kannada Audio Assistant
-- Real-time on-device Kannada Text-To-Speech synthesis with local Bangalore dialect phrasing.
-- 30+ categorized authentic phrases (Hailing, Meter Enforcement, Counter-Offers, Directions, Weather Compromise, Emergency).
-- One-tap audio speaker: Plays native Kannada directly to the driver with clear pronunciation.
-- Dual display: Native Kannada Lipi + Romanized phonetics ("Indiranagar ge meter haaki barthira?").
-
-### 5. 🧭 "Explore Karnataka" & Tourist Scam-Buster Super Hub
-- **Curated Tourism Discovery:**
-  - 🛕 **Temples & Heritage:** Hampi (UNESCO), Belur & Halebeedu (UNESCO 2023), Murudeshwar Sea Temple, Mysore Palace, Badami Cave Temples, Dharmasthala & Kukke.
-  - 🧗 **Adventure Sports:** Dandeli Kali River White-Water Rafting (Grade 3/4 rapids), Netrani Island PADI Scuba Diving & coral snorkeling, Ramanagara rock climbing, Gokarna surfing.
-  - 🥾 **Trekking & Nature Trails:** Kudremukh Peak, Skandagiri Sunrise Sea-of-Clouds, Kumara Parvatha (Pushpagiri), Netravathi Ridge, Tadiandamol Coorg.
-  - 🏖️ **Coastal Beaches:** Om Beach & Kudle Beach (Gokarna cliff hikes), Malpe Beach & Sea Walk (Udupi), Maravanthe Beach Highway (NH 66).
-  - 🏝️ **Islands to Visit:** St. Mary's Island (88-million-year-old hexagonal columnar basalt rock pillars), Netrani Pigeon Island, Kurumgad Tortoise Island, Srirangapatna Cauvery River Island.
-- **🌲 Official Aranya Vihaara & Govt Portals Integration:**
-  - Direct 1-tap booking launch for **`aranyavihaara.karnataka.gov.in`** (Karnataka Forest Dept official trekking permits), **`asi.nic.in`** (Archaeological Survey of India monument ticketing), **`karnatakatourism.org`**, **`kstdc.co`**, and **`ksrtc.in`**.
-  - Strict advisory on mandatory advance booking (1–30 days prior) and physical ID/Passport verification to avoid illegal tout scams.
-- **🌍 Foreigner Pricing Transparency & Currency Converter:**
-  - Instant dual pricing display (Domestic INR vs Foreign National INR / USD $ estimate).
-  - Full guidance on ASI monument tickets (e.g., Hampi ₹40 vs ₹600 / ~$7.20 USD), Mysore Palace (₹100 vs ₹1,000 / ~$12 incl. multilingual audio guide).
-  - Strict dress codes (modest attire, footwear outside temples, no leather in sanctums).
-  - Forest Department zero-single-use-plastic enforcement (₹500 fine for disposable plastic bottles in Western Ghats).
-- **🗣️ On-Location Tourist Kannada Voice Lifeline:**
-  - 1-tap TTS speech for place-specific survival phrases (asking for checkposts, verified guides, ticket counters, and auto rates).
-  - New Phrasebook categories: *Tourist & Sightseeing*, *Food & Darshini* ("Khaara beda" / No spicy, Filter Coffee, Neer Dosa), *Hotels & Shopping*, *Intercity Bus Transit*.
-
-### 4. 🛡️ Night Guardian & Route Safety Radar
-- Automatically geofences commute routes.
-- Alerts passenger if the auto deviates > 400m from the route corridor or makes unscheduled stops in unlit areas.
-- One-tap **SOS Broadcast**: Sends SMS/WhatsApp with live Google Maps GPS link to family & auto-dials BTP 24/7 Helpline (`9480801000`).
+Travelers exploring Karnataka face high friction:
+1. **Scattered Information:** Travelers have to juggle dozens of government portals (`aranyavihaara.karnataka.gov.in`, `asi.nic.in`, `ksrtc.in`, `junglelodges.com`, temple trust sites) with outdated blogs.
+2. **Real-Time Ground Reality Gaps:** Unplanned roadblocks, night traffic bans (e.g. strict 9 PM – 6 AM closure in Bandipur & Nagarhole), trekking permit caps (strict 50/day Aranya Vihaara limit for Kudremukh), and spot queue surprises.
+3. **Vegetarian & Satvik Food Anxiety:** Finding reliable 100% pure vegetarian highway pitstops, heritage Darshinis, and sacred temple Annadana (free blessed sanctum meals) across Karnataka's highway corridors.
+4. **Budget & Cost Opacity:** Unclear pricing for transport, fuel, safaris, and dual pricing for foreign tourists.
+5. **Copyrighted Media Clutter:** Difficulty accessing genuine, high-definition, royalty-free photography and 4K aerial tours with clear Creative Commons attribution.
 
 ---
 
-## 💰 Play Store Monetization Strategy
+## 🚀 Key Engineering & Product Features
 
-| Tier | Price | Features Included |
-| :--- | :--- | :--- |
-| **Free Tier** | Free | 3 Daily AI Scans, 5 Daily Audio Phrases, Basic GPS Meter, AdMob banner/native cards |
-| **Day Pass** | ₹19 / 24h | Unlimited AI scans + full speech audio for casual commuters & weekend trips |
-| **Monthly Pro** | ₹79 / month | Unlimited MeterCam AI, Unlimited Kannada Audio, Night Guardian Radar, BTP Grievance PDF report |
-| **Bangalore Native VIP** | ₹299 Lifetime | Permanent lifetime unlock for all future features |
+### 1. 🌐 Real-Time Net Scraper & Live Travel Intel
+- **Live Web Streamer:** Asynchronously queries the Wikipedia/Wikimedia REST API in real time (`LiveTravelScraperService.kt`), streaming live extracts, descriptions, coordinates, and copyright-free thumbnails for any Karnataka town, temple, waterfall, or wildlife sanctuary with offline fail-safe caching.
+- **Regional Live Weather Radar:** Instant climate and rain probability radar across 4 distinct climatic zones:
+  - *Malnad & Western Ghats* (Chikkamagaluru, Coorg, Agumbe)
+  - *Coastal Karavali* (Gokarna, Udupi, Mangaluru, Murudeshwar)
+  - *Heritage North* (Hampi, Badami, Vijayapura)
+  - *Royal South* (Mysuru, Kabini, Bandipur)
+- **Live Gates & Permit Radar:**
+  - Bandipur & Nagarhole Tiger Reserve mandatory 9:00 PM – 6:00 AM highway night closure countdown.
+  - Aranya Vihaara Trekking Permits quota verification.
+  - Netrani Scuba Island active sea season radar (October to May).
+  - Mysuru Palace 100,000 golden bulbs illumination alert (Sundays 7:00 PM – 8:00 PM).
+
+### 2. 🍲 Pure Veg Dining & Sacred Temple Annadana Directory
+- **Highway Pure Veg Oases:**
+  - *Kamath Lokaruchi (Ramanagara, NH 275)*: Famous Thatte Idli, Kadabu, Filter Coffee, Jowar Roti meals.
+  - *Paakashala (Kunigal, NH 75)*: 100% Pure Veg, spotless amenities, EV fast chargers.
+  - *Shivalli Restaurant (Channarayapatna, NH 75)*: Authentic South Kanara Udupi style dining.
+  - *Swathi Delicacy (Yediyur)*: Rapid 5-minute highway breakfast service.
+- **Sacred Temple Annadana (Free Divine Satvik Meals):**
+  - *Dharmasthala Sri Manjunatha Annapoorna Dining Hall*: Serving 30,000+ pilgrims daily with zero charge.
+  - *Sringeri Sharada Peetham Sri Bharati Tirtha Bhojanashala*: Pure satvik meals on plantain leaves by Tunga river.
+  - *Horanadu Sri Annapoorneshwari Nitya Annadana*: Sumptuous 3-course sacred mountain feast.
+  - *Udupi Sri Krishna Matha Chowki Bhojana*: Birthplace of authentic global Udupi cuisine.
+  - *Kukke Subramanya Swamy Annadana Mandiram*: High-capacity pilgrim meal facility.
+- **Heritage Tiffin Legends & Sweet Creators:**
+  - *Mitra Samaj (Udupi Car Street, Est. 1949)*: Creators of authentic Mangalore Buns & Goli Baje.
+  - *Hotel Vinayaka Mylari (Nazarbad, Mysuru)*: World-renowned cloud-soft butter Mylari Dosa.
+  - *Guru Sweet Mart (Devaraja Market, Mysuru)*: Direct descendants of royal chef Kakasura Madappa, creators of Mysore Pak.
+  - *Vidyarthi Bhavan & MTR (Bengaluru)*: Iconic 1924/1943 heritage institutions.
+  - *Babu Singh Mishra Peda (Dharwad)*: GI-tagged authentic caramelized buffalo-milk Dharwad Peda.
+  - *Basaveshwar Khanavali (Hubballi)*: North Karnataka Lingayat Jolada Rotti, Ennegai & Shenga Chutney.
+- **1-Tap Food Voice:** Native Kannada TTS speech for ordering ("Idu pure veg alwa?", "Swalpa tuppa haaki", "Filter coffee ondu").
+
+### 3. 💰 Dynamic Real-Time Trip Cost Estimator
+- **Itemized Multi-Category Budget Planner:**
+  - Transport (KSRTC Airavat / EV Bus, Indian Railways, Self-Drive fuel+toll, Outstation taxi).
+  - Stay (Malnad/Coastal Homestay, KSTDC Govt Mayura Hotels, Luxury Jungle Lodges).
+  - Dining (Satvik Temple Annadana, Pure Veg Darshinis, Premium Fine Dine).
+  - Official monument & forest safari entry tickets (Domestic INR vs International Foreigner USD).
+- **Live Output:** Calculates Total Estimated Cost, Per-Person Cost, Per-Day Cost, and round-trip highway distance.
+- **Smart Money-Saving Tips:** Direct links to book KSRTC (10% return discount) and ASI monuments online.
+
+### 4. 📸 Non-Copyrighted Media Showcase & 4K Video Tours
+- **100% Royalty-Free Guarantee:** Every photo is sourced from Creative Commons CC BY-SA 4.0 (Wikimedia Commons) or Unsplash Free License, verified free from copyright infringement.
+- **4K Cinematic Aerial Tours:** 1-tap launch for authorized Department of Tourism 4K aerial walkthroughs and documentaries.
+- **Interactive Filters:** Filter by Temples, Wildlife, Trekking, Coastal Beaches, Islands, and Vegetarian Cuisines.
+
+### 5. 🗣️ On-Location Kannada Voice Assistant & Dialect Explorer
+- Real-time on-device Kannada Text-To-Speech synthesis (`Locale("kn", "IN")`).
+- Authentic dialect phrases for *Uttara Karnataka (Dharwad/Belagavi)*, *Coastal Karavali (Kundagannada/Tulu)*, *Malnad*, and *Royal Mysuru*.
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## 🛠️ Tech Stack & Clean Architecture
+
 - **Language:** Kotlin 2.4.21
-- **UI Framework:** Jetpack Compose with Material 3 & Glassmorphic Bangalore Palette
+- **UI Framework:** Jetpack Compose with Material 3 & Modern Travel Palette
+- **Asynchronous Flow:** Kotlin Coroutines & StateFlow
+- **Image Pipeline:** Coil 3.6.3 (`coil-compose` + `coil-network-okhttp`)
+- **Networking:** Native `java.net.HttpURLConnection` with Wikipedia/Wikimedia REST API & JSON streaming
+- **On-Device Audio:** Android TextToSpeech (`Locale("kn", "IN")`)
 - **Build System:** Gradle 9.7.1 + Android Gradle Plugin 9.4.1 (Kotlin DSL)
-- **Computer Vision:** Google ML Kit Text Recognition (On-Device Vision Pipeline)
-- **Camera Pipeline:** CameraX (Preview + ImageAnalysis with backpressure handling)
-- **Location:** Google Play Services Location (FusedLocationProviderClient with distance smoothing)
-- **Audio:** Android TextToSpeech (`Locale("kn", "IN")`)
-- **Architecture:** Clean Architecture (Domain Models, Data Analyzers & Repositories, ViewModels with StateFlow, Compose UI)
 
 ---
 
-## 📲 How to Open & Run in Android Studio
-1. In Android Studio, go to **File -> Open...**
-2. Select `/home/raghunandan/StudioProjects/NammaAutoAI`
-3. Hit **Run 'app'** (or target the `Medium_Phone` emulator / physical Android device via USB).
+## 📲 How to Run in Android Studio
+
+1. Android Studio is already opened at `/home/raghunandan/StudioProjects/NammaAutoAI`.
+2. Notice the project has been renamed to **Travel Companion** (`app_name` and `rootProject.name = "TravelCompanion"`).
+3. In Android Studio, click **Sync Project with Gradle Files** (or hit the green Hammer/Run button).
+4. Run on your connected Android device or emulator (`Medium_Phone`).

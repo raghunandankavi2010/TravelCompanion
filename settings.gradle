@@ -16,5 +16,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "NammaAutoAI"
+rootProject.name = "TravelCompanion"
 include ':app'

@@ -4,8 +4,13 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.nammaauto.ai.NammaAutoApplication
+import com.nammaauto.ai.data.api.LiveOfficialTariff
+import com.nammaauto.ai.data.api.LiveTourismPriceService
 import com.nammaauto.ai.data.speech.KannadaTtsEngine
+import com.nammaauto.ai.domain.model.AiBudgetCalculationResult
+import com.nammaauto.ai.domain.model.AiQnaItem
 import com.nammaauto.ai.domain.model.CityTransportTariff
+import com.nammaauto.ai.domain.model.KarnatakaAiTripIntelligence
 import com.nammaauto.ai.domain.model.KarnatakaRegion
 import com.nammaauto.ai.domain.model.KarnatakaSpot
 import com.nammaauto.ai.domain.model.RegionalDialectInfo
@@ -17,6 +22,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
 class KarnatakaExplorerViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -45,6 +51,39 @@ class KarnatakaExplorerViewModel(application: Application) : AndroidViewModel(ap
 
     val regionalDialects: List<RegionalDialectInfo> = KarnatakaTourismRepository.regionalDialects
     val cityTariffs: List<CityTransportTariff> = KarnatakaTourismRepository.cityTariffs
+
+    // Live Official Tariffs from Online Service
+    val isSyncingLivePrices: StateFlow<Boolean> = LiveTourismPriceService.isSyncing
+    val lastSyncTimestamp: StateFlow<String> = LiveTourismPriceService.lastSyncTimestamp
+    val liveTariffsList: List<LiveOfficialTariff> = LiveTourismPriceService.liveTariffs
+
+    // AI Trip Budget State
+    private val _selectedBudgetSpotIds = MutableStateFlow<Set<String>>(
+        setOf("mysore_palace", "kabini_safari", "bandipur_safari", "kudremukh_trek")
+    )
+    val selectedBudgetSpotIds: StateFlow<Set<String>> = _selectedBudgetSpotIds.asStateFlow()
+
+    private val _adultCount = MutableStateFlow(2)
+    val adultCount: StateFlow<Int> = _adultCount.asStateFlow()
+
+    private val _childCount = MutableStateFlow(0)
+    val childCount: StateFlow<Int> = _childCount.asStateFlow()
+
+    private val _hasDslrCamera = MutableStateFlow(false)
+    val hasDslrCamera: StateFlow<Boolean> = _hasDslrCamera.asStateFlow()
+
+    private val _budgetCalculation = MutableStateFlow<AiBudgetCalculationResult?>(null)
+    val budgetCalculation: StateFlow<AiBudgetCalculationResult?> = _budgetCalculation.asStateFlow()
+
+    // AI Tourist Q&A State
+    private val _activeAiQna = MutableStateFlow<AiQnaItem?>(KarnatakaAiTripIntelligence.commonTouristQueries[0])
+    val activeAiQna: StateFlow<AiQnaItem?> = _activeAiQna.asStateFlow()
+
+    val aiQuickQuestions: List<AiQnaItem> = KarnatakaAiTripIntelligence.commonTouristQueries
+
+    init {
+        recomputeBudget()
+    }
 
     // Filtered spots derived from Region, Category, and Search Query
     val filteredSpots: StateFlow<List<KarnatakaSpot>> = combine(
@@ -81,10 +120,78 @@ class KarnatakaExplorerViewModel(application: Application) : AndroidViewModel(ap
 
     fun toggleForeignerMode() {
         _isForeignerMode.value = !_isForeignerMode.value
+        recomputeBudget()
     }
 
     fun selectSpotForDetails(spot: KarnatakaSpot?) {
         _selectedSpotForDetails.value = spot
+    }
+
+    fun refreshLivePrices() {
+        viewModelScope.launch {
+            LiveTourismPriceService.refreshLiveTariffs()
+            recomputeBudget()
+        }
+    }
+
+    fun getLiveTariffForSpot(spotId: String): LiveOfficialTariff? {
+        return LiveTourismPriceService.getTariffForSpot(spotId)
+    }
+
+    fun toggleBudgetSpot(spotId: String) {
+        val current = _selectedBudgetSpotIds.value.toMutableSet()
+        if (current.contains(spotId)) {
+            current.remove(spotId)
+        } else {
+            current.add(spotId)
+        }
+        _selectedBudgetSpotIds.value = current
+        recomputeBudget()
+    }
+
+    fun setAdultCount(count: Int) {
+        if (count in 1..20) {
+            _adultCount.value = count
+            recomputeBudget()
+        }
+    }
+
+    fun setChildCount(count: Int) {
+        if (count in 0..15) {
+            _childCount.value = count
+            recomputeBudget()
+        }
+    }
+
+    fun toggleDslrCamera() {
+        _hasDslrCamera.value = !_hasDslrCamera.value
+        recomputeBudget()
+    }
+
+    fun askAiAssistant(query: String) {
+        val answer = KarnatakaAiTripIntelligence.answerTouristQuery(query)
+        _activeAiQna.value = answer
+    }
+
+    fun selectAiQuestionItem(item: AiQnaItem) {
+        _activeAiQna.value = item
+    }
+
+    private fun recomputeBudget() {
+        val isForeign = _isForeignerMode.value
+        val indianAdults = if (isForeign) 0 else _adultCount.value
+        val foreignAdults = if (isForeign) _adultCount.value else 0
+        val indianKids = if (isForeign) 0 else _childCount.value
+        val foreignKids = if (isForeign) _childCount.value else 0
+
+        _budgetCalculation.value = KarnatakaAiTripIntelligence.calculateTripBudget(
+            indianAdults = indianAdults,
+            foreignAdults = foreignAdults,
+            indianChildren = indianKids,
+            foreignChildren = foreignKids,
+            selectedSpotIds = _selectedBudgetSpotIds.value.toList(),
+            hasDslrCamera = _hasDslrCamera.value
+        )
     }
 
     fun playSpotKannadaPhrase(spot: KarnatakaSpot): Boolean {
