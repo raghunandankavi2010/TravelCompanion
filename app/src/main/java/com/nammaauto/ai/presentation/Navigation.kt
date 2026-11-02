@@ -2,6 +2,7 @@ package com.nammaauto.ai.presentation
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Calculate
 import androidx.compose.material.icons.filled.DirectionsBus
 import androidx.compose.material.icons.filled.Explore
@@ -36,6 +37,8 @@ import com.nammaauto.ai.presentation.calculator.FareEstimatorScreen
 import com.nammaauto.ai.presentation.calculator.FareEstimatorViewModel
 import com.nammaauto.ai.presentation.cost.TravelCostCalculatorScreen
 import com.nammaauto.ai.presentation.cost.TravelCostViewModel
+import com.nammaauto.ai.presentation.favorites.FavoritesScreen
+import com.nammaauto.ai.presentation.favorites.FavoritesViewModel
 import com.nammaauto.ai.presentation.food.VegFoodScreen
 import com.nammaauto.ai.presentation.food.VegFoodViewModel
 import com.nammaauto.ai.presentation.lifeline.LifelineScreen
@@ -58,9 +61,10 @@ sealed class AppDestination(val route: String, val label: String, val icon: Imag
     data object VegFood : AppDestination("veg_food", "Veg Dining", Icons.Default.Restaurant)
     data object LiveIntel : AppDestination("live_intel", "Live Intel", Icons.Default.Public)
     data object TripCosts : AppDestination("trip_costs", "Trip Costs", Icons.Default.Calculate)
-    data object MediaGallery : AppDestination("media_gallery", "Photos & 4K", Icons.Default.SmartDisplay)
+    data object Favorites : AppDestination("favorites", "Saved", Icons.Default.Bookmark)
 
     // Companion Utility Routes
+    data object MediaGallery : AppDestination("media_gallery", "Photos & 4K", Icons.Default.SmartDisplay)
     data object TransitGuide : AppDestination("transit_guide", "Transit Hub", Icons.Default.DirectionsBus)
     data object KannadaSathi : AppDestination("kannada", "Kannada Voice", Icons.Default.RecordVoiceOver)
     data object Lifeline : AppDestination("lifeline", "SafeGuard SOS", Icons.Default.HealthAndSafety)
@@ -80,7 +84,7 @@ fun NammaAutoNavHost() {
         AppDestination.VegFood,
         AppDestination.LiveIntel,
         AppDestination.TripCosts,
-        AppDestination.MediaGallery
+        AppDestination.Favorites
     )
 
     Scaffold(
@@ -148,6 +152,18 @@ fun NammaAutoNavHost() {
             composable(AppDestination.TripCosts.route) {
                 val vm: TravelCostViewModel = viewModel()
                 TravelCostCalculatorScreen(viewModel = vm)
+            }
+            composable(AppDestination.Favorites.route) {
+                val vm: FavoritesViewModel = viewModel()
+                FavoritesScreen(
+                    viewModel = vm,
+                    onNavigateToExplore = {
+                        navController.navigate(AppDestination.ExploreKA.route)
+                    },
+                    onNavigateToVegFood = {
+                        navController.navigate(AppDestination.VegFood.route)
+                    }
+                )
             }
             composable(AppDestination.MediaGallery.route) {
                 KarnatakaMediaShowcaseScreen()
