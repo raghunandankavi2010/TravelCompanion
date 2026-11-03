@@ -29,6 +29,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.filled.BeachAccess
 import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.CurrencyExchange
@@ -100,7 +101,8 @@ import com.nammaauto.ai.presentation.components.GlassCard
 fun KarnatakaExplorerScreen(
     viewModel: KarnatakaExplorerViewModel,
     onNavigateToPhrasebook: () -> Unit,
-    onNavigateToProStore: () -> Unit
+    onNavigateToProStore: () -> Unit,
+    onNavigateToBusLens: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val selectedRegion by viewModel.selectedRegion.collectAsState()
@@ -191,6 +193,74 @@ fun KarnatakaExplorerScreen(
                                 color = if (isForeignerMode) AutoYellow else Slate400
                             )
                         }
+                    }
+                }
+            }
+
+            // Quick AI Bus & Signboard Lens Action Card
+            item {
+                Surface(
+                    shape = RoundedCornerShape(16.dp),
+                    color = Slate800,
+                    border = BorderStroke(1.dp, AutoYellow.copy(alpha = 0.6f)),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onNavigateToBusLens() }
+                ) {
+                    Row(
+                        modifier = Modifier.padding(14.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Surface(
+                                shape = RoundedCornerShape(10.dp),
+                                color = AutoYellow.copy(alpha = 0.2f),
+                                modifier = Modifier.size(42.dp)
+                            ) {
+                                Box(contentAlignment = Alignment.Center) {
+                                    Text(text = "🚌", fontSize = 20.sp)
+                                }
+                            }
+                            Spacer(modifier = Modifier.width(12.dp))
+                            Column {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Text(
+                                        text = "Bus Board & Signboard Lens",
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = Slate200
+                                    )
+                                    Spacer(modifier = Modifier.width(6.dp))
+                                    Surface(
+                                        shape = RoundedCornerShape(4.dp),
+                                        color = AutoGreen.copy(alpha = 0.25f)
+                                    ) {
+                                        Text(
+                                            text = "ON-DEVICE AI",
+                                            fontSize = 9.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = AutoGreen,
+                                            modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp)
+                                        )
+                                    }
+                                }
+                                Text(
+                                    text = "Scan Kannada bus boards & temple signboards",
+                                    fontSize = 11.sp,
+                                    color = Slate400
+                                )
+                            }
+                        }
+                        Icon(
+                            imageVector = Icons.Default.CameraAlt,
+                            contentDescription = "Open Lens",
+                            tint = AutoYellow,
+                            modifier = Modifier.size(20.dp)
+                        )
                     }
                 }
             }

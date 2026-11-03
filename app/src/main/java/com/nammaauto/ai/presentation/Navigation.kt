@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Calculate
+import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.DirectionsBus
 import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.filled.HealthAndSafety
@@ -41,6 +42,8 @@ import com.nammaauto.ai.presentation.favorites.FavoritesScreen
 import com.nammaauto.ai.presentation.favorites.FavoritesViewModel
 import com.nammaauto.ai.presentation.food.VegFoodScreen
 import com.nammaauto.ai.presentation.food.VegFoodViewModel
+import com.nammaauto.ai.presentation.lens.BusSignboardLensScreen
+import com.nammaauto.ai.presentation.lens.BusSignboardLensViewModel
 import com.nammaauto.ai.presentation.lifeline.LifelineScreen
 import com.nammaauto.ai.presentation.lifeline.LifelineViewModel
 import com.nammaauto.ai.presentation.meter.MeterCamScreen
@@ -64,6 +67,7 @@ sealed class AppDestination(val route: String, val label: String, val icon: Imag
     data object Favorites : AppDestination("favorites", "Saved", Icons.Default.Bookmark)
 
     // Companion Utility Routes
+    data object BusSignLens : AppDestination("bus_sign_lens", "Bus Lens", Icons.Default.CameraAlt)
     data object MediaGallery : AppDestination("media_gallery", "Photos & 4K", Icons.Default.SmartDisplay)
     data object TransitGuide : AppDestination("transit_guide", "Transit Hub", Icons.Default.DirectionsBus)
     data object KannadaSathi : AppDestination("kannada", "Kannada Voice", Icons.Default.RecordVoiceOver)
@@ -138,6 +142,9 @@ fun NammaAutoNavHost() {
                     },
                     onNavigateToProStore = {
                         navController.navigate(AppDestination.ProStore.route)
+                    },
+                    onNavigateToBusLens = {
+                        navController.navigate(AppDestination.BusSignLens.route)
                     }
                 )
             }
@@ -165,11 +172,22 @@ fun NammaAutoNavHost() {
                     }
                 )
             }
+            composable(AppDestination.BusSignLens.route) {
+                val vm: BusSignboardLensViewModel = viewModel()
+                BusSignboardLensScreen(
+                    viewModel = vm,
+                    onBack = { navController.popBackStack() }
+                )
+            }
             composable(AppDestination.MediaGallery.route) {
                 KarnatakaMediaShowcaseScreen()
             }
             composable(AppDestination.TransitGuide.route) {
-                StatewideTravelNavigatorScreen()
+                StatewideTravelNavigatorScreen(
+                    onNavigateToBusLens = {
+                        navController.navigate(AppDestination.BusSignLens.route)
+                    }
+                )
             }
             composable(AppDestination.KannadaSathi.route) {
                 val vm: KannadaSathiViewModel = viewModel()
