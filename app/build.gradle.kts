@@ -1,43 +1,15 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.compose.compiler)
+    id("namma.android.application")
+    id("namma.android.compose")
 }
 
 android {
     namespace = "com.namma.travelcompanion"
-    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.namma.travelcompanion"
-        minSdk = 26
-        targetSdk = 37
         versionCode = 1
         versionName = "1.0.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-        debug {
-            isMinifyEnabled = false
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    buildFeatures {
-        compose = true
     }
 }
 
@@ -56,12 +28,13 @@ dependencies {
     implementation(project(":feature:meter"))
 
     // Dependency Injection
-    implementation("io.insert-koin:koin-android:4.0.2")
-    implementation("io.insert-koin:koin-androidx-compose:4.0.2")
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
 
     // AndroidX & Architecture
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.activity.compose)
     
     // Jetpack Compose
