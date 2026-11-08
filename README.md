@@ -238,7 +238,7 @@ NammaAutoAI/
 │       ├── AndroidFeatureConventionPlugin.kt
 │       └── AndroidKtorConventionPlugin.kt
 ├── app/                                         # Orchestrator Application Shell
-│   └── src/main/java/com/nammaauto/ai/
+│   └── src/main/java/com/namma/travelcompanion/
 │       ├── NammaAutoApplication.kt              # Koin Root Modules Registration
 │       └── presentation/
 │           ├── MainActivity.kt                  # Edge-to-edge Compose Host
