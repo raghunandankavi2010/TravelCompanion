@@ -1,5 +1,6 @@
 package com.namma.travelcompanion.buildlogic
 
+import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -11,9 +12,18 @@ class AndroidComposeConventionPlugin : Plugin<Project> {
         with(target) {
             pluginManager.apply("org.jetbrains.kotlin.plugin.compose")
 
-            extensions.configure<LibraryExtension> {
-                buildFeatures {
-                    compose = true
+            pluginManager.withPlugin("com.android.application") {
+                extensions.configure<ApplicationExtension> {
+                    buildFeatures {
+                        compose = true
+                    }
+                }
+            }
+            pluginManager.withPlugin("com.android.library") {
+                extensions.configure<LibraryExtension> {
+                    buildFeatures {
+                        compose = true
+                    }
                 }
             }
 
