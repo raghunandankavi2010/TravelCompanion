@@ -42,6 +42,19 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:common"))
+    implementation(project(":core:network"))
+    implementation(project(":core:data"))
+    implementation(project(":feature:lens"))
+    implementation(project(":feature:transit"))
+    implementation(project(":feature:dining"))
+    implementation(project(":feature:phrasebook"))
+    implementation(project(":feature:tourism"))
+    implementation(project(":feature:meter"))
+
+    implementation("io.insert-koin:koin-android:4.1.0-Beta5")
+    implementation("io.insert-koin:koin-androidx-compose:4.1.0-Beta5")
+
     implementation("io.coil-kt.coil3:coil-compose:3.6.3")
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.6.3")
 

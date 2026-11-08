@@ -24,7 +24,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -34,30 +33,31 @@ import com.nammaauto.ai.core.theme.AutoYellow
 import com.nammaauto.ai.core.theme.Slate400
 import com.nammaauto.ai.core.theme.Slate800
 import com.nammaauto.ai.core.theme.Slate900
-import com.nammaauto.ai.presentation.calculator.FareEstimatorScreen
-import com.nammaauto.ai.presentation.calculator.FareEstimatorViewModel
-import com.nammaauto.ai.presentation.cost.TravelCostCalculatorScreen
-import com.nammaauto.ai.presentation.cost.TravelCostViewModel
+import com.nammaauto.ai.feature.dining.ui.VegFoodScreen
+import com.nammaauto.ai.feature.dining.ui.VegFoodViewModel
+import com.nammaauto.ai.feature.lens.ui.BusSignboardLensScreen
+import com.nammaauto.ai.feature.lens.ui.BusSignboardLensViewModel
+import com.nammaauto.ai.feature.meter.ui.calculator.FareEstimatorScreen
+import com.nammaauto.ai.feature.meter.ui.calculator.FareEstimatorViewModel
+import com.nammaauto.ai.feature.meter.ui.cost.TravelCostCalculatorScreen
+import com.nammaauto.ai.feature.meter.ui.cost.TravelCostViewModel
+import com.nammaauto.ai.feature.meter.ui.lifeline.LifelineScreen
+import com.nammaauto.ai.feature.meter.ui.lifeline.LifelineViewModel
+import com.nammaauto.ai.feature.meter.ui.meter.MeterCamScreen
+import com.nammaauto.ai.feature.meter.ui.meter.MeterViewModel
+import com.nammaauto.ai.feature.meter.ui.store.ProStoreScreen
+import com.nammaauto.ai.feature.meter.ui.store.ProStoreViewModel
+import com.nammaauto.ai.feature.phrasebook.ui.KannadaSathiScreen
+import com.nammaauto.ai.feature.phrasebook.ui.KannadaSathiViewModel
+import com.nammaauto.ai.feature.tourism.ui.KarnatakaExplorerScreen
+import com.nammaauto.ai.feature.tourism.ui.KarnatakaExplorerViewModel
+import com.nammaauto.ai.feature.tourism.ui.KarnatakaMediaShowcaseScreen
+import com.nammaauto.ai.feature.tourism.ui.LiveTravelIntelScreen
+import com.nammaauto.ai.feature.tourism.ui.LiveTravelScraperViewModel
+import com.nammaauto.ai.feature.transit.ui.StatewideTravelNavigatorScreen
 import com.nammaauto.ai.presentation.favorites.FavoritesScreen
 import com.nammaauto.ai.presentation.favorites.FavoritesViewModel
-import com.nammaauto.ai.presentation.food.VegFoodScreen
-import com.nammaauto.ai.presentation.food.VegFoodViewModel
-import com.nammaauto.ai.presentation.lens.BusSignboardLensScreen
-import com.nammaauto.ai.presentation.lens.BusSignboardLensViewModel
-import com.nammaauto.ai.presentation.lifeline.LifelineScreen
-import com.nammaauto.ai.presentation.lifeline.LifelineViewModel
-import com.nammaauto.ai.presentation.meter.MeterCamScreen
-import com.nammaauto.ai.presentation.meter.MeterViewModel
-import com.nammaauto.ai.presentation.phrasebook.KannadaSathiScreen
-import com.nammaauto.ai.presentation.phrasebook.KannadaSathiViewModel
-import com.nammaauto.ai.presentation.scraper.LiveTravelIntelScreen
-import com.nammaauto.ai.presentation.scraper.LiveTravelScraperViewModel
-import com.nammaauto.ai.presentation.store.ProStoreScreen
-import com.nammaauto.ai.presentation.store.ProStoreViewModel
-import com.nammaauto.ai.presentation.tourism.KarnatakaExplorerScreen
-import com.nammaauto.ai.presentation.tourism.KarnatakaExplorerViewModel
-import com.nammaauto.ai.presentation.tourism.KarnatakaMediaShowcaseScreen
-import com.nammaauto.ai.presentation.tourism.StatewideTravelNavigatorScreen
+import org.koin.androidx.compose.koinViewModel
 
 sealed class AppDestination(val route: String, val label: String, val icon: ImageVector) {
     data object ExploreKA : AppDestination("explore_ka", "Explore KA", Icons.Default.Explore)
@@ -134,7 +134,7 @@ fun NammaAutoNavHost() {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(AppDestination.ExploreKA.route) {
-                val vm: KarnatakaExplorerViewModel = viewModel()
+                val vm: KarnatakaExplorerViewModel = koinViewModel()
                 KarnatakaExplorerScreen(
                     viewModel = vm,
                     onNavigateToPhrasebook = {
@@ -149,19 +149,19 @@ fun NammaAutoNavHost() {
                 )
             }
             composable(AppDestination.VegFood.route) {
-                val vm: VegFoodViewModel = viewModel()
+                val vm: VegFoodViewModel = koinViewModel()
                 VegFoodScreen(viewModel = vm)
             }
             composable(AppDestination.LiveIntel.route) {
-                val vm: LiveTravelScraperViewModel = viewModel()
+                val vm: LiveTravelScraperViewModel = koinViewModel()
                 LiveTravelIntelScreen(viewModel = vm)
             }
             composable(AppDestination.TripCosts.route) {
-                val vm: TravelCostViewModel = viewModel()
+                val vm: TravelCostViewModel = koinViewModel()
                 TravelCostCalculatorScreen(viewModel = vm)
             }
             composable(AppDestination.Favorites.route) {
-                val vm: FavoritesViewModel = viewModel()
+                val vm: FavoritesViewModel = koinViewModel()
                 FavoritesScreen(
                     viewModel = vm,
                     onNavigateToExplore = {
@@ -173,7 +173,7 @@ fun NammaAutoNavHost() {
                 )
             }
             composable(AppDestination.BusSignLens.route) {
-                val vm: BusSignboardLensViewModel = viewModel()
+                val vm: BusSignboardLensViewModel = koinViewModel()
                 BusSignboardLensScreen(
                     viewModel = vm,
                     onBack = { navController.popBackStack() }
@@ -190,7 +190,7 @@ fun NammaAutoNavHost() {
                 )
             }
             composable(AppDestination.KannadaSathi.route) {
-                val vm: KannadaSathiViewModel = viewModel()
+                val vm: KannadaSathiViewModel = koinViewModel()
                 KannadaSathiScreen(
                     viewModel = vm,
                     onNavigateToProStore = {
@@ -199,11 +199,11 @@ fun NammaAutoNavHost() {
                 )
             }
             composable(AppDestination.Lifeline.route) {
-                val vm: LifelineViewModel = viewModel()
+                val vm: LifelineViewModel = koinViewModel()
                 LifelineScreen(viewModel = vm)
             }
             composable(AppDestination.MeterCam.route) {
-                val vm: MeterViewModel = viewModel()
+                val vm: MeterViewModel = koinViewModel()
                 MeterCamScreen(
                     viewModel = vm,
                     onNavigateToProStore = {
@@ -212,7 +212,7 @@ fun NammaAutoNavHost() {
                 )
             }
             composable(AppDestination.FairFare.route) {
-                val vm: FareEstimatorViewModel = viewModel()
+                val vm: FareEstimatorViewModel = koinViewModel()
                 FareEstimatorScreen(
                     viewModel = vm,
                     onOpenKannadaNegotiator = {
@@ -221,7 +221,7 @@ fun NammaAutoNavHost() {
                 )
             }
             composable(AppDestination.ProStore.route) {
-                val vm: ProStoreViewModel = viewModel()
+                val vm: ProStoreViewModel = koinViewModel()
                 ProStoreScreen(viewModel = vm)
             }
         }

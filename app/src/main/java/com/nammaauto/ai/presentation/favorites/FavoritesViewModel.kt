@@ -1,16 +1,14 @@
 package com.nammaauto.ai.presentation.favorites
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import com.nammaauto.ai.NammaAutoApplication
-import com.nammaauto.ai.domain.model.KarnatakaSpot
-import com.nammaauto.ai.domain.model.VegRestaurant
-import com.nammaauto.ai.domain.repository.KarnatakaTourismRepository
-import com.nammaauto.ai.domain.repository.KarnatakaVegFoodRepository
+import androidx.lifecycle.ViewModel
+import com.nammaauto.ai.data.repository.FavoritesManager
+import com.nammaauto.ai.feature.dining.data.repository.KarnatakaVegFoodRepository
+import com.nammaauto.ai.feature.dining.domain.model.VegRestaurant
+import com.nammaauto.ai.feature.tourism.domain.model.KarnatakaSpot
+import com.nammaauto.ai.feature.tourism.domain.repository.KarnatakaTourismRepository
 import kotlinx.coroutines.flow.StateFlow
 
-class FavoritesViewModel(application: Application) : AndroidViewModel(application) {
-    private val favoritesManager = (application as NammaAutoApplication).favoritesManager
+class FavoritesViewModel(private val favoritesManager: FavoritesManager) : ViewModel() {
 
     val favoriteSpotIds: StateFlow<Set<String>> = favoritesManager.favoriteSpotIds
     val favoriteRestaurantNames: StateFlow<Set<String>> = favoritesManager.favoriteRestaurantNames
