@@ -1,17 +1,16 @@
 *.iml
 .gradle
-**/build/
-build/
-app/build/
-build-logic/build/
-build-logic/.gradle/
-/local.properties
 local.properties
-/.idea/
+.idea/
 .DS_Store
-/captures
+build/
+*/build/
+*/*/build/
+captures/
 .externalNativeBuild
 .cxx
+
+# Release signing (never commit)
+keystore.properties
 *.jks
 *.keystore
-secrets.properties

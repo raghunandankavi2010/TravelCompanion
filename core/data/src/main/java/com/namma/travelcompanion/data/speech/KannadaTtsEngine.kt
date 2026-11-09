@@ -26,13 +26,14 @@ class KannadaTtsEngine(context: Context) : TextToSpeech.OnInitListener {
             val kannadaLocale = Locale("kn", "IN")
             val result = tts?.setLanguage(kannadaLocale)
             if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                // Fallback to general Indian English or default if Kannada voice data is not downloaded
                 val fallbackResult = tts?.setLanguage(Locale("en", "IN"))
                 _isKannadaSupported.value = (fallbackResult != TextToSpeech.LANG_MISSING_DATA && fallbackResult != TextToSpeech.LANG_NOT_SUPPORTED)
             } else {
                 _isKannadaSupported.value = true
             }
 
-            tts?.setSpeechRate(0.92f)
+            tts?.setSpeechRate(0.92f) // Slightly slower for crisp Kannada pronunciation
             tts?.setPitch(1.0f)
 
             tts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {

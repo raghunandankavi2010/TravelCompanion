@@ -1,62 +1,47 @@
 package com.namma.travelcompanion
 
 import android.app.Application
-import com.namma.travelcompanion.core.network.di.networkModule
+import coil3.ImageLoader
+import coil3.PlatformContext
+import coil3.SingletonImageLoader
+import coil3.network.okhttp.OkHttpNetworkFetcherFactory
 import com.namma.travelcompanion.data.billing.BillingManager
-import com.namma.travelcompanion.data.di.coreDataModule
-import com.namma.travelcompanion.data.repository.FavoritesManager
-import com.namma.travelcompanion.feature.dining.di.diningModule
-import com.namma.travelcompanion.feature.lens.di.lensModule
-import com.namma.travelcompanion.feature.meter.di.meterModule
-import com.namma.travelcompanion.feature.phrasebook.di.phrasebookModule
-import com.namma.travelcompanion.feature.tourism.di.tourismModule
-import com.namma.travelcompanion.feature.transit.di.transitModule
-import com.namma.travelcompanion.presentation.favorites.FavoritesViewModel
-import org.koin.android.ext.android.get
+import com.namma.travelcompanion.di.appModules
+import okhttp3.OkHttpClient
+import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
-import org.koin.core.module.dsl.viewModel
-import org.koin.dsl.module
 
-val appModule = module {
-    viewModel { FavoritesViewModel(get()) }
-}
+class NammaAutoApplication : Application(), SingletonImageLoader.Factory {
 
-class NammaAutoApplication : Application() {
-
-    lateinit var billingManager: BillingManager
-        private set
-
-    lateinit var favoritesManager: FavoritesManager
-        private set
+    private val billingManager: BillingManager by inject()
 
     override fun onCreate() {
         super.onCreate()
-        instance = this
 
         startKoin {
             androidLogger()
             androidContext(this@NammaAutoApplication)
-            modules(
-                appModule,
-                coreDataModule,
-                networkModule,
-                lensModule,
-                transitModule,
-                diningModule,
-                phrasebookModule,
-                tourismModule,
-                meterModule
-            )
+            modules(appModules)
         }
 
-        billingManager = get()
-        favoritesManager = get()
+        billingManager // connect to Play early so the price and ownership are ready
     }
 
-    companion object {
-        lateinit var instance: NammaAutoApplication
-            private set
+    /** Wikimedia answers 403 to OkHttp's default User-Agent, so every Commons photo would be blank without this. */
+    override fun newImageLoader(context: PlatformContext): ImageLoader {
+        val client = OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                chain.proceed(chain.request().newBuilder().header("User-Agent", USER_AGENT).build())
+            }
+            .build()
+        return ImageLoader.Builder(context)
+            .components { add(OkHttpNetworkFetcherFactory(callFactory = { client })) }
+            .build()
+    }
+
+    private companion object {
+        const val USER_AGENT = "NammaTravelCompanion/${BuildConfig.VERSION_NAME} (Android; raghunandan2005@gmail.com)"
     }
 }

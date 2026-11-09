@@ -1,0 +1,7 @@
+# Local favourites that are not on Wikipedia/OpenStreetMap as tourist sites. One row per place.
+# district_id: see KarnatakaDistricts.kt (e.g. mandya, mysuru, kodagu). lat/lng: optional; leave blank if unsure and
+# the app's Directions button searches Google Maps by name instead.
+# category: Temple, Fort, Palace, Waterfall, Wildlife, Lake, Beach, Hill, Museum, Heritage, Garden, Island, Amusement
+name,district_id,category,lat,lng,description
+Sri Ugra Narasimha Swamy Temple,mandya,Temple,12.5898,77.0483,Temple to Ugra Narasimha in Maddur town on the Bengaluru–Mysuru road.
+Hole Anjaneya Temple,mandya,Temple,,,Riverside Hanuman temple near Maddur on the banks of the Shimsha.
