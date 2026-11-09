@@ -1,0 +1,14 @@
+# Videos from https://www.youtube.com/channel/UCnBJaoGj6EUNvTlIqLWGG8A shown in the app.
+# One video ID per line (the part after watch?v=). Lines starting with # are ignored.
+# Add new uploads here, then run: python3 tools/refresh_channel_videos.py
+# (or set YOUTUBE_API_KEY to list all uploads automatically).
+mMuKtAt4NBQ
+8UGN3PVJDwU
+BH25Fo8M_PE
+h-g-tdFtjTg
+MJlwQGbwRG4
+Zl3CNGYaO-8
+1AMjZiC2u3E
+YJwYjxdzsdY
+Xsb3frYhvcM
+# dy9RLNL9lV0   Calgary, Canada: not about Karnataka

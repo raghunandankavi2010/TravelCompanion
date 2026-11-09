@@ -1,0 +1,2 @@
+# Only for tools/build_districts.py (build-time). Install: pip install -r tools/requirements.txt
+shapely>=2.0

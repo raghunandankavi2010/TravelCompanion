@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Release builds trust only system CAs. Debug builds also trust user-installed CAs, so the app works on an
+     emulator behind a TLS-inspecting proxy (install the proxy's root CA in Settings › Security › Encryption). -->
+<network-security-config>
+    <debug-overrides>
+        <trust-anchors>
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
+</network-security-config>

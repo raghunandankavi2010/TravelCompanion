@@ -1,0 +1,33 @@
+# Places Wikidata classes as towns/villages/features (so the type queries miss them), added by English
+# Wikipedia article title. Format: Article_title|Category  (Category: Temple, Fort, Palace, Waterfall, Wildlife,
+# Lake, Beach, Hill, Museum, Heritage, Garden, Island). tools/fetch_places.py reports titles it can't resolve.
+Nandi_Hills,_India|Hill
+Agumbe|Hill
+Kemmangundi|Hill
+Baba_Budangiri|Hill
+Sakleshpur|Hill
+Bisle_Ghat|Hill
+Skandagiri|Hill
+Shivagange|Hill
+Antaragange|Hill
+Devarayanadurga|Hill
+Madhugiri|Hill
+Makalidurga|Hill
+Kunti_Betta|Hill
+Ramadevara_Betta|Hill
+Gopalaswamy_Betta|Hill
+Gokarna,_Karnataka|Temple
+Murdeshwar|Temple
+Talakaveri|Temple
+Sringeri|Temple
+Horanadu|Temple
+Kotilingeshwara|Temple
+Male_Mahadeshwara_Hills|Temple
+Mookambika_Temple,_Kollur|Temple
+Namdroling_Monastery|Temple
+Raja's_Seat|Garden
+Dubare|Wildlife
+Kudle_Beach|Beach
+Malpe|Beach
+St._Mary's_Islands|Island
+Yana,_Karnataka|Heritage

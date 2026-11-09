@@ -23,7 +23,7 @@ data class LiveTripState(
     val currentSpeedKmh: Float = 0f,
     val durationSeconds: Long = 0L,
     val waitingMinutes: Int = 0,
-    val currentLegalFare: Double = 30.0,
+    val currentLegalFare: Double = BangaloreTariff.MINIMUM_BASE_FARE,
     val fareBreakdown: FareBreakdown = BangaloreTariff.calculateLegalFare(0.0),
     val lastKnownLocationLat: Double? = null,
     val lastKnownLocationLng: Double? = null
@@ -39,6 +39,8 @@ class GpsTelemetryService(private val context: Context) {
 
     private var lastLocation: Location? = null
     private var tripStartTimeMs: Long = 0L
+    private var lastFixTimeMs: Long = 0L
+    private var waitingSeconds: Long = 0L
 
     private val locationCallback = object : LocationCallback() {
         override fun onLocationResult(result: LocationResult) {
@@ -58,6 +60,7 @@ class GpsTelemetryService(private val context: Context) {
             .setMinUpdateDistanceMeters(3.0f)
             .build()
 
+        TripForegroundService.start(context)
         try {
             fusedLocationClient.requestLocationUpdates(
                 locationRequest,
@@ -70,6 +73,7 @@ class GpsTelemetryService(private val context: Context) {
     }
 
     fun stopTrip() {
+        if (_tripState.value.isRunning) TripForegroundService.stop(context)
         _tripState.value = _tripState.value.copy(isRunning = false)
         try {
             fusedLocationClient.removeLocationUpdates(locationCallback)
@@ -81,6 +85,8 @@ class GpsTelemetryService(private val context: Context) {
     fun resetTrip() {
         stopTrip()
         lastLocation = null
+        lastFixTimeMs = 0L
+        waitingSeconds = 0L
         val initialFare = BangaloreTariff.calculateLegalFare(0.0)
         _tripState.value = LiveTripState(
             isRunning = false,
@@ -99,8 +105,10 @@ class GpsTelemetryService(private val context: Context) {
         var addedDistanceMeters = 0.0f
         val prev = lastLocation
         if (prev != null) {
+            // Filter jitter: ignore updates with poor accuracy or micro-drift
             if (newLocation.accuracy < 30.0f && prev.accuracy < 30.0f) {
                 val stepDistance = prev.distanceTo(newLocation)
+                // Filter out impossible teleportation or stationary drift
                 if (stepDistance in 2.0f..400.0f) {
                     addedDistanceMeters = stepDistance
                 }
@@ -112,7 +120,13 @@ class GpsTelemetryService(private val context: Context) {
         val speedKmh = if (newLocation.hasSpeed()) (newLocation.speed * 3.6f) else 0f
         val durationSec = (System.currentTimeMillis() - tripStartTimeMs) / 1000L
 
-        val waitMins = if (speedKmh < 4.0f && durationSec > 60) ((durationSec / 60) * 0.4).roundToInt() else 0
+        // Waiting time = time actually spent near-stationary (< 4 km/h) between fixes, not a share of the trip.
+        val nowMs = System.currentTimeMillis()
+        if (lastFixTimeMs > 0 && newLocation.hasSpeed() && speedKmh < 4.0f) {
+            waitingSeconds += (nowMs - lastFixTimeMs) / 1000
+        }
+        lastFixTimeMs = nowMs
+        val waitMins = (waitingSeconds / 60).toInt()
 
         val fare = BangaloreTariff.calculateLegalFare(currentDistKm, waitMinutes = waitMins)
 

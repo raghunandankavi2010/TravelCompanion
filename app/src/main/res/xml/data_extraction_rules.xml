@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Back up saved places and the SOS contact; skip the purchase cache (Play restores the purchase itself)
+     and the extracted OCR model (re-copied from assets). -->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="sharedpref" path="namma_auto_billing_prefs.xml" />
+        <exclude domain="file" path="." />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="sharedpref" path="namma_auto_billing_prefs.xml" />
+    </device-transfer>
+</data-extraction-rules>

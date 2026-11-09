@@ -1,34 +1,29 @@
 plugins {
     `kotlin-dsl`
+    `java-gradle-plugin`
 }
 
+group = "com.namma.travelcompanion.buildlogic"
+
 dependencies {
-    compileOnly("com.android.tools.build:gradle:9.5.1")
-    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:2.4.21")
-    compileOnly("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.4.21")
+    implementation(libs.android.gradlePlugin)
+    implementation(libs.kotlin.gradlePlugin)
+    implementation(libs.compose.compiler.gradlePlugin)
 }
 
 gradlePlugin {
     plugins {
-        register("androidApplication") {
-            id = "namma.android.application"
-            implementationClass = "com.namma.travelcompanion.buildlogic.AndroidApplicationConventionPlugin"
+        create("androidApplication") {
+            id = "com.namma.travelcompanion.android.application"
+            implementationClass = "com.namma.travelcompanion.convention.AndroidApplicationConventionPlugin"
         }
-        register("androidLibrary") {
-            id = "namma.android.library"
-            implementationClass = "com.namma.travelcompanion.buildlogic.AndroidLibraryConventionPlugin"
+        create("androidLibrary") {
+            id = "com.namma.travelcompanion.android.library"
+            implementationClass = "com.namma.travelcompanion.convention.AndroidLibraryConventionPlugin"
         }
-        register("androidCompose") {
-            id = "namma.android.compose"
-            implementationClass = "com.namma.travelcompanion.buildlogic.AndroidComposeConventionPlugin"
-        }
-        register("androidFeature") {
-            id = "namma.android.feature"
-            implementationClass = "com.namma.travelcompanion.buildlogic.AndroidFeatureConventionPlugin"
-        }
-        register("androidKtor") {
-            id = "namma.android.ktor"
-            implementationClass = "com.namma.travelcompanion.buildlogic.AndroidKtorConventionPlugin"
+        create("androidCompose") {
+            id = "com.namma.travelcompanion.android.compose"
+            implementationClass = "com.namma.travelcompanion.convention.AndroidComposeConventionPlugin"
         }
     }
 }

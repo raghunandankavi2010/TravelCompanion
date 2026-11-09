@@ -1,0 +1,52 @@
+image: eclipse-temurin:17-jdk
+
+variables:
+  ANDROID_COMPILE_SDK: "35"
+  ANDROID_BUILD_TOOLS: "34.0.0"
+  ANDROID_SDK_TOOLS: "10406996"
+
+before_script:
+  - apt-get --quiet update --yes
+  - apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1
+  - export ANDROID_HOME="${PWD}/android-sdk-root"
+  - install -d $ANDROID_HOME
+  - wget --no-verbose --output-document=$ANDROID_HOME/cmdline-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_TOOLS}_latest.zip
+  - unzip -q -d "$ANDROID_HOME/cmdline-tools" $ANDROID_HOME/cmdline-tools.zip
+  - mv -T "$ANDROID_HOME/cmdline-tools/cmdline-tools" "$ANDROID_HOME/cmdline-tools/tools"
+  - export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/cmdline-tools/tools/bin
+  - echo y | sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" "build-tools;${ANDROID_BUILD_TOOLS}"
+  - set +o pipefail
+  - yes | sdkmanager --licenses
+  - set -o pipefail
+  - chmod +x ./gradlew
+
+stages:
+  - build
+  - test
+
+lint:
+  stage: build
+  script:
+    - ./gradlew lintDebug
+  artifacts:
+    reports:
+      junit: app/build/reports/lint-results-debug.xml
+    paths:
+      - app/build/reports/lint-results-debug.html
+
+unit_tests:
+  stage: test
+  script:
+    - ./gradlew testDebugUnitTest
+  artifacts:
+    reports:
+      junit: "*/build/test-results/testDebugUnitTest/TEST-*.xml"
+
+build_debug:
+  stage: build
+  script:
+    - ./gradlew assembleDebug
+  artifacts:
+    paths:
+      - app/build/outputs/apk/debug/app-debug.apk
+    expire_in: 1 week

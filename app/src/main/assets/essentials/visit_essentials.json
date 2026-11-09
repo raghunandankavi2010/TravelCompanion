@@ -1,0 +1,1281 @@
+{
+  "version": 3,
+  "places": [
+    {
+      "placeId": "mysore_palace",
+      "wikidataId": "Q456575",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://mysorepalace.karnataka.gov.in/tickets.html",
+      "unverified": false,
+      "payment": {
+        "cash": true,
+        "upi": false,
+        "card": false,
+        "note": "Gate counters take cash only. Online and WhatsApp (8884160088) tickets are paid online in advance."
+      },
+      "fees": [
+        {
+          "label": "Adult (Indian or foreign)",
+          "inr": 100
+        },
+        {
+          "label": "Child 10–18",
+          "inr": 50
+        },
+        {
+          "label": "Sound & light show, Kannada adult",
+          "inr": 100
+        },
+        {
+          "label": "Sound & light show, English adult",
+          "inr": 120
+        }
+      ],
+      "timings": "10:00–17:30; illumination Sun & public holidays 19:00–20:00",
+      "specialEntry": [
+        {
+          "name": "Online palace ticket",
+          "inr": 100,
+          "bookUrl": "https://mysorepalace.karnataka.gov.in/book-tickets.php",
+          "note": "Valid six months from purchase; avoids the cash queue."
+        }
+      ],
+      "footwear": "Shoes are left at the footwear counter before the palace interior.",
+      "carry": [
+        "Cash for tickets",
+        "Water"
+      ],
+      "warnings": [
+        "No card or UPI at the gate counters.",
+        "Sound & light show not held on Sundays or government holidays; no refund if stopped by rain."
+      ]
+    },
+    {
+      "placeId": "hampi_unesco",
+      "wikidataId": "Q26732",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://asi.nic.in/pages/WorldHeritageHampi",
+      "unverified": false,
+      "payment": {
+        "cash": true,
+        "upi": false,
+        "card": false,
+        "note": "Counter tickets in cash; online tickets on the ASI portal are slightly cheaper."
+      },
+      "fees": [
+        {
+          "label": "Indian / SAARC / BIMSTEC adult",
+          "inr": 40
+        },
+        {
+          "label": "Other foreign national",
+          "inr": 600
+        },
+        {
+          "label": "Child under 15",
+          "inr": 0
+        }
+      ],
+      "specialEntry": [
+        {
+          "name": "ASI online ticket",
+          "bookUrl": "https://asi.payumoney.com/quick/ham",
+          "note": "Online rate is a little lower than the counter rate."
+        }
+      ],
+      "carry": [
+        "Cash in small notes",
+        "Water",
+        "Hat and sunscreen",
+        "Photo ID"
+      ],
+      "warnings": [
+        "One ticket does not cover every monument; ticketed sites (e.g. Vijaya Vittala) are checked separately.",
+        "Very little shade; avoid midday in summer."
+      ]
+    },
+    {
+      "placeId": "badami_caves",
+      "wikidataId": "Q825236",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://asi.nic.in/rock-cut-caves-badami/",
+      "unverified": true,
+      "payment": {
+        "cash": true,
+        "upi": false,
+        "card": false,
+        "note": "Counter tickets in cash; online tickets on the ASI portal are slightly cheaper."
+      },
+      "carry": [
+        "Cash in small notes",
+        "Water",
+        "Hat"
+      ],
+      "warnings": [
+        "Steep steps between caves; monkeys snatch food and bags.",
+        "Fees and counter payment modes could not be confirmed from an official page."
+      ],
+      "specialEntry": [
+        {
+          "name": "ASI online ticket",
+          "bookUrl": "https://asi.paygov.org.in/asi-webapp/",
+          "note": "Official ASI portals: asi.paygov.org.in and asi.payumoney.com. Beware of lookalike sites."
+        }
+      ]
+    },
+    {
+      "placeId": "pattadakal_aihole",
+      "wikidataId": "Q817250",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://asi.nic.in/",
+      "unverified": true,
+      "payment": {
+        "cash": true,
+        "upi": false,
+        "card": false,
+        "note": "Counter tickets in cash; online tickets on the ASI portal are slightly cheaper."
+      },
+      "carry": [
+        "Cash in small notes",
+        "Water",
+        "Photo ID"
+      ],
+      "warnings": [
+        "Aihole and Pattadakal are separate sites; plan transport between them."
+      ],
+      "specialEntry": [
+        {
+          "name": "ASI online ticket",
+          "bookUrl": "https://asi.paygov.org.in/asi-webapp/",
+          "note": "Official ASI portals: asi.paygov.org.in and asi.payumoney.com. Beware of lookalike sites."
+        }
+      ]
+    },
+    {
+      "placeId": "gol_gumbaz",
+      "wikidataId": "Q192295",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://asi.nic.in/",
+      "unverified": true,
+      "payment": {
+        "cash": true,
+        "upi": false,
+        "card": false,
+        "note": "Counter tickets in cash; online tickets on the ASI portal are slightly cheaper."
+      },
+      "carry": [
+        "Cash in small notes",
+        "Water"
+      ],
+      "specialEntry": [
+        {
+          "name": "ASI online ticket",
+          "bookUrl": "https://asi.paygov.org.in/asi-webapp/",
+          "note": "Official ASI portals: asi.paygov.org.in and asi.payumoney.com. Beware of lookalike sites."
+        }
+      ]
+    },
+    {
+      "placeId": "bidar_fort",
+      "wikidataId": "Q3814353",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://asi.nic.in/",
+      "unverified": true,
+      "carry": [
+        "Cash in small notes",
+        "Water",
+        "Torch for dark passages"
+      ],
+      "timings": "9:00-18:00; parts may close for restoration (Karnataka Tourism, Nov 2026)",
+      "warnings": [
+        "Carry valid photo ID; avoid heavy rain; restoration can close sections."
+      ]
+    },
+    {
+      "placeId": "gokarna_om_beach",
+      "wikidataId": "Q1025271",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/en/attractions/om-beach-gokarna/",
+      "unverified": true,
+      "carry": [
+        "Cash",
+        "Water",
+        "Torch"
+      ],
+      "warnings": [
+        "Strong currents; swim only where lifeguards allow.",
+        "Cliff paths between beaches are unlit after dark.",
+        "Short trek to reach the beach; wear comfortable shoes and avoid plastic."
+      ]
+    },
+    {
+      "placeId": "st_marys_island",
+      "wikidataId": "Q4254076",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/en/attractions/st-marys-island/",
+      "unverified": true,
+      "carry": [
+        "Cash for ferry",
+        "Water",
+        "Hat"
+      ],
+      "warnings": [
+        "Ferries from Malpe stop in the monsoon (roughly June–September).",
+        "No food or water on the island.",
+        "Ferries run roughly Oct-May and depend on sea conditions.",
+        "Do not climb the basalt columns."
+      ],
+      "timings": "Daylight hours only; no overnight stay. Crossing from Malpe about 30 min."
+    },
+    {
+      "placeId": "udupi_krishna_matha",
+      "wikidataId": "Q2044395",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://shrikrishnamatha.org/",
+      "unverified": true,
+      "dressCode": "Modest traditional wear; men take off shirts before the inner sanctum; women saree, salwar or similar.",
+      "footwear": "Remove footwear before entering; use the footwear counter.",
+      "carry": [
+        "Cash"
+      ],
+      "timings": "About 5:00-13:00 and 15:30-21:00; Maha Pooja 10:30-11:30. Deity is seen through the Navagraha Kindi window.",
+      "fees": [
+        {
+          "label": "Sarva darshan (general)",
+          "inr": 0
+        }
+      ],
+      "annadanam": {
+        "available": true,
+        "timings": "Lunch 11:30-14:30, dinner 19:30-21:30",
+        "note": "Free vegetarian meals at Annabrahma Bhojana Shale."
+      },
+      "photography": "Not allowed in the sanctum or near the Navagraha Kindi."
+    },
+    {
+      "placeId": "murudeshwar_temple",
+      "wikidataId": "Q2992986",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "dressCode": "Traditional, modest clothing; shoulders and knees covered.",
+      "footwear": "Remove footwear before entering; use the footwear counter.",
+      "carry": [
+        "Cash"
+      ],
+      "warnings": [
+        "Sea swimming can be dangerous; follow lifeguard flags."
+      ]
+    },
+    {
+      "placeId": "netrani_scuba",
+      "wikidataId": "Q10751334",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "carry": [
+        "Cash",
+        "Photo ID",
+        "Sunscreen"
+      ],
+      "warnings": [
+        "Dives and boats suspended in the monsoon (roughly June–September).",
+        "Book only with licensed operators.",
+        "Landing on the island is not allowed; activities are from the boat (operator reports)."
+      ]
+    },
+    {
+      "placeId": "honnavar_backwaters",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "carry": [
+        "Cash",
+        "Water",
+        "Insect repellent"
+      ]
+    },
+    {
+      "placeId": "jog_falls",
+      "wikidataId": "Q672241",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/en/attractions/jog-falls/",
+      "unverified": true,
+      "carry": [
+        "Cash",
+        "Water",
+        "Rain jacket in monsoon"
+      ],
+      "warnings": [
+        "Slippery steps to the base; access may be closed in heavy rain.",
+        "Weak mobile network around the falls.",
+        "Parking per Karnataka Tourism: two-wheeler 30, car/tempo traveller 150.",
+        "Base trek is about 1,400 steps and is often restricted; ask on site.",
+        "Only basic first aid; nearest hospital Sagara about 30 km.",
+        "Payment modes not stated; carry cash."
+      ],
+      "timings": "7:30-21:30 daily; each entry limited to 2 hours (as of 2025)",
+      "closedOn": "None",
+      "fees": [
+        {
+          "label": "Indian adult",
+          "inr": 20
+        },
+        {
+          "label": "Student 6-16",
+          "inr": 10
+        },
+        {
+          "label": "Foreign national",
+          "inr": 100
+        },
+        {
+          "label": "Personal camera",
+          "inr": 100
+        },
+        {
+          "label": "Drone",
+          "inr": 500
+        }
+      ]
+    },
+    {
+      "placeId": "kudremukh_trek",
+      "wikidataId": "Q123439915",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://aranyavihaara.karnataka.gov.in/",
+      "unverified": false,
+      "payment": {
+        "cash": false,
+        "upi": true,
+        "card": true,
+        "note": "Permit paid online only (UPI, card or net banking); no spot permits."
+      },
+      "specialEntry": [
+        {
+          "name": "Trek permit (Aranya Vihaara)",
+          "bookUrl": "https://aranyavihaara.karnataka.gov.in/",
+          "note": "Slots open 15 days ahead and sell out fast; non-refundable."
+        }
+      ],
+      "carry": [
+        "Printed permit",
+        "Same photo ID used for booking",
+        "2–3 L water",
+        "Food",
+        "Rain gear",
+        "Cash for guide fee"
+      ],
+      "warnings": [
+        "Camping not allowed; must be off the trail by sunset.",
+        "Single-use plastic is checked at the start point.",
+        "No mobile network on most of the trail."
+      ]
+    },
+    {
+      "placeId": "mullayanagiri_chik",
+      "wikidataId": "Q3695181",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/en/attractions/mullayyanagiri-peak/",
+      "unverified": true,
+      "carry": [
+        "Cash",
+        "Water",
+        "Jacket"
+      ],
+      "warnings": [
+        "Narrow ghat road; heavy weekend traffic and fog.",
+        "Patchy mobile network on the hilltop.",
+        "Drive to the upper parking lot, then climb about 500 steps.",
+        "Cave under the temple is closed."
+      ],
+      "timings": "Peak open all year; summit temple 7:00-19:00"
+    },
+    {
+      "placeId": "belur_halebeedu",
+      "wikidataId": "Q3536222",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/en/attractions/chennakeshava-temple/",
+      "unverified": true,
+      "dressCode": "Traditional, modest clothing; shoulders and knees covered.",
+      "footwear": "Remove footwear before entering; use the footwear counter.",
+      "carry": [
+        "Cash for guides",
+        "Water"
+      ],
+      "timings": "Chennakeshava temple, Belur: 7:30-19:30 daily"
+    },
+    {
+      "placeId": "dandeli_rafting",
+      "wikidataId": "Q5215676",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "carry": [
+        "Cash",
+        "Photo ID",
+        "Change of clothes"
+      ],
+      "warnings": [
+        "Rafting is seasonal and depends on dam water release; check before going."
+      ]
+    },
+    {
+      "placeId": "kabini_safari",
+      "wikidataId": "Q1520200",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://www.nagaraholetigerreserve.com/",
+      "unverified": false,
+      "payment": {
+        "cash": false,
+        "upi": true,
+        "card": true,
+        "note": "Safari seats booked and paid online on the official Nagarhole ticket portal."
+      },
+      "specialEntry": [
+        {
+          "name": "Forest department safari",
+          "bookUrl": "https://ticket.nagaraholetigerreserve.com/",
+          "note": "Kabini side starts at Kakanakote safari gate; OTP mobile needed to book."
+        }
+      ],
+      "carry": [
+        "Same original photo ID used for booking",
+        "Water",
+        "Muted-colour clothes"
+      ],
+      "warnings": [
+        "Report 30 minutes before the safari.",
+        "Many 'official-looking' booking sites are private agencies; use the forest department portal.",
+        "Weak mobile network inside the reserve."
+      ]
+    },
+    {
+      "placeId": "bandipur_safari",
+      "wikidataId": "Q665110",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "carry": [
+        "Photo ID",
+        "Water",
+        "Muted-colour clothes"
+      ],
+      "warnings": [
+        "Highway through the reserve is closed to traffic at night.",
+        "Book only on the forest department portal; many lookalike sites are agencies.",
+        "Official booking portal could not be confirmed; carry the same photo ID used when booking."
+      ]
+    },
+    {
+      "placeId": "coorg_madikeri",
+      "wikidataId": "Q5310644",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "carry": [
+        "Cash",
+        "Rain gear in monsoon"
+      ]
+    },
+    {
+      "placeId": "srirangapatna_island",
+      "wikidataId": "Q24032111",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/en/attractions/nimishamba-temple/",
+      "unverified": true,
+      "dressCode": "Traditional, modest clothing; shoulders and knees covered.",
+      "footwear": "Remove footwear before entering; use the footwear counter.",
+      "carry": [
+        "Cash",
+        "Water"
+      ],
+      "warnings": [
+        "Nimishamba temple is crowded on Fridays; river steps are slippery in monsoon."
+      ]
+    },
+    {
+      "placeId": "chitradurga_fort",
+      "wikidataId": "Q5102308",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/en/attractions/chitradurga-fort/",
+      "unverified": true,
+      "carry": [
+        "Cash in small notes",
+        "Water",
+        "Hat"
+      ],
+      "warnings": [
+        "Large rocky site with little shade.",
+        "Sturdy shoes advised; guides help with the fort's history."
+      ]
+    },
+    {
+      "placeId": "shravanabelagola",
+      "wikidataId": "Q22330289",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/en/attractions/shravanabelagola/",
+      "unverified": true,
+      "footwear": "Climb of about 600 rock-cut steps is barefoot; socks help on hot rock.",
+      "carry": [
+        "Water",
+        "Socks"
+      ],
+      "warnings": [
+        "Avoid the climb in the midday heat.",
+        "600+ steps need moderate fitness; Mahamastakabhisheka years are very crowded; photography may be restricted in some temples."
+      ]
+    },
+    {
+      "placeId": "dharmasthala_temple",
+      "wikidataId": "Q15213882",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://www.shridharmasthala.org/temple-routine/",
+      "unverified": false,
+      "timings": "Gates open 04:00; darshan through the day with short closures for Mahapooja and Nithyabali",
+      "annadanam": {
+        "available": true,
+        "note": "Free meals for all devotees at the Annapoorna dining hall near the temple."
+      },
+      "dressCode": "Men remove shirts and vests before the sanctum; modest clothing for all.",
+      "footwear": "Remove footwear before entering; use the footwear counter.",
+      "carry": [
+        "Cash"
+      ],
+      "warnings": [
+        "Darshan is paused during Nithyabali (three times a day).",
+        "Guest houses can be booked only through the official site."
+      ]
+    },
+    {
+      "placeId": "sringeri_peetham",
+      "wikidataId": "Q7504115",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://www.sringeri.net/pilgrim-info/temple-timings",
+      "unverified": true,
+      "dressCode": "Traditional, modest clothing; shoulders and knees covered.",
+      "footwear": "Remove footwear before entering; use the footwear counter.",
+      "annadanam": {
+        "available": true,
+        "timings": "Lunch 12:15-14:30, dinner 19:15-20:30",
+        "note": "Free meals at Sri Bharathi Theertha Prasada hall near the Sharada temple."
+      },
+      "carry": [
+        "Cash"
+      ],
+      "timings": "Sharadamba temple 6:00-14:00 and 16:00-21:00; other temples 6:00-13:00 and 17:00-20:00; Guru darshan 10:30-11:30. Varies with events.",
+      "warnings": [
+        "Car parking is on the northern bank of the Tunga river.",
+        "Free wheelchair at the Information Centre."
+      ]
+    },
+    {
+      "placeId": "kukke_subramanya",
+      "wikidataId": "Q3630887",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://itms.kar.nic.in/hrcehome/index_temple.php?tid=21&action=pooja_info",
+      "unverified": true,
+      "specialEntry": [
+        {
+          "name": "Ashlesha Bali",
+          "inr": 400,
+          "bookUrl": "https://itms.kar.nic.in/",
+          "note": "Price from Muzrai portal; online booking details unconfirmed."
+        },
+        {
+          "name": "Sarpa Samskara with Naga Pratishthe",
+          "inr": 4200,
+          "bookUrl": "https://itms.kar.nic.in/",
+          "note": "Two-day ritual."
+        },
+        {
+          "name": "Maha Pooja (midday)",
+          "inr": 250,
+          "bookUrl": "https://itms.kar.nic.in/",
+          "note": ""
+        }
+      ],
+      "annadanam": {
+        "available": true,
+        "note": "Free meals at the Annadana Bhavana, right of the main gopuram."
+      },
+      "dressCode": "Men remove shirt and vest before darshan; modest traditional wear.",
+      "footwear": "Remove footwear before entering; use the footwear counter.",
+      "photography": "Not allowed inside the temple.",
+      "carry": [
+        "Cash"
+      ],
+      "timings": "6:30-13:30 and 15:30-21:00 (Muzrai portal)"
+    },
+    {
+      "placeId": "ranganathittu_bird",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://tickets.ranganathittu.in/",
+      "unverified": true,
+      "specialEntry": [
+        {
+          "name": "Special boat (up to 4)",
+          "inr": 2200,
+          "bookUrl": "https://tickets.ranganathittu.in/",
+          "note": "Indians; foreigners pay 4000. Counter sales also available."
+        }
+      ],
+      "carry": [
+        "Cash",
+        "Binoculars",
+        "Water"
+      ],
+      "warnings": [
+        "Boating may pause at lunch and in high river flow.",
+        "Foreigners must show a passport; online booking needs OTP mobile number.",
+        "Parking: bike 20, car 70, van 130, bus 150."
+      ],
+      "timings": "6:30-17:30 daily; boating may pause around 13:30-14:30",
+      "fees": [
+        {
+          "label": "Entry, Indian adult",
+          "inr": 80
+        },
+        {
+          "label": "Entry, Indian child/student",
+          "inr": 40
+        },
+        {
+          "label": "Entry, foreign adult",
+          "inr": 600
+        },
+        {
+          "label": "Entry, foreign child",
+          "inr": 300
+        },
+        {
+          "label": "Common boat, Indian adult",
+          "inr": 120
+        },
+        {
+          "label": "Common boat, Indian child/student",
+          "inr": 40
+        },
+        {
+          "label": "Common boat, foreign adult",
+          "inr": 600
+        },
+        {
+          "label": "Camera lens under 200mm",
+          "inr": 150
+        },
+        {
+          "label": "Camera lens 200-500mm",
+          "inr": 300
+        },
+        {
+          "label": "Camera lens over 500mm",
+          "inr": 600
+        }
+      ],
+      "photography": "Drones prohibited; camera fees by lens size."
+    },
+    {
+      "placeId": "devarayanadurga",
+      "wikidataId": "Q3883755",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "carry": [
+        "Cash",
+        "Water",
+        "Torch"
+      ],
+      "warnings": [
+        "Hilltop temple usually closes around 17:00; plan to descend before dark.",
+        "Few shops and patchy network on the hill.",
+        "Monkeys snatch food and bags."
+      ]
+    },
+    {
+      "placeId": "kollur_mookambika",
+      "wikidataId": "Q3595863",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://kollurmookambikatemple.org/index.php/darshana-timing/",
+      "unverified": false,
+      "timings": "05:00–13:30, 15:00–17:00 (darshan only), 17:00–21:00",
+      "specialEntry": [
+        {
+          "name": "Sevas and pujas",
+          "bookUrl": "https://kollurmookambikatemple.org/index.php/general-sevas-2/",
+          "note": "Seva receipts at the temple counter or the official E-Seva page."
+        }
+      ],
+      "annadanam": {
+        "available": true,
+        "timings": "Lunch from 12:00, dinner from 20:00",
+        "note": "Free for all devotees."
+      },
+      "dressCode": "Traditional, modest clothing; shoulders and knees covered.",
+      "footwear": "Remove footwear before entering; use the footwear counter.",
+      "carry": [
+        "Cash for seva receipts"
+      ],
+      "warnings": [
+        "No sevas 15:00–17:00; darshan only.",
+        "Timings change on special days."
+      ]
+    },
+    {
+      "placeId": "chamundeshwari_temple",
+      "wikidataId": "Q1061529",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://srichamundeshwaridevi.in/",
+      "unverified": false,
+      "timings": "Free darshan about 6:00-21:00 (Star of Mysore, Nov 2026); the temple site shows 7:30-21:00 with aarti 6:30 and 18:30. Abhisheka ticket holders enter Gate 2, 6:30-9:00 and 19:30-21:00. Hours change on Fridays, holidays and festivals.",
+      "specialEntry": [
+        {
+          "name": "Free darshan (time slot)",
+          "inr": 0,
+          "bookUrl": "https://srichamundeshwaridevi.in/",
+          "note": "About 250 people per hour, 6 am–9 pm. Pick a slot online."
+        },
+        {
+          "name": "Paid darshan",
+          "bookUrl": "https://srichamundeshwaridevi.in/",
+          "note": "Tickets at ₹30, ₹200 and ₹1000, each with a time slot. Limited daily quota; book early on festival days."
+        },
+        {
+          "name": "Parking ticket",
+          "bookUrl": "https://e-ticket.chamundeshwaritemple.in/",
+          "note": "Two- and four-wheeler parking on the hill."
+        }
+      ],
+      "annadanam": {
+        "available": true,
+        "timings": "",
+        "note": "Temple gives free meals daily; serving hours not published."
+      },
+      "carry": [
+        "Aadhaar and printed receipt for booked tickets",
+        "Cloth or paper bag; the hill is a no-plastic zone"
+      ],
+      "warnings": [
+        "Don't buy tickets from people on the hill: tickets are online-only, and resold tickets are why the counters were closed.",
+        "Free darshan queue is capped at about 250 people per hour (Nov 2026 report).",
+        "Old e-ticket portal is replaced by srichamundeshwaridevi.in.",
+        "Private vehicles are banned on the hill on Ashada Fridays and some festival days; take the KSRTC bus from Mysuru city bus stand (every 20-30 min).",
+        "Temple office: 0821 259 0027"
+      ],
+      "fees": [
+        {
+          "label": "General darshan",
+          "inr": 0
+        },
+        {
+          "label": "Child under 10 darshan",
+          "inr": 0
+        }
+      ],
+      "payment": {
+        "cash": false,
+        "upi": true,
+        "card": true,
+        "note": "Since 1 Nov 2026 darshan and seva tickets are sold ONLY online at srichamundeshwaridevi.in; temple counters no longer sell them. Book before you go up the hill."
+      }
+    },
+    {
+      "placeId": "bangalore_palace",
+      "wikidataId": "Q3520057",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://bangaloreroyalpalace.com/",
+      "unverified": true,
+      "fees": [
+        {
+          "label": "Indian adult (incl. audio guide)",
+          "inr": 230
+        },
+        {
+          "label": "Foreign adult (incl. audio guide)",
+          "inr": 460
+        },
+        {
+          "label": "Mobile camera",
+          "inr": 285
+        }
+      ],
+      "timings": "10:00-17:30; last entry about 17:00",
+      "closedOn": "Reported closed on some Mondays and during private events; check before going",
+      "photography": "Separate camera fee applies",
+      "warnings": [
+        "Payment modes at the counter aren't confirmed yet. Carry some cash as backup.",
+        "Palace can close for private events; fees change during special exhibitions."
+      ]
+    },
+    {
+      "placeId": "lalbagh",
+      "wikidataId": "Q200711",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://horticulture.karnataka.gov.in/",
+      "unverified": true,
+      "timings": "Ticketed entry about 09:00-18:00; free for morning walkers early",
+      "warnings": [
+        "Payment modes at the counter aren't confirmed yet. Carry some cash as backup.",
+        "Fee differs between third-party sites; confirm at the gate.",
+        "Flower shows (Republic Day, Independence Day) have higher separate tickets."
+      ],
+      "carry": [
+        "Water",
+        "Comfortable shoes"
+      ]
+    },
+    {
+      "placeId": "cubbon_park",
+      "wikidataId": "Q3633776",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://horticulture.karnataka.gov.in/",
+      "unverified": true,
+      "payment": {
+        "cash": true,
+        "upi": false,
+        "card": false,
+        "note": "Park entry is free; museums inside charge small fees, paid at their counters."
+      },
+      "fees": [
+        {
+          "label": "Park entry",
+          "inr": 0
+        }
+      ],
+      "timings": "Open all day; vehicles restricted on weekends/Mondays in parts",
+      "warnings": [
+        "Some roads inside are closed to motor vehicles on certain days; use Metro or walk in."
+      ],
+      "carry": [
+        "Water"
+      ]
+    },
+    {
+      "placeId": "tipu_summer_palace",
+      "wikidataId": "Q7809034",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://asi.nic.in/",
+      "unverified": true,
+      "payment": {
+        "cash": true,
+        "upi": false,
+        "card": false,
+        "note": "ASI counter; online ticket via ASI portal where available."
+      },
+      "timings": "08:30-17:30",
+      "photography": "Allowed; check ASI notice for tripod/video",
+      "warnings": [
+        "Small monument; about 30-45 minutes is enough."
+      ]
+    },
+    {
+      "placeId": "iskcon_bengaluru",
+      "wikidataId": "osm:w29459362",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://www.iskconbangalore.org/",
+      "unverified": true,
+      "timings": "Darshan roughly 04:15-13:00 and 16:00-20:30; check temple site for the day",
+      "dressCode": "Modest clothing; shoulders and knees covered",
+      "footwear": "Remove footwear before the temple; free deposit counter",
+      "photography": "No photos inside the sanctum",
+      "warnings": [
+        "Payment modes at the counter aren't confirmed yet. Carry some cash as backup.",
+        "Very crowded on weekends and Janmashtami; entry via security queue."
+      ],
+      "carry": [
+        "Socks for hot floors"
+      ]
+    },
+    {
+      "placeId": "nandi_hills",
+      "wikidataId": "Q3518367",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "timings": "Typically open from early morning (sunrise views) to evening; check current hours",
+      "warnings": [
+        "Payment modes at the counter aren't confirmed yet. Carry some cash as backup.",
+        "Sunrise crowds are heavy; vehicle entry is capped and gates can close when full.",
+        "Often misty and cold; monkeys steal food.",
+        "Weekend traffic on the approach road is slow."
+      ],
+      "carry": [
+        "Warm layer",
+        "Water",
+        "Torch for pre-dawn"
+      ]
+    },
+    {
+      "placeId": "mysuru_zoo",
+      "wikidataId": "osm:w28950421",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://www.mysuruzoo.info/visit",
+      "unverified": true,
+      "fees": [
+        {
+          "label": "Adult",
+          "inr": 120
+        },
+        {
+          "label": "Child 5-12",
+          "inr": 60
+        },
+        {
+          "label": "Zoo + Karanji Lake combo adult",
+          "inr": 150
+        },
+        {
+          "label": "Battery vehicle adult",
+          "inr": 240
+        },
+        {
+          "label": "Still camera",
+          "inr": 100
+        },
+        {
+          "label": "Video camera",
+          "inr": 200
+        }
+      ],
+      "timings": "08:30-17:30",
+      "closedOn": "Tuesday",
+      "specialEntry": [
+        {
+          "name": "Online ticket",
+          "bookUrl": "https://tickets.mysuruzoo.info/",
+          "note": "Needs registration first; battery vehicle online booking also needs an entry ticket."
+        }
+      ],
+      "parking": [],
+      "warnings": [
+        "Payment modes at the counter aren't confirmed yet. Carry some cash as backup.",
+        "Student concessions suspended during Dasara.",
+        "Big cats rest by day; early morning or evening is best."
+      ],
+      "carry": [
+        "Water",
+        "Hat"
+      ]
+    },
+    {
+      "placeId": "brindavan_gardens",
+      "wikidataId": "Q3520916",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/en/attractions/brindavan-gardens/",
+      "unverified": true,
+      "payment": {
+        "cash": true,
+        "upi": true,
+        "card": false,
+        "note": "Official page gives prices only, not payment modes."
+      },
+      "fees": [
+        {
+          "label": "Adult",
+          "inr": 50
+        },
+        {
+          "label": "Child 5-10",
+          "inr": 15
+        },
+        {
+          "label": "Foreign national",
+          "inr": 100
+        },
+        {
+          "label": "Still camera",
+          "inr": 20
+        },
+        {
+          "label": "Video camera",
+          "inr": 100
+        }
+      ],
+      "timings": "06:30-20:00; musical fountain 18:30-19:30 weekdays, 18:30-20:00 weekends/holidays",
+      "warnings": [
+        "Fountain shows can be cancelled for rain or maintenance; arrive 20-30 minutes early for a spot.",
+        "Fees vary between sources; the Karnataka Tourism page was used."
+      ]
+    },
+    {
+      "placeId": "jaganmohan_palace",
+      "wikidataId": "Q6122134",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://mysore.nic.in/",
+      "unverified": true,
+      "timings": "Roughly 08:30-17:00 (art gallery)",
+      "photography": "Usually not allowed inside the gallery",
+      "warnings": [
+        "Payment modes at the counter aren't confirmed yet. Carry some cash as backup.",
+        "Gallery hours and fee were not confirmed; check at the entrance."
+      ]
+    },
+    {
+      "placeId": "st_philomena_church",
+      "wikidataId": "Q1436463",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "payment": {
+        "cash": true,
+        "upi": false,
+        "card": false,
+        "note": "Entry free; donations at the church."
+      },
+      "fees": [
+        {
+          "label": "Entry",
+          "inr": 0
+        }
+      ],
+      "timings": "Roughly 05:00-18:00; check Mass timings",
+      "dressCode": "Modest clothing",
+      "photography": "Allowed outside; be quiet during Mass",
+      "warnings": [
+        "Do not enter the catacombs during services."
+      ]
+    },
+    {
+      "placeId": "somanathapura",
+      "wikidataId": "Q3537502",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://asi.nic.in/",
+      "unverified": true,
+      "payment": {
+        "cash": true,
+        "upi": false,
+        "card": false,
+        "note": "ASI counter, cash."
+      },
+      "timings": "09:00-17:00",
+      "footwear": "Remove footwear near the main shrine",
+      "warnings": [
+        "Located 35 km from Mysuru."
+      ]
+    },
+    {
+      "placeId": "melukote",
+      "wikidataId": "Q5090262",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "timings": "Temple roughly 06:30-13:00 and 16:00-20:00",
+      "dressCode": "Modest dress",
+      "footwear": "Remove at temple base; footwear stand available",
+      "warnings": [
+        "Payment modes at the counter aren't confirmed yet. Carry some cash as backup.",
+        "Yoga Narasimha hill has many steps; carry water.",
+        "Famous puliyogare prasadam sells out by afternoon."
+      ],
+      "carry": [
+        "Water",
+        "Socks"
+      ]
+    },
+    {
+      "placeId": "shivagange",
+      "wikidataId": "Q7499268",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "payment": {
+        "cash": true,
+        "upi": true,
+        "card": false,
+        "note": "No ticket for the hill; temple offerings in cash."
+      },
+      "fees": [
+        {
+          "label": "Hill entry",
+          "inr": 0
+        }
+      ],
+      "timings": "Open roughly 06:00-18:00",
+      "warnings": [
+        "Steep rock-cut steps with monkeys; start before 10:00.",
+        "Avoid after rain, steps are slippery."
+      ],
+      "carry": [
+        "Water",
+        "Grip-sole shoes"
+      ]
+    },
+    {
+      "placeId": "horanadu_annapoorneshwari",
+      "wikidataId": "Q4767993",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://www.sriannapoorneshwari.com/",
+      "unverified": true,
+      "timings": "Darshan roughly 06:30-14:00 and 17:00-20:30",
+      "annadanam": {
+        "available": true,
+        "timings": "Lunch and dinner served daily; ask at the temple",
+        "note": "Free meal for all pilgrims."
+      },
+      "dressCode": "Modest traditional dress preferred",
+      "footwear": "Remove before the temple",
+      "warnings": [
+        "Payment modes at the counter aren't confirmed yet. Carry some cash as backup.",
+        "Very busy on festival days and weekends."
+      ]
+    },
+    {
+      "placeId": "kateel_durgaparameshwari",
+      "wikidataId": "Q7503920",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://www.kateeltemple.org/",
+      "unverified": true,
+      "timings": "Roughly 06:00-13:30 and 16:00-20:30",
+      "annadanam": {
+        "available": true,
+        "timings": "Midday and evening",
+        "note": "Free meal for devotees."
+      },
+      "dressCode": "Men commonly remove shirts in the sanctum area; women in saree or salwar",
+      "footwear": "Remove before the temple",
+      "warnings": [
+        "Payment modes at the counter aren't confirmed yet. Carry some cash as backup.",
+        "Timings change on festival days."
+      ]
+    },
+    {
+      "placeId": "gokarna_mahabaleshwar",
+      "wikidataId": "Q1846503",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "timings": "Roughly 06:00-12:30 and 16:00-20:00",
+      "dressCode": "Men: dhoti/trousers, no shirt in the garbhagriha if asked; women modest dress",
+      "footwear": "Remove outside the temple",
+      "photography": "Not allowed inside the sanctum",
+      "warnings": [
+        "Payment modes at the counter aren't confirmed yet. Carry some cash as backup.",
+        "Crowded on Maha Shivaratri and weekends."
+      ]
+    },
+    {
+      "placeId": "malpe_beach",
+      "wikidataId": "osm:w627844513",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "fees": [
+        {
+          "label": "Beach entry",
+          "inr": 0
+        }
+      ],
+      "timings": "Open day; best 16:00-18:30",
+      "warnings": [
+        "Payment modes at the counter aren't confirmed yet. Carry some cash as backup.",
+        "Strong currents; swim only in marked safe zones.",
+        "Boat to St Mary's Island leaves from Malpe jetty; see the St Mary's entry."
+      ]
+    },
+    {
+      "placeId": "abbey_falls",
+      "wikidataId": "Q673060",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "timings": "Typically 09:00-17:00",
+      "warnings": [
+        "Payment modes at the counter aren't confirmed yet. Carry some cash as backup.",
+        "Viewing platform only; no swimming. Steps are slippery in monsoon.",
+        "Entry is through a private coffee estate gate."
+      ]
+    },
+    {
+      "placeId": "dubare_elephant_camp",
+      "wikidataId": "osm:n390877530",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://junglelodges.com/",
+      "unverified": true,
+      "timings": "Typically 09:00-17:00; bathing session in the morning",
+      "warnings": [
+        "Payment modes at the counter aren't confirmed yet. Carry some cash as backup.",
+        "Reached by a short boat ride across the Cauvery; sometimes closed after heavy rain or when river is high.",
+        "Elephant activities are run by the forest department and can change."
+      ],
+      "carry": [
+        "Spare clothes if you will help bathe elephants"
+      ]
+    },
+    {
+      "placeId": "namdroling_bylakuppe",
+      "wikidataId": "Q3335448",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://www.namdrolling.org/",
+      "unverified": true,
+      "payment": {
+        "cash": true,
+        "upi": true,
+        "card": false,
+        "note": "Entry is free; small shops take cash/UPI."
+      },
+      "fees": [
+        {
+          "label": "Entry",
+          "inr": 0
+        }
+      ],
+      "timings": "Roughly 08:00-18:00; prayer hall quiet hours at midday",
+      "dressCode": "Modest; cover shoulders and knees",
+      "footwear": "Remove shoes before the prayer hall",
+      "photography": "Not allowed inside the prayer hall during ceremonies",
+      "warnings": [
+        "Inner Tibetan settlement; carry passport/ID if you are a foreign national."
+      ]
+    },
+    {
+      "placeId": "banashankari_badami",
+      "wikidataId": "Q4853950",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "timings": "Roughly 06:00-13:00 and 16:00-20:00",
+      "dressCode": "Modest clothing",
+      "footwear": "Remove before the temple",
+      "warnings": [
+        "Payment modes at the counter aren't confirmed yet. Carry some cash as backup.",
+        "Very crowded during the January jatre.",
+        "Temple is at Cholachagudda, about 5 km from Badami."
+      ]
+    },
+    {
+      "placeId": "yana_rocks",
+      "wikidataId": "osm:w1279099263",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "timings": "Typically 08:00-17:00",
+      "warnings": [
+        "Payment modes at the counter aren't confirmed yet. Carry some cash as backup.",
+        "Trek of roughly 700 m through forest; do not litter.",
+        "Heavy monsoon crowds; avoid after rain."
+      ],
+      "carry": [
+        "Water",
+        "Grip-sole shoes"
+      ]
+    },
+    {
+      "placeId": "manjarabad_fort",
+      "wikidataId": "Q24951959",
+      "lastVerified": "2026-11-06",
+      "sourceUrl": "https://karnatakatourism.org/",
+      "unverified": true,
+      "payment": {
+        "cash": true,
+        "upi": false,
+        "card": false,
+        "note": "ASI/State protected; small fee if any, in cash."
+      },
+      "timings": "Typically 08:00-17:00",
+      "warnings": [
+        "Star-shaped fort; best viewed from above.",
+        "Fort walls are loose in places; stay on the paths."
+      ]
+    }
+  ]
+}

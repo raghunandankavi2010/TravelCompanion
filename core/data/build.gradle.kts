@@ -1,6 +1,5 @@
 plugins {
-    id("namma.android.library")
-    id("namma.android.compose")
+    id("com.namma.travelcompanion.android.library")
 }
 
 android {
@@ -8,10 +7,20 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:common"))
+    implementation(project(":core:model"))
     implementation(project(":core:network"))
-    implementation("androidx.core:core-ktx:1.19.1")
-    implementation("com.google.android.gms:play-services-location:21.3.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0")
-    implementation("io.insert-koin:koin-android:4.0.2")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.camera.core)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.view)
+    implementation(libs.tesseract4android)
+    implementation(libs.mlkit.text.recognition)
+    implementation(libs.mlkit.translate)
+    implementation(libs.billing.ktx)
+    implementation(libs.play.services.location)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.koin.android)
+
+    testImplementation("org.json:json:20240303")
 }
