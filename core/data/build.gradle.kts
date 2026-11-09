@@ -4,6 +4,9 @@ plugins {
 
 android {
     namespace = "com.namma.travelcompanion.core.data"
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -22,5 +25,9 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.koin.android)
 
-    testImplementation("org.json:json:20240303")
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
+    testImplementation(libs.json.v20240303)
 }

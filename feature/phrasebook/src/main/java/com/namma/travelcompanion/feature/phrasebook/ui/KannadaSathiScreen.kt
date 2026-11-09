@@ -74,8 +74,8 @@ import com.namma.travelcompanion.core.theme.Slate800
 import com.namma.travelcompanion.core.theme.Slate900
 import com.namma.travelcompanion.feature.phrasebook.domain.model.KannadaPhrase
 import com.namma.travelcompanion.feature.phrasebook.domain.model.PhraseCategory
-import com.namma.travelcompanion.presentation.components.BangaloreBadge
-import com.namma.travelcompanion.presentation.components.GlassCard
+import com.namma.travelcompanion.core.ui.components.BangaloreBadge
+import com.namma.travelcompanion.core.ui.components.GlassCard
 
 @Composable
 fun KannadaSathiScreen(
